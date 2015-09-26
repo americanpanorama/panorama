@@ -1,5 +1,5 @@
 {
-  "name": "panorama",
+  "name": "@panorama/toolkit",
   "version": "0.0.1",
   "description": "Panorama visualization toolkit",
   "main": "src/main.js",

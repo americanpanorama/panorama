@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Legend from './legend.jsx';
+import { Legend, Punchcard } from '@panorama/toolkit';
 
 var legendData = {
 	items: [

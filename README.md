@@ -3,7 +3,7 @@ Visualization components developed for the American Panorama project of the Digi
 
 
 # install
-`npm install panorama`
+`npm install @panorama/toolkit`
 
 
 #Components

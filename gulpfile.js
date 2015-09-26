@@ -17,21 +17,21 @@ var gulp             = require('gulp'),
     connect          = require("gulp-connect"),
     sass             = require("gulp-sass");
 
-// External dependencies you do not want to rebundle while developing,
-// but include in your application deployment
+// External dependencies needed to run examples,
+// but not wanted in distribution build
 var dependencies = [
 	'react',
 ];
 
 var WEB_SERVER_PORT = 8888;
 
-function browserifyTask(options) {
+function browserifyTask (options) {
 
 	// Our app bundler
 	var appBundler = browserify({
-		entries: [options.src],		 // Only need initial file, browserify finds the rest
+		entries: [options.src],			// Only need initial file, browserify finds the rest
 	 	transform: [babelify],			// We want to convert JSX to normal javascript
-		debug: options.development, // Gives us sourcemapping
+		debug: options.development, 	// Gives us sourcemapping
 		cache: {}, packageCache: {}, fullPaths: options.development // Requirement of watchify
 	});
 
@@ -41,9 +41,8 @@ function browserifyTask(options) {
 	// takes full advantage of caching
 	appBundler.external(options.development ? dependencies : []);
 
-
 	// The rebundle process
-	function rebundle() {
+	function rebundle () {
 		var start = Date.now();
 		console.log('Building APP bundle');
 		if (options.development) {
@@ -61,6 +60,9 @@ function browserifyTask(options) {
 				.pipe(source('main.js'))
 				.pipe(buffer())
 				// .pipe(uglify())	// this is failing with a JS_Parse_Error, can't figure out why
+									// but that's probably ok -- don't have to uglify dist since
+									// consumers / application developers will probably do this.
+									// TODO: consider providing an uglified version of the library.
 				.pipe(gulp.dest(options.dest))
 				.pipe(notify(function () {
 					console.log('APP bundle built in ' + (Date.now() - start) + 'ms');
@@ -129,82 +131,80 @@ function browserifyTask(options) {
 
 }
 
-function cssTask(options) {
-		if (options.development) {
-			var run = function () {
-				var start = new Date();
-				console.log('Building CSS bundle');
-				gulp.src(options.src)
-					.pipe(sass())
-					.pipe(gulp.dest(options.dest))
-					.pipe(notify(function () {
-						console.log('CSS bundle built in ' + (Date.now() - start) + 'ms');
-					}));
-			};
-			run();
-			gulp.watch(options.src, run);
-		} else {
+function cssTask (options) {
+
+	if (options.development) {
+
+		var run = function () {
+			var start = new Date();
+			console.log('Building CSS bundle');
 			gulp.src(options.src)
 				.pipe(sass())
-				.pipe(cssmin())
-				.pipe(gulp.dest(options.dest));
-		}
+				.pipe(gulp.dest(options.dest))
+				.pipe(notify(function () {
+					console.log('CSS bundle built in ' + (Date.now() - start) + 'ms');
+				}));
+		};
+		run();
+		gulp.watch(options.src, run);
+
+	} else {
+
+		gulp.src(options.src)
+			.pipe(sass())
+			.pipe(cssmin())
+			.pipe(gulp.dest(options.dest));
+
+	}
+
 }
 
-function copyTask(options) {
-	return gulp.src(options.src)
-				.pipe(copy(options.dest, {"prefix":1}));
+function copyTask (options) {
+
+	return
+		gulp.src(options.src)
+		.pipe(copy(options.dest, {"prefix":1}));
+
 }
 
-function webserverTask(options) {
+function webserverTask (options) {
 
 	options = options || {}
 	var port = options.port || WEB_SERVER_PORT;
 
 	return connect.server({
-		root: './build/',
+		root: './examples/',
 		port: port,
 		livereload: false
 	});
-}
 
-function staticFolder() {
-	return gulp.src("static/**")
-	.pipe(copy("build/"));
-}
-
-function staticDistFolder() {
-	return gulp.src("static/**")
-	.pipe(copy("./dist"));
 }
 
 // Local development workflow:
-// build component and test on local server (localhost:8888)
+// build component examples and test on local server (localhost:8888)
 // with watcher to pick up changes and rebuild
 gulp.task('default', function () {
 
-	rimraf("./build/**", function() {
+	rimraf("./examples/**", function () {
 
 		copyTask({
 			"src"	: "./src/*.html",
-			"dest" : "./build"
+			"dest" : "./examples"
 		});
 
 		browserifyTask({
 			"development" : true,
 			"src"				 : './src/index.jsx',
-			"dest"				: './build'
+			"dest"				: './examples'
 		});
 
 		cssTask({
 			"development" : true,
 			"src"				 : './src/*.scss',
-			"dest"				: './build'
+			"dest"				: './examples'
 		});
 
 		webserverTask();
-
-		staticFolder();
 
 	});
 
@@ -213,15 +213,7 @@ gulp.task('default', function () {
 // Bundle package for npm publishing
 gulp.task('dist', function () {
 
-	rimraf("./dist/**", function() {
-
-		/*
-		// don't need html for use in other applications
-		copyTask({
-			"src"	: "./src/*.html",
-			"dest" : "./dist"
-		});
-		*/
+	rimraf("./dist/**", function () {
 
 		browserifyTask({
 			"development" : false,
@@ -235,12 +227,10 @@ gulp.task('dist', function () {
 			"dest"				: './dist'
 		});
 
-		staticDistFolder()
-
 	});
 
 });
 
 gulp.task('test', function () {
-		return gulp.src('./build/testrunner-phantomjs.html').pipe(jasminePhantomJs());
+	return gulp.src('./dist/testrunner-phantomjs.html').pipe(jasminePhantomJs());
 });
