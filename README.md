@@ -1,15 +1,23 @@
-# Component: Legend
-Clickable legend that can be used to label and toggle layers of a visualization.
+# Panorama visualization toolkit
+Visualization components developed for the American Panorama project of the Digital Scholarship Lab at the University of Richmond.
 
-![screenshot](https://cloud.githubusercontent.com/assets/1127259/10005832/610e48b0-606e-11e5-91ee-af887393e22d.png)
 
 # install
-`npm install @panorama/legend`
+`npm install panorama`
 
-# usage
+
+#Components
+The Panorama toolkit comprises a number of components that can be used individually, or wired together with the [Panorama Template](https://github.com/americanpanorama/panorama-template) as a starting point. Below is a list of the components available in the toolkit:
+
+
+## Legend
+Clickable legend that can be used to label and toggle layers of a visualization.
+![screenshot](https://cloud.githubusercontent.com/assets/1127259/10005832/610e48b0-606e-11e5-91ee-af887393e22d.png)
+
+### usage
 ```js
-var React  = require('react'),
-    Legend = require('Legend');
+import * as React from 'react';
+import { Legend } from 'panorama';
 
 var legendData = {
 	items: [
@@ -22,6 +30,13 @@ var legendData = {
 
 React.render(<Legend data={legendData}/>, document.body);
 ```
+
+## CategorizedQuantitiesView
+```js
+// TODO
+```
+
+### usage
 
 # building/running locally
 1. `npm install`
