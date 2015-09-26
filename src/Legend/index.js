@@ -1,1 +1,1 @@
-export Legend from './Legend';
+export Legend from './Legend.jsx';

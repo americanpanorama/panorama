@@ -1,1 +1,1 @@
-export Punchcard from './Punchcard';
+export Punchcard from './Punchcard.jsx';
