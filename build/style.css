@@ -1,0 +1,40 @@
+.panorama.legend {
+  position: absolute; }
+  .panorama.legend ul {
+    margin: 0;
+    padding: 0; }
+    .panorama.legend ul li {
+      position: relative;
+      opacity: 0.5;
+      margin: 0;
+      margin-bottom: 0;
+      cursor: pointer;
+      list-style-type: none;
+      background-color: #E9EDEC;
+      border-radius: 4px;
+      border: 1px solid #b3b3b3;
+      border-bottom: 0;
+      padding: 5px;
+      padding-left: 22px; }
+      .panorama.legend ul li:last-child {
+        border-bottom: 1px solid #b3b3b3; }
+      .panorama.legend ul li.selected {
+        opacity: 1.0; }
+      .panorama.legend ul li span:before {
+        display: inline-block;
+        position: absolute;
+        left: calc(0.5 * 10px);
+        content: "";
+        border: solid 1px black;
+        width: 10px;
+        height: 10px;
+        top: calc(50% - 0.5 * 12px); }
+      .panorama.legend ul li:nth-child(1) span:before {
+        border-radius: 100%;
+        background-color: black; }
+      .panorama.legend ul li:nth-child(2) span:before {
+        border-color: #92836a;
+        background-color: rgba(146, 131, 106, 0.7); }
+      .panorama.legend ul li:nth-child(3) span:before {
+        border-color: #768a66;
+        background-color: rgba(118, 138, 102, 0.7); }
