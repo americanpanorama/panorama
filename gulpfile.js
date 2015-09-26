@@ -11,7 +11,6 @@ var gulp             = require('gulp'),
     gutil            = require('gulp-util'),
     livereload       = require('gulp-livereload'),
     jasminePhantomJs = require('gulp-jasmine2-phantomjs'),
-    copy             = require("gulp-copy"),
     glob             = require('glob'),
     rimraf           = require("rimraf"),
     connect          = require("gulp-connect"),
@@ -161,9 +160,8 @@ function cssTask (options) {
 
 function copyTask (options) {
 
-	return
-		gulp.src(options.src)
-		.pipe(copy(options.dest, {"prefix":1}));
+	gulp.src(options.src)
+	.pipe(gulp.dest(options.dest));
 
 }
 
@@ -185,23 +183,28 @@ function webserverTask (options) {
 // with watcher to pick up changes and rebuild
 gulp.task('default', function () {
 
+	// TODO: this should emulate an end user / app dev workflow.
+	// therefore, it should uglify and concatenate all dependencies
+	// (tho external deps like react and d3 should go in a separate vendors.js).
+	// It should also run tests, for convenience sake.
+
 	rimraf("./examples/**", function () {
 
 		copyTask({
-			"src"	: "./src/*.html",
+			"src"  : "./src/*.html",
 			"dest" : "./examples"
 		});
 
 		browserifyTask({
 			"development" : true,
-			"src"				 : './src/index.jsx',
-			"dest"				: './examples'
+			"src"         : './src/index.jsx',
+			"dest"        : './examples'
 		});
 
 		cssTask({
 			"development" : true,
-			"src"				 : './src/*.scss',
-			"dest"				: './examples'
+			"src"         : './src/*.scss',
+			"dest"        : './examples'
 		});
 
 		webserverTask();
@@ -213,6 +216,15 @@ gulp.task('default', function () {
 // Bundle package for npm publishing
 gulp.task('dist', function () {
 
+	// NOTE: no-op'd this task pending decision on TODO below.
+	// also pointed package.json at src/main instead of dist/main.
+
+	// TODO: each component should be compiled into its own module,
+	// to enable importing each separately.
+	// but if we're not uglifying and not concatenating...
+	// what's the point of a dist folder?
+
+	/*
 	rimraf("./dist/**", function () {
 
 		browserifyTask({
@@ -228,6 +240,7 @@ gulp.task('dist', function () {
 		});
 
 	});
+	*/
 
 });
 
