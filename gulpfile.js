@@ -34,6 +34,10 @@ function browserifyTask (options) {
 		cache: {}, packageCache: {}, fullPaths: options.development // Requirement of watchify
 	});
 
+	// Make it possible to import from / require() '@panorama/toolkit'
+	// within the compiled/browserified code.
+	appBundler.require('./', { expose: '@panorama/toolkit' });
+
 	// We set our dependencies as externals on our app bundler when developing.
 	// You might consider doing this for production also and load two javascript
 	// files (main.js and vendors.js), as vendors.js will probably not change and
