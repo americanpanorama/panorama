@@ -9,9 +9,15 @@ import watchify from 'watchify';
 const $ = gulpLoadPlugins();
 
 /**
- * List of all external dependencies,
+ * List of all external runtime dependencies,
  * which will be bundled separately from
  * example application files and @panorama/toolkit.
+ * 
+ * Note: babelify and sass-css-stream are listed as `dependencies`
+ * in `package.json` because they are transforms required
+ * to build a project containing @panorama/toolkit.
+ * They are not required at runtime, and therefore
+ * are not included here.
  */
 const dependencies = [
 	'react'
