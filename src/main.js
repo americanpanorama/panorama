@@ -1,4 +1,4 @@
-// exports for use of panorama as a node module
+// exports for use of @panorama/toolkit as a node module
 
-export Legend from './Legend';
-export Punchcard from './Punchcard';
+export Legend from './Legend/Legend.jsx';
+export Punchcard from './Punchcard/Punchcard.jsx';
