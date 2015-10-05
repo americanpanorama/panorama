@@ -5,6 +5,7 @@ import source from 'vinyl-source-stream';
 import browserify from 'browserify';
 import babelify from 'babelify';
 import watchify from 'watchify';
+import sassify from 'sassify';
 
 const $ = gulpLoadPlugins();
 
@@ -12,7 +13,7 @@ const $ = gulpLoadPlugins();
  * List of all external runtime dependencies,
  * which will be bundled separately from
  * example application files and @panorama/toolkit.
- * 
+ *
  * Note: babelify and sass-css-stream are listed as `dependencies`
  * in `package.json` because they are transforms required
  * to build a project containing @panorama/toolkit.
@@ -22,6 +23,26 @@ const $ = gulpLoadPlugins();
 const dependencies = [
 	'react'
 ];
+
+
+/**
+ *
+ * Use Sassify
+ * Just add "require('MY_STYLE.scss');" to your ".jsx" module.
+ * Then set "RUN_SASSIFY" flag to true;
+ *
+ */
+const RUN_SASSIFY = false;
+const sassifyMe = (b) => {
+	if (!RUN_SASSIFY) return b;
+
+	return b.transform(sassify, {
+		'auto-inject': true, // Inject css directly in the code
+		base64Encode: false, // Use base64 to inject css
+		sourceMap: false // Add source map to the code
+	});
+}
+
 
 /**
  * Pretty-print bundle build timings.
@@ -88,8 +109,9 @@ gulp.task('examples:deps', () => {
 gulp.task('examples:lib', () => {
 	const bundler = browserify()
 		.external(dependencies)
-		.require('./src/main.js', { expose: '@panorama/toolkit' })
-	return bundleExamples(bundler, 'lib.js');
+		.require('./src/main.js', { expose: '@panorama/toolkit' });
+
+	return bundleExamples(sassifyMe(bundler), 'lib.js');
 });
 
 /**
@@ -113,11 +135,11 @@ gulp.task('examples:app', () => {
 });
 
 /**
- * Watch for changes in ./lib; on change,
+ * Watch for changes in ./src; on change,
  * rebuild lib and dependencies in examples.
  */
 gulp.task('watch:examples:lib', ['examples:deps'], () => {
-	return gulp.watch('./lib/**', ['examples:lib']);
+	return gulp.watch('./src/**', ['examples:lib']);
 });
 
 /**

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "gulp",
     "dist": "gulp dist",
-    "test": "gulp test"
+    "dev": "gulp watch:examples"
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,7 @@
     "gulp-load-plugins": "^0.10.0",
     "gulp-util": "^3.0.6",
     "gulp-webserver": "^0.9.1",
+    "sassify": "^0.9.1",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.4.0"
   },

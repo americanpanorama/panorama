@@ -1,11 +1,13 @@
 import * as React from 'react';
 
+// flip for Sassify support
+// require('./style.scss');
+
 export default class Legend extends React.Component {
 
 	constructor (props) {
 
 		super(props);
-
 		this.state = {
 			selectedItem: this.props.data.initialSelection || null
 		};
@@ -51,7 +53,7 @@ export default class Legend extends React.Component {
 
 		// Any desired mouse leave functionality goes here.
 		// console.log("leaving:", event.currentTarget.dataset.item);
-		
+
 	}
 
 	render() {

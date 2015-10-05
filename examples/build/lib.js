@@ -19,7 +19,7 @@ var _react = require('react');
 
 var React = _interopRequireWildcard(_react);
 
-// require('./style.scss');
+//require('./style.scss');
 
 var Legend = (function (_React$Component) {
 	_inherits(Legend, _React$Component);
@@ -28,7 +28,6 @@ var Legend = (function (_React$Component) {
 		_classCallCheck(this, Legend);
 
 		_get(Object.getPrototypeOf(Legend.prototype), 'constructor', this).call(this, props);
-
 		this.state = {
 			selectedItem: this.props.data.initialSelection || null
 		};
