@@ -19,7 +19,8 @@ var _react = require('react');
 
 var React = _interopRequireWildcard(_react);
 
-//require('./style.scss');
+// flip for Sassify support
+// require('./style.scss');
 
 var Legend = (function (_React$Component) {
 	_inherits(Legend, _React$Component);

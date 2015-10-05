@@ -7,7 +7,14 @@ import babelify from 'babelify';
 import watchify from 'watchify';
 import sassify from 'sassify';
 
+//Automatically load any gulp plugins in your package.json
 const $ = gulpLoadPlugins();
+
+// live reload webserver
+const LIVE_RELOAD = false;
+
+// use sassify
+const RUN_SASSIFY = false;
 
 /**
  * List of all external runtime dependencies,
@@ -27,12 +34,11 @@ const dependencies = [
 
 /**
  *
- * Use Sassify
+ * Sassify
  * Just add "require('MY_STYLE.scss');" to your ".jsx" module.
  * Then set "RUN_SASSIFY" flag to true;
  *
  */
-const RUN_SASSIFY = false;
 const sassifyMe = (b) => {
 	if (!RUN_SASSIFY) return b;
 
@@ -117,12 +123,18 @@ gulp.task('examples:lib', () => {
 /**
  * Run a webserver for local testing,
  * pointed at ./examples.
+ *
+ * To enable "live reload", set the
+ * LIVE_RELOAD flag
  */
 gulp.task('examples:server', () => gulp
 	.src('./examples')
 	.pipe($.webserver({
 		port: 8888,
-		fallback: 'index.htm'
+		fallback: 'index.htm',
+		livereload: {
+			enable: LIVE_RELOAD
+		}
 	}))
 );
 
