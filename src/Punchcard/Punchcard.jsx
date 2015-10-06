@@ -14,7 +14,7 @@ export default class Punchcard extends React.Component {
 	static defaultProps = {
 
 		//
-		
+
 	};
 
 	constructor () {
@@ -22,7 +22,7 @@ export default class Punchcard extends React.Component {
 		super();
 
 		// set up initial state (instead of ES5-style getInitialState)
-		// this.state = 
+		// this.state =
 
 		// bind handlers to this component instance,
 		// since React no longer does this automatically when using ES6
@@ -57,7 +57,7 @@ export default class Punchcard extends React.Component {
 	render () {
 
 		return (
-			<div className='categorized-quantities'>
+			<div className='categorized-quantities punchcard'>
 			</div>
 		);
 

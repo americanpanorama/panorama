@@ -14,7 +14,7 @@ const $ = gulpLoadPlugins();
 const LIVE_RELOAD = false;
 
 // use sassify
-const RUN_SASSIFY = false;
+const RUN_SASSIFY = true;
 
 /**
  * List of all external runtime dependencies,
@@ -121,6 +121,14 @@ gulp.task('examples:lib', () => {
 });
 
 /**
+ * Rebuild examples without rebuilding
+ * @panorama/toolkit or dependencies.
+ */
+gulp.task('examples:app', () => {
+	bundleExamples(exampleBundler, 'index.js');
+});
+
+/**
  * Run a webserver for local testing,
  * pointed at ./examples.
  *
@@ -137,14 +145,6 @@ gulp.task('examples:server', () => gulp
 		}
 	}))
 );
-
-/**
- * Rebuild examples without rebuilding
- * @panorama/toolkit or dependencies.
- */
-gulp.task('examples:app', () => {
-	bundleExamples(exampleBundler, 'index.js')
-});
 
 /**
  * Watch for changes in ./src; on change,

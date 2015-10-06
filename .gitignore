@@ -32,3 +32,9 @@ node_modules
 
 # OSX, pleeze.
 .DS_Store
+
+# Distribution directory
+dist
+
+# Examples build directory
+examples/build

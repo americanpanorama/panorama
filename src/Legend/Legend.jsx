@@ -1,12 +1,11 @@
 import * as React from 'react';
 
 // flip for Sassify support
-// require('./style.scss');
+import './style.scss';
 
 export default class Legend extends React.Component {
 
 	constructor (props) {
-
 		super(props);
 		this.state = {
 			selectedItem: this.props.data.initialSelection || null
