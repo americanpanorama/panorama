@@ -3,6 +3,16 @@ Visualization components developed for the American Panorama project of the Digi
 
 
 # install
+Ensure your npm version is > `2.7.0` (required for support of npm scoped packages):
+
+`npm --version`
+
+If <= `2.7.0`, update npm:
+
+`sudo npm install npm -g`
+
+Then, install the toolkit:
+
 `npm install @panorama/toolkit`
 
 
