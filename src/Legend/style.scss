@@ -10,7 +10,10 @@ $colorGreen: rgb(146, 131, 106);
 $colorKhaki: rgb(118, 138, 102);
 
 .panorama.legend {
-	position: absolute;
+	position: relative;
+	width: auto;
+	display: inline-block;
+	zoom: 1;
 
 	ul {
 		margin: 0;
