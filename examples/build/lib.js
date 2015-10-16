@@ -9705,7 +9705,7 @@ var PanoramaChart = (function (_React$Component) {
   _createClass(PanoramaChart, null, [{
     key: 'propTypes',
     value: {
-      data: _react.PropTypes.array,
+      data: _react.PropTypes.oneOfType([_react.PropTypes.array, _react.PropTypes.object]),
       xAccessor: _react.PropTypes.func,
       yAccessor: _react.PropTypes.func,
       width: _react.PropTypes.number,
@@ -9746,8 +9746,7 @@ var PanoramaChart = (function (_React$Component) {
   }, {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {
-      var el = _react2['default'].findDOMNode(this.refs.chart);
-      if (this.chart) this.chart.destroy(el);
+      if (this.chart) this.chart.destroy(_react2['default'].findDOMNode(this.refs.chart));
       this.chart = null;
     }
   }, {
@@ -9794,6 +9793,8 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
+
+var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i['return']) _i['return'](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError('Invalid attempt to destructure non-iterable instance'); } }; })();
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
@@ -9974,9 +9975,207 @@ var DiscreteBarChart = (function (_ChartBase) {
 
 ;
 
-// Todo: is there a better way
+var HorizontalDiscreteBarChart = (function (_DiscreteBarChart) {
+  _inherits(HorizontalDiscreteBarChart, _DiscreteBarChart);
+
+  function HorizontalDiscreteBarChart(selection) {
+    _classCallCheck(this, HorizontalDiscreteBarChart);
+
+    _get(Object.getPrototypeOf(HorizontalDiscreteBarChart.prototype), 'constructor', this).call(this, selection);
+
+    var _Chart = this;
+    this.yScale = _d32['default'].scale.ordinal();
+    this.xScale = _d32['default'].scale.linear();
+    var layer = this.layer('bars');
+
+    layer.insert = function () {
+      return this.append('rect').attr('class', 'bar').attr("height", _Chart.yScale.rangeBand());
+    };
+
+    layer.on('enter', function () {
+      return this.attr("x", function (d) {
+        return '0';
+      }).attr("y", function (d) {
+        return _Chart.yScale(_Chart.accessor('y')(d));
+      }).attr("width", function (d) {
+        return _Chart.xScale(_Chart.accessor('x')(d));
+      }).attr("height", _Chart.yScale.rangeBand());
+    });
+  }
+
+  _createClass(HorizontalDiscreteBarChart, [{
+    key: 'updateScales',
+    value: function updateScales(data) {
+      var _Chart = this;
+      this.yScale.rangeRoundBands([0, this._height], this.configs['barSpacing'].value);
+      this.yScale.domain(data.map(function (d) {
+        return _Chart.accessor('y')(d);
+      }));
+
+      this.xScale.range([0, this._width]);
+      this.xScale.domain([0, _d32['default'].max(data, function (d) {
+        return _Chart.accessor('x')(d);
+      })]);
+
+      if (this.xAxis) this.xAxis.config('scale', this.xScale);
+      if (this.yAxis) this.yAxis.config('scale', this.yScale);
+    }
+  }]);
+
+  return HorizontalDiscreteBarChart;
+})(DiscreteBarChart);
+
+var MapChoropleth = (function (_Koto3) {
+  _inherits(MapChoropleth, _Koto3);
+
+  function MapChoropleth(selection) {
+    _classCallCheck(this, MapChoropleth);
+
+    _get(Object.getPrototypeOf(MapChoropleth.prototype), 'constructor', this).call(this, selection);
+
+    var _Chart = this;
+
+    this.configs['width'] = { value: 600 };
+    this.configs['height'] = { value: 400 };
+    this.configs['margin'] = { value: { top: 20, right: 30, bottom: 20, left: 30 } };
+    this.configs['range'] = { value: ['#EDF8FB', '#BFD3E6', '#9EBCDA', '#8C96C6', '#8C6BB1', '#88419D', '#6E016B'] };
+    this.configs['projection'] = { value: 'albersUsa' };
+    this.configs['mapScale'] = { value: 500 };
+
+    this._path = _d32['default'].geo.path();
+    this._projection = _d32['default'].geo[this.configs['projection'].value]();
+
+    this.data = {
+      geometry: [],
+      values: []
+    };
+
+    this.colorScale = _d32['default'].scale.quantize().range(this.configs['range'].value);
+
+    this.baseLayer = this.base.append('g').classed('map', true);
+
+    this.updateDimensions();
+
+    // define layer
+    var layer = this.layer('geo', this.baseLayer, {
+      dataBind: function dataBind(data) {
+        _Chart.data.geometry = data.geometry;
+        _Chart.data.values = data.values;
+
+        return this.selectAll("path").data(_Chart.data.geometry.features);
+      },
+      insert: function insert() {
+        return this.append("path").attr('class', 'geometry').style("fill", function (d) {
+          return _Chart.colorScale(_Chart.data.values.get(d.id));
+        }).attr("d", _Chart._path);
+      }
+    });
+
+    // Setup life-cycle events on layers
+    layer.on('enter', function () {}).on('merge', function () {
+      // this => base selection
+    }).on('exit', function () {
+      // this => exit selection
+    });
+  }
+
+  // Todo: is there a better way
+
+  _createClass(MapChoropleth, [{
+    key: 'fitMap',
+    value: function fitMap(geo) {
+      var projection = _d32['default'].geo[this.configs['projection'].value]().scale(1).translate([0, 0]);
+
+      var path = _d32['default'].geo.path().projection(projection);
+
+      var width = this._width,
+          height = this._height;
+
+      var b = path.bounds(geo),
+          //[[left,top],[right,bottom]],
+      s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
+          t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+
+      return [s, t];
+    }
+  }, {
+    key: 'updateDimensions',
+    value: function updateDimensions() {
+      var margin = this.configs['margin'].value;
+      this._width = this.configs['width'].value - margin.left - margin.right;
+      this._height = this.configs['height'].value - margin.top - margin.bottom;
+
+      this.base.attr('height', this.configs['height'].value);
+      this.base.attr('width', this.configs['width'].value);
+
+      this.baseLayer.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    }
+  }, {
+    key: 'updateProjection',
+    value: function updateProjection(data) {
+      var scale = this.configs['mapScale'].value;
+      var translate = [this._width / 2, this._height / 2];
+
+      if (this.configs['mapScale'].value === 'auto') {
+        var _fitMap = this.fitMap(data.geometry);
+
+        var _fitMap2 = _slicedToArray(_fitMap, 2);
+
+        scale = _fitMap2[0];
+        translate = _fitMap2[1];
+      }
+
+      this._projection = _d32['default'].geo[this.configs['projection'].value]().scale(scale).translate(translate);
+
+      this._path.projection(this._projection);
+    }
+  }, {
+    key: 'updateColorScale',
+    value: function updateColorScale(data) {
+      var max = -Infinity;
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = data.values.values()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var value = _step.value;
+
+          if (value > max) max = value;
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator['return']) {
+            _iterator['return']();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      this.colorScale.domain([0, max]).range(this.configs['range'].value);
+    }
+  }, {
+    key: 'preDraw',
+    value: function preDraw(data) {
+      this.updateDimensions();
+      this.updateProjection(data);
+      this.updateColorScale(data);
+    }
+  }]);
+
+  return MapChoropleth;
+})(_koto2['default']);
+
 var charts = {
-  DiscreteBarChart: DiscreteBarChart
+  DiscreteBarChart: DiscreteBarChart,
+  HorizontalDiscreteBarChart: HorizontalDiscreteBarChart,
+  MapChoropleth: MapChoropleth
 };
 exports.charts = charts;
 

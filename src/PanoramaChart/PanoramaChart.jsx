@@ -5,7 +5,7 @@ import './style.scss';
 
 export default class PanoramaChart extends React.Component {
   static propTypes = {
-    data: PropTypes.array,
+    data: PropTypes.oneOfType([PropTypes.array,PropTypes.object]),
     xAccessor: PropTypes.func,
     yAccessor: PropTypes.func,
     width: PropTypes.number,
@@ -33,8 +33,7 @@ export default class PanoramaChart extends React.Component {
   }
 
   componentWillUnmount () {
-    var el = React.findDOMNode(this.refs.chart);
-    if (this.chart) this.chart.destroy(el);
+    if (this.chart) this.chart.destroy(React.findDOMNode(this.refs.chart));
     this.chart = null;
   }
 

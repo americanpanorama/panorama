@@ -47,6 +47,7 @@
     "sass-loader": "^3.0.0",
     "sassify": "^0.9.1",
     "style-loader": "^0.12.4",
+    "topojson": "^1.6.19",
     "url-loader": "^0.5.6",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.4.0",
