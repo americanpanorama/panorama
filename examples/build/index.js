@@ -417,10 +417,6 @@ var PunchcardExample = (function (_React$Component) {
 		key: 'render',
 		value: function render() {
 
-			// TODO: friday: finish this example,
-			// push and link to source in comment for sean,
-			// npm version and publish and include in canals.
-
 			var punchcardData = require('../data/punchcard.json');
 
 			return React.createElement(_panoramaToolkit.Punchcard, punchcardData);
