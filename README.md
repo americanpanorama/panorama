@@ -2,7 +2,7 @@
 Visualization components developed for the American Panorama project of the Digital Scholarship Lab at the University of Richmond. [View Examples](http://americanpanorama.github.io/panorama/)
 
 
-# install
+## Install
 Ensure your npm version is > `2.7.0` (required for support of npm scoped packages):
 
 `npm --version`
@@ -16,15 +16,15 @@ Then, install the toolkit:
 `npm install @panorama/toolkit`
 
 
-#Components
+## Components
 The Panorama toolkit comprises a number of components that can be used individually, or wired together with the [Panorama Template](https://github.com/americanpanorama/panorama-template) as a starting point. Below is a list of the components available in the toolkit:
 
 
-## Legend
+### Legend
 Clickable legend that can be used to label and toggle layers of a visualization.
 ![screenshot](https://cloud.githubusercontent.com/assets/1127259/10005832/610e48b0-606e-11e5-91ee-af887393e22d.png)
 
-### usage
+#### Usage
 ```js
 import * as React from 'react';
 import { Legend } from 'panorama';
@@ -41,17 +41,39 @@ var legendData = {
 React.render(<Legend data={legendData}/>, document.body);
 ```
 
-## CategorizedQuantitiesView
+### CategorizedQuantitiesView
 ```js
 // TODO
 ```
 
-### usage
+## Building/running locally
+You will first need to install all necessary modules, so run `npm install` in the root directory.
 
-# building/running locally
-1. `npm install`
-2. `npm start`
-3. Open `http://localhost:8888/` in a browser.
+### Build components
+This will build components in examples folder.
+```
+npm run components:build
+```
 
-# running tests
+### Develop components
+* Components are in `src` folder
+* Examples of components are in the `examples` folder
+
+To run local development server at [http://localhost:8888/](http://localhost:8888/):
+```
+npm run components:dev
+```
+
+### Package components
+This will package all components listed in `src/main.js` into one distributable file.
+```
+npm run components:package
+```
+
+### Update component examples GH-Page
+```
+npm run components:ghpage
+```
+
+### Tests
 **TODO**

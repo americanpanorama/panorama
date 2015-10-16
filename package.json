@@ -4,10 +4,10 @@
   "description": "Panorama visualization toolkit",
   "main": "src/main.js",
   "scripts": {
-    "start": "gulp",
-    "dist": "webpack -p",
-    "dev": "gulp watch:examples",
-    "deploy-examples": "git-directory-deploy --directory examples"
+    "components:package": "webpack -p",
+    "components:dev": "gulp watch:examples",
+    "components:build": "gulp",
+    "components:ghpage": "gulp && git-directory-deploy --directory examples"
   },
   "repository": {
     "type": "git",
