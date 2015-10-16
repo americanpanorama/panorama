@@ -11,7 +11,7 @@ const examples = (
 		<LegendExample />
     <h2>Barchart</h2>
     <BarchartExample />
-    <h2>Cholopleth</h2>
+    <h2>Choropleth</h2>
     <CholoplethExample />
 	</div>
 );
