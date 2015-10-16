@@ -3,7 +3,7 @@ import * as React from 'react';
 import LegendExample from './components/example-legend.jsx';
 import BarchartExample from './components/example-barchart.jsx';
 import CholoplethExample from './components/example-cholopleth.jsx';
-import PunchcardExample from './example-punchcard.jsx';
+import PunchcardExample from './components/example-punchcard.jsx';
 
 const examples = (
 	<div>
