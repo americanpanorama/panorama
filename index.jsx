@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import LegendExample from './example-legend.jsx';
-import BarchartExample from './example-barchart.jsx';
-import CholoplethExample from './example-cholopleth.jsx';
+import LegendExample from './components/example-legend.jsx';
+import BarchartExample from './components/example-barchart.jsx';
+import CholoplethExample from './components/example-cholopleth.jsx';
 
 const examples = (
 	<div>

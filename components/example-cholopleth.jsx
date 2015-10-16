@@ -6,8 +6,8 @@ import { PanoramaChart } from '@panorama/toolkit';
 // Our data for the map
 // In a real scenario, this would most likely have to loaded
 // from an external source
-const geodata = require('./data/us.json');
-const mapValues = require('./data/unemployment.json');
+const geodata = require('../data/us.json');
+const mapValues = require('../data/unemployment.json');
 
 export default class CholoplethExample extends React.Component {
 
