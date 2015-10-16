@@ -1,5 +1,5 @@
 # Panorama visualization toolkit
-Visualization components developed for the American Panorama project of the Digital Scholarship Lab at the University of Richmond.
+Visualization components developed for the American Panorama project of the Digital Scholarship Lab at the University of Richmond. [View Examples](http://americanpanorama.github.io/panorama/)
 
 
 # install
