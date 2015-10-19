@@ -7,6 +7,8 @@ import babelify from 'babelify';
 import watchify from 'watchify';
 import sassify from 'sassify';
 
+// import eventStream from 'event-stream';
+
 //Automatically load any gulp plugins in your package.json
 const $ = gulpLoadPlugins();
 
@@ -171,6 +173,39 @@ gulp.task('watch:examples', [
 	'watch:examples:lib',
 	'watch:examples:app'
 ]);
+
+/*
+ * failed attempt at separate bundle for each module, per
+ * http://fettblog.eu/gulp-browserify-multiple-bundles/
+ */
+/*
+gulp.task('dist', () => {
+	// TODO: use fs (?) to iterate ./src and automatically generate this list
+	let moduleEntryFiles = [
+			'./src/Legend/Legend.jsx',
+			'./src/PanoramaChart/PanoramaChart.jsx',
+			'./src/Punchcard/Punchcard.jsx'
+		],
+		bundler,
+		tasks;
+
+	tasks = moduleEntryFiles.map((file) => {
+		bundler = browserify({ entries: [file] })
+			.external(dependencies);
+			// .transform(sassify)
+			// .require(file, { expose: '@panorama/toolkit' });
+
+		return sassifyMe(bundler).bundle()
+			.pipe(source(file))
+			.pipe($.rename({
+				extname: '.bundle.js'
+			}))
+			.pipe(gulp.dest('./dist'));
+	});
+
+	return eventStream.merge.apply(null, tasks);
+});
+*/
 
 /**
  * Build everything in ./examples:
