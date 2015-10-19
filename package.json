@@ -1,21 +1,16 @@
 {
   "name": "@panorama/toolkit",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Panorama visualization toolkit",
   "main": "dist/components.js",
   "scripts": {
-    "//": "Run the examples suite in a local webserver",
+    "//": "Build/clean distro, publish to npm and push to repo (git working directory must be clean)",
     "start": "npm run clean:examples && webpack-dev-server --config ./examples/webpack.config.js --hot --inline --content-base examples/public",
-
     "test": "jest",
     "lint": "eslint ./src",
-
-    "//": "Build/clean examples, publish to ghpages",
     "build:examples": "npm run clean:examples && webpack --config ./examples/webpack.config.ghpage.js",
     "clean:examples": "rm -rf ./examples/public/examples.*",
     "publish:examples": "./.bin/publish-examples.sh",
-    
-    "//": "Build/clean distro, publish to npm and push to repo (git working directory must be clean)",
     "build:dist": "npm run clean:dist && webpack --config ./src/webpack.config.dist.js",
     "clean:dist": "rm -rf ./dist/**",
     "publish:dist": "./.bin/publish-dist.sh"
