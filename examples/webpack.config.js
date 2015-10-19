@@ -12,9 +12,9 @@ module.exports = {
   devtool: 'sourcemap',
 
   entry: [
-    'webpack/hot/dev-server',
-    './index.jsx',
-    './index.css'
+    'webpack-dev-server/client?http://0.0.0.0:8080', // WebpackDevServer host and port
+    'webpack/hot/only-dev-server',
+    './index.jsx'
   ],
 
   eslint: {
@@ -60,7 +60,7 @@ module.exports = {
   },
 
   output: {
-    path: path.join(__dirname, '..', 'build', 'demo'),
+    path: path.join(__dirname, 'public'),
     filename: 'examples.js',
     libraryTarget: 'var'
   },
@@ -74,7 +74,7 @@ module.exports = {
 
   resolve: {
     extensions: ['', '.js', '.jsx', '.json'],
-    modulesDirectories: ['demo', 'node_modules']
+    modulesDirectories: ['node_modules']
   },
 
   resolveLoader: {

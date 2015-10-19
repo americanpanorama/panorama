@@ -4,14 +4,13 @@
   "description": "Panorama visualization toolkit",
   "main": "dist/components.js",
   "scripts": {
-    "components:package": "npm run clean:dist && webpack --config ./src/webpack.config.dist.js",
-    "components:build": "npm run clean:build && webpack --config ./src/webpack.config.js && webpack --config ./examples/webpack.config.js",
-    "components:dev": "webpack-dev-server --config ./examples/webpack.config.js -hot --content-base build",
-    "components:ghpage": "gulp && git-directory-deploy --directory examples",
+    "components:build": "npm run clean:dist && webpack --config ./src/webpack.config.dist.js",
+    "components:dev": "npm run clean:examples && webpack-dev-server --config ./examples/webpack.config.js --hot --inline --content-base examples/public",
+    "components:ghpage": "npm run clean:examples && webpack --config ./examples/webpack.config.ghpages.js && git-directory-deploy --directory examples/public",
     "components:lint": "eslint ./src",
     "components:test": "jest",
-    "clean:build": "rm -rf ./build/**",
-    "clean:dist": "rm -rf ./dist/**"
+    "clean:dist": "rm -rf ./dist/**",
+    "clean:examples": "rm -rf ./examples/public/examples.*"
   },
   "repository": {
     "type": "git",
