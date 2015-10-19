@@ -49,31 +49,30 @@ React.render(<Legend data={legendData}/>, document.body);
 ## Building/running locally
 You will first need to install all necessary modules, so run `npm install` in the root directory.
 
-### Build components
-This will build components in examples folder.
+### Build / Package components
+This will build `@panorama/toolkit` to `dist` directory.
 ```
 npm run components:build
 ```
 
 ### Develop components
 * Components are in `src` folder
-* Examples of components are in the `examples` folder
+* Examples of components are in the `examples/components` folder
 
-To run local development server at [http://localhost:8888/](http://localhost:8888/):
+To run local development server at [http://localhost:8080/](http://localhost:8080/):
 ```
 npm run components:dev
 ```
 
-### Package components
-This will package all components listed in `src/main.js` into one distributable file.
-```
-npm run components:package
-```
-
-### Update component examples GH-Page
+### Update toolkit GitHub Page.
 ```
 npm run components:ghpage
 ```
 
 ### Tests
+```
+npm run components:test
+```
+
+### Publish to NPM
 **TODO**
