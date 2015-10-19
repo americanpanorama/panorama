@@ -1,21 +1,20 @@
 import * as React from 'react';
-
-import { Punchcard } from '@panorama/toolkit';
+import { Punchcard } from '../../src/main';
 
 export default class PunchcardExample extends React.Component {
 
-	constructor () {
-		super();
-	}
+  constructor () {
+    super();
+  }
 
-	render () {
+  render () {
 
-		let punchcardData = require('../data/punchcard.json');
+    let punchcardData = require('../data/punchcard.json');
 
-		return (
-			<Punchcard {...punchcardData} />
-		);
+    return (
+      <Punchcard {...punchcardData} />
+    );
 
-	}
+  }
 
 }

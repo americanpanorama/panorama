@@ -77,16 +77,16 @@ class DiscreteBarChart extends ChartBase {
       insert: function () {
         return this.append('rect')
           .attr('class', 'bar')
-          .attr("width", _Chart.xScale.rangeBand());
+          .attr('width', _Chart.xScale.rangeBand());
       }
     });
 
     // Setup life-cycle events on layers
     layer.on('enter', function () {
       return this
-        .attr("x", function(d) { return _Chart.xScale(_Chart.accessor('x')(d)); })
-        .attr("y", function(d) { return _Chart.yScale(_Chart.accessor('y')(d)); })
-        .attr("height", function(d) { return _Chart._height - _Chart.yScale(_Chart.accessor('y')(d)); });
+        .attr('x', function(d) { return _Chart.xScale(_Chart.accessor('x')(d)); })
+        .attr('y', function(d) { return _Chart.yScale(_Chart.accessor('y')(d)); })
+        .attr('height', function(d) { return _Chart._height - _Chart.yScale(_Chart.accessor('y')(d)); });
     })
     .on('merge', function () {
       // this => base selection
@@ -115,7 +115,7 @@ class DiscreteBarChart extends ChartBase {
     this.base.attr('height', this.configs['height'].value);
     this.base.attr('width', this.configs['width'].value);
 
-    this.baseLayer.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    this.baseLayer.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
     if (this.xAxis) this.xAxis.config('offset', [margin.left, this._height + margin.bottom]);
     if (this.yAxis) this.yAxis.config('offset', [margin.left, margin.top]);
@@ -143,19 +143,19 @@ class HorizontalDiscreteBarChart extends DiscreteBarChart {
     this.xScale = d3.scale.linear();
     var layer = this.layer('bars');
 
-   layer.insert = function () {
+    layer.insert = function () {
       return this.append('rect')
         .attr('class', 'bar')
-        .attr("height", _Chart.yScale.rangeBand());
-    }
+        .attr('height', _Chart.yScale.rangeBand());
+    };
 
 
     layer.on('enter', function () {
       return this
-        .attr("x", function(d) { return '0'; })
-        .attr("y", function(d) { return _Chart.yScale(_Chart.accessor('y')(d)); })
-        .attr("width", function(d) { return _Chart.xScale(_Chart.accessor('x')(d)); })
-        .attr("height", _Chart.yScale.rangeBand());
+        .attr('x', function(d) { return '0'; })
+        .attr('y', function(d) { return _Chart.yScale(_Chart.accessor('y')(d)); })
+        .attr('width', function(d) { return _Chart.xScale(_Chart.accessor('x')(d)); })
+        .attr('height', _Chart.yScale.rangeBand());
     });
   }
 
@@ -207,14 +207,14 @@ class MapChoropleth extends Koto {
         _Chart.data.geometry = data.geometry;
         _Chart.data.values = data.values;
 
-        return this.selectAll("path")
+        return this.selectAll('path')
                        .data(_Chart.data.geometry.features);
       },
       insert: function () {
-        return this.append("path")
+        return this.append('path')
           .attr('class', 'geometry')
-          .style("fill", function (d) {return _Chart.colorScale(_Chart.data.values.get(d.id)); })
-          .attr("d", _Chart._path);
+          .style('fill', function (d) {return _Chart.colorScale(_Chart.data.values.get(d.id)); })
+          .attr('d', _Chart._path);
       }
     });
 
@@ -240,11 +240,11 @@ class MapChoropleth extends Koto {
       .projection(projection);
 
     var width = this._width,
-        height = this._height;
+      height = this._height;
 
     var b = path.bounds(geo),//[[left,top],[right,bottom]],
-        s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
-        t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+      s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
+      t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
 
     return [s,t];
   }
@@ -257,7 +257,7 @@ class MapChoropleth extends Koto {
     this.base.attr('height', this.configs['height'].value);
     this.base.attr('width', this.configs['width'].value);
 
-    this.baseLayer.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    this.baseLayer.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
   }
 
   updateProjection(data) {
@@ -298,4 +298,4 @@ export var charts = {
   DiscreteBarChart: DiscreteBarChart,
   HorizontalDiscreteBarChart: HorizontalDiscreteBarChart,
   MapChoropleth: MapChoropleth
-}
+};

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { PanoramaChart } from '@panorama/toolkit';
+import { PanoramaChart } from '../../src/main';
 
 export default class BarchartExample extends React.Component {
 
@@ -43,9 +43,9 @@ export default class BarchartExample extends React.Component {
     return (
       <div>
         <h4>Vertical</h4>
-        <PanoramaChart key='1' type="DiscreteBarChart" {...opts1}/>
+        <PanoramaChart key='1' type='DiscreteBarChart' {...opts1}/>
         <h4>Horizontal</h4>
-        <PanoramaChart key='2' type="HorizontalDiscreteBarChart" {...opts2}/>
+        <PanoramaChart key='2' type='HorizontalDiscreteBarChart' {...opts2}/>
       </div>
     );
 

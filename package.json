@@ -1,14 +1,17 @@
 {
   "name": "@panorama/toolkit",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Panorama visualization toolkit",
-  "main": "src/main.js",
+  "main": "dist/components.js",
   "scripts": {
-    "components:package": "webpack -p",
-    "components:dev": "gulp watch:examples",
-    "components:build": "gulp",
+    "components:package": "npm run clean:dist && webpack --config ./src/webpack.config.dist.js",
+    "components:build": "npm run clean:build && webpack --config ./src/webpack.config.js && webpack --config ./examples/webpack.config.js",
+    "components:dev": "webpack-dev-server --config ./examples/webpack.config.js -hot --content-base build",
     "components:ghpage": "gulp && git-directory-deploy --directory examples",
-    "components:lint": "eslint ./src"
+    "components:lint": "eslint ./src",
+    "components:test": "jest",
+    "clean:build": "rm -rf ./build/**",
+    "clean:dist": "rm -rf ./dist/**"
   },
   "repository": {
     "type": "git",
@@ -24,47 +27,57 @@
   ],
   "author": "stamen",
   "license": "ISC",
-  "dependencies": {
-    "babelify": "^6.3.0",
-    "d3": "^3.5.6",
-    "koto": "0.1.3",
-    "react": "^0.13.3",
-    "sass-css-stream": "^0.1.6"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel": "^5.8.23",
     "babel-core": "^5.8.25",
     "babel-eslint": "^4.1.3",
     "babel-loader": "^5.3.2",
-    "browserify": "^11.1.0",
+    "babel-runtime": "^5.8.20",
     "bundle-loader": "^0.5.4",
     "clean-webpack-plugin": "^0.1.3",
     "css-loader": "^0.19.0",
+    "d3": "^3.5.6",
     "eslint": "^1.7.0",
+    "eslint-loader": "^1.1.0",
+    "eslint-plugin-react": "^3.6.2",
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.4",
     "git-directory-deploy": "^1.3.0",
-    "gulp": "^3.9.0",
-    "gulp-load-plugins": "^0.10.0",
-    "gulp-util": "^3.0.6",
-    "gulp-webserver": "^0.9.1",
+    "jest-cli": "^0.5.4",
+    "json-loader": "^0.5.3",
     "jsx-loader": "^0.13.2",
+    "koto": "0.1.3",
+    "node-sass": "^3.3.3",
+    "react": "^0.14.0",
+    "react-addons-test-utils": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-tools": "^0.13.3",
     "sass-loader": "^3.0.0",
-    "sassify": "^0.9.1",
     "style-loader": "^0.12.4",
     "topojson": "^1.6.19",
     "url-loader": "^0.5.6",
-    "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.4.0",
-    "webpack": "^1.12.2"
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.1",
+    "webpack-merge": "^0.2.0"
   },
-  "browserify": {
-    "transform": [
-      "babelify"
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json"
+    ],
+    "scriptPreprocessor": "<rootDir>/lib/preprocessor.js",
+    "testPathDirs": [
+      "<rootDir>/src"
+    ],
+    "testPathIgnorePatterns": [
+      "node_modules",
+      "build"
+    ],
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/fbjs"
     ]
-  },
-  "style": "src/**/*.scss",
-  "transforms": [
-    "sass-css-stream"
-  ]
+  }
 }

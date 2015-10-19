@@ -34,7 +34,7 @@ node_modules
 .DS_Store
 
 # Distribution directory
-dist
+build
 
 # Examples build directory
 examples/build

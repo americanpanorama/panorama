@@ -1,28 +1,28 @@
 import * as React from 'react';
 
-import { Legend } from '@panorama/toolkit';
+import { Legend } from '../../src/main';
 
 export default class LegendExample extends React.Component {
 
-	constructor () {
-		super();
-	}
+  constructor () {
+    super();
+  }
 
-	render () {
+  render () {
 
-		let legendData = {
-			items: [
-				'narratives',
-				'cotton',
-				'sugar'
-			],
-			initialSelection: 'narratives'
-		};
+    let legendData = {
+      items: [
+        'narratives',
+        'cotton',
+        'sugar'
+      ],
+      initialSelection: 'narratives'
+    };
 
-		return (
-			<Legend data={ legendData }/>
-		);
+    return (
+      <Legend data={ legendData }/>
+    );
 
-	}
+  }
 
 }

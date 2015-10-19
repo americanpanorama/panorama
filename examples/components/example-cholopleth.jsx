@@ -1,7 +1,7 @@
 import * as React from 'react';
 import d3 from 'd3';
 import topojson from 'topojson';
-import { PanoramaChart } from '@panorama/toolkit';
+import { PanoramaChart } from '../../src/main';
 
 // Our data for the map
 // In a real scenario, this would most likely have to loaded
@@ -26,7 +26,7 @@ export default class CholoplethExample extends React.Component {
     };
     return (
       <div>
-        <PanoramaChart type="MapChoropleth" data={data}/>
+        <PanoramaChart type='MapChoropleth' data={data}/>
       </div>
     );
 
