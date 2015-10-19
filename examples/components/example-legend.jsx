@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Legend, Punchcard } from '@panorama/toolkit';
+import { Legend } from '@panorama/toolkit';
 
 export default class LegendExample extends React.Component {
 
@@ -10,7 +10,7 @@ export default class LegendExample extends React.Component {
 
 	render () {
 
-		var legendData = {
+		let legendData = {
 			items: [
 				'narratives',
 				'cotton',
@@ -20,7 +20,7 @@ export default class LegendExample extends React.Component {
 		};
 
 		return (
-			<Legend data={legendData}/>
+			<Legend data={ legendData }/>
 		);
 
 	}
