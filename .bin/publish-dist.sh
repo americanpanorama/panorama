@@ -14,9 +14,23 @@ confirm () {
 }
 
 build () {
+    # rebuild dist and commit to clean git working directory
     npm run build:dist
+    git add .
+    git commit -m "Rebuild dist for npm version update"
+
+    # create a version update commit
     npm version patch
+
+    # squash the dist rebuild and version update commits
+    git reset --hard HEAD~2
+    git merge --squash HEAD@{1}
+    git commit
+
+    # push the squashed commit
     git push
+
+    # publish the new version to npm
     npm publish
 }
 
