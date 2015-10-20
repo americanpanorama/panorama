@@ -23,12 +23,12 @@ build () {
     npm version patch
 
     # get the commit message from the tag commit
-    local PATCHMSG = "$(git log --format=%B -1)"
+    local PATCHMSG="$(git log --format=%B -1)"
 
     # squash the dist rebuild and version update commits
     git reset --hard HEAD~2
     git merge --squash HEAD@{1}
-    git commit --m $PATCHMSG
+    git commit --m "${PATCHMSG}"
 
     # push the squashed commit
     git push
