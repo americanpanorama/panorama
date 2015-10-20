@@ -2,7 +2,19 @@ import React, { PropTypes } from 'react';
 require('./style.scss');
 
 export default class Legend extends React.Component {
+
+  static propTypes = {
+    initialSelection: PropTypes.string,
+    items: PropTypes.array.isRequired
+  }
+
+  static defaultProps = {
+    initialSelection: '',
+    items: []
+  }
+
   constructor (props) {
+
     super(props);
     this.state = {
       selectedItem: this.props.initialSelection
@@ -16,17 +28,11 @@ export default class Legend extends React.Component {
 
   }
 
-  componentDidMount () {
+  componentDidMount () {}
 
-  }
+  componentWillUnmount () {}
 
-  componentWillUnmount () {
-
-  }
-
-  componentDidUpdate () {
-
-  }
+  componentDidUpdate () {}
 
   onItemClick (event) {
 
@@ -78,18 +84,9 @@ export default class Legend extends React.Component {
   }
 
   capitalize (str) {
+    
     return str.charAt(0).toUpperCase() + str.slice(1);
+
   }
 
 }
-
-Legend.propTypes = {
-  initialSelection: PropTypes.string,
-  items: PropTypes.array.isRequired
-};
-
-Legend.defaultProps = {
-  initialSelection: '',
-  items: []
-};
-

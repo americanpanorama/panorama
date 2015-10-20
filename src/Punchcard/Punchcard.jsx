@@ -6,17 +6,21 @@ export default class Punchcard extends React.Component {
 
   // property validation
   static propTypes = {
-
-    // title: React.PropTypes.string
-
+    header: PropTypes.object,
+    categories: PropTypes.array.isRequired,
+    items: PropTypes.array.isRequired
   };
 
   // property defaults (ES7-style React)
   // (instead of ES5-style getDefaultProps)
   static defaultProps = {
-
-    //
-
+    header: {
+      title: '',
+      subtitle: '',
+      caption: ''
+    },
+    categories: [],
+    items: []
   };
 
   constructor (props) {
@@ -32,11 +36,7 @@ export default class Punchcard extends React.Component {
 
   }
 
-  componentWillMount () {
-
-    //
-
-  }
+  componentWillMount () {}
 
   componentDidMount () {
 
@@ -84,18 +84,6 @@ export default class Punchcard extends React.Component {
   }
 
 }
-
-Punchcard.propTypes = {
-  header: PropTypes.object,
-  categories: PropTypes.array.isRequired,
-  items: PropTypes.array.isRequired
-};
-
-Punchcard.defaultProps = {
-  header: {},
-  categories: [],
-  items: []
-};
 
 
 const d3Punchcard = {

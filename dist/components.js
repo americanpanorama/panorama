@@ -1320,21 +1320,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'propTypes',
 	
 	    // property validation
-	    value: {},
+	    value: {
+	      header: _react.PropTypes.object,
+	      categories: _react.PropTypes.array.isRequired,
+	      items: _react.PropTypes.array.isRequired
+	    },
 	
 	    // property defaults (ES7-style React)
 	    // (instead of ES5-style getDefaultProps)
 	    enumerable: true
 	  }, {
 	    key: 'defaultProps',
-	
-	    // title: React.PropTypes.string
-	
-	    value: {},
+	    value: {
+	      header: {
+	        title: '',
+	        subtitle: '',
+	        caption: ''
+	      },
+	      categories: [],
+	      items: []
+	    },
 	    enumerable: true
 	  }]);
-	
-	  //
 	
 	  function Punchcard(props) {
 	    _classCallCheck(this, Punchcard);
@@ -1424,18 +1431,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	})(_react2['default'].Component);
 	
 	exports['default'] = Punchcard;
-	
-	Punchcard.propTypes = {
-	  header: _react.PropTypes.object,
-	  categories: _react.PropTypes.array.isRequired,
-	  items: _react.PropTypes.array.isRequired
-	};
-	
-	Punchcard.defaultProps = {
-	  header: {},
-	  categories: [],
-	  items: []
-	};
 	
 	var d3Punchcard = {
 	
