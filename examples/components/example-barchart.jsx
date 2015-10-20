@@ -1,13 +1,11 @@
 import * as React from 'react';
-
-import { PanoramaChart } from '../../src/main';
+import { DiscreteBarChart, HorizontalDiscreteBarChart } from '../../src/main';
 
 export default class BarchartExample extends React.Component {
 
   constructor () {
     super();
   }
-
 
   render () {
     var opts1 = {
@@ -16,7 +14,6 @@ export default class BarchartExample extends React.Component {
         {key: 'blue', value: 40},
         {key: 'green', value: 10}
       ],
-      klass: 'barchart',
       width: 400,
       height: 400,
       margin: {top: 20, right: 30, bottom: 20, left: 30},
@@ -31,7 +28,6 @@ export default class BarchartExample extends React.Component {
         {key: 'blue', value: 40},
         {key: 'green', value: 10}
       ],
-      klass: 'barchart',
       width: 600,
       height: 200,
       margin: {top: 20, right: 30, bottom: 20, left: 50},
@@ -43,12 +39,11 @@ export default class BarchartExample extends React.Component {
     return (
       <div>
         <h4>Vertical</h4>
-        <PanoramaChart key='1' type='DiscreteBarChart' {...opts1}/>
+        <DiscreteBarChart key='1' {...opts1}/>
         <h4>Horizontal</h4>
-        <PanoramaChart key='2' type='HorizontalDiscreteBarChart' {...opts2}/>
+        <HorizontalDiscreteBarChart key='2' {...opts2}/>
       </div>
     );
-
   }
 
 }

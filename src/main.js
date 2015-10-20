@@ -2,10 +2,14 @@
 
 import Legend from './Legend/Legend';
 import Punchcard from './Punchcard/Punchcard';
-import PanoramaChart from './PanoramaChart/PanoramaChart';
+import DiscreteBarChart from './DiscreteBarChart/DiscreteBarChart';
+import HorizontalDiscreteBarChart from './HorizontalDiscreteBarChart/HorizontalDiscreteBarChart';
+import MapChoropleth from './MapChoropleth/MapChoropleth';
 
 export default {
   Legend,
   Punchcard,
-  PanoramaChart
+  DiscreteBarChart,
+  HorizontalDiscreteBarChart,
+  MapChoropleth
 };

@@ -1,6 +1,4 @@
-import React, { PropTypes, DefaultProps } from 'react';
-import {charts as Charts} from './charts';
-import './style.scss';
+import React, { PropTypes } from 'react';
 
 export default class PanoramaChart extends React.Component {
   constructor (props) {
@@ -21,9 +19,12 @@ export default class PanoramaChart extends React.Component {
   }
 
   update () {
-    if (!Charts[this.props.type]) return console.error(`No chart for type: ${this.props.type}`);
+    // if (!Charts[this.props.type]) return console.error(`No chart for type: ${this.props.type}`);
+    // if (!this.chart) {
+    //   this.chart = new Charts[this.props.type](d3.select(React.findDOMNode(this.refs.chart)));
+    // }
     if (!this.chart) {
-      this.chart = new Charts[this.props.type](d3.select(React.findDOMNode(this.refs.chart)));
+      this.chart = new this.chartConstructor(d3.select(React.findDOMNode(this.refs.chart)));
     }
 
     this.chart
@@ -35,7 +36,7 @@ export default class PanoramaChart extends React.Component {
   }
 
   makeClassName () {
-    return 'panorama chart' + ((this.props.klass) ? ' ' + this.props.klass : '');
+    return 'panorama chart';
   }
 
   render() {
