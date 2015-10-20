@@ -59,7 +59,7 @@ npm run components:build
 * Components are in `src` folder
 * Examples of components are in the `examples/components` folder
 
-To run local development server at [http://localhost:8080/](http://localhost:8080/):
+To run local development server at [http://localhost:8888/](http://localhost:8888/):
 ```
 npm run components:dev
 ```
