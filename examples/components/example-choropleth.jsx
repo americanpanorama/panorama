@@ -9,7 +9,7 @@ import { MapChoropleth } from '../../src/main';
 const geodata = require('../data/us.json');
 const mapValues = require('../data/unemployment.json');
 
-export default class CholoplethExample extends React.Component {
+export default class ChoroplethExample extends React.Component {
 
   constructor () {
     super();

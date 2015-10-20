@@ -10,7 +10,7 @@ export default class PanoramaChart extends React.Component {
   }
 
   componentWillUnmount () {
-    if (this.chart) this.chart.destroy(React.findDOMNode(this.refs.chart));
+    if (this.chart) this.chart.destroy(this.refs.chart);
     this.chart = null;
   }
 
@@ -19,12 +19,8 @@ export default class PanoramaChart extends React.Component {
   }
 
   update () {
-    // if (!Charts[this.props.type]) return console.error(`No chart for type: ${this.props.type}`);
-    // if (!this.chart) {
-    //   this.chart = new Charts[this.props.type](d3.select(React.findDOMNode(this.refs.chart)));
-    // }
     if (!this.chart) {
-      this.chart = new this.chartConstructor(d3.select(React.findDOMNode(this.refs.chart)));
+      this.chart = new this.chartConstructor(d3.select(this.refs.chart));
     }
 
     this.chart

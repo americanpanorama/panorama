@@ -20,7 +20,7 @@ export default class LegendExample extends React.Component {
     };
 
     return (
-      <Legend data={ legendData }/>
+      <Legend { ...legendData }/>
     );
 
   }

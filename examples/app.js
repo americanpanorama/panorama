@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 
 import LegendExample from './components/example-legend.jsx';
 import BarChartExample from './components/example-barchart';
-import CholoplethExample from './components/example-cholopleth';
+import ChoroplethExample from './components/example-choropleth';
 import PunchcardExample from './components/example-punchcard.jsx';
 
 class App extends Component {
@@ -19,8 +19,8 @@ class App extends Component {
         <LegendExample/>
         <h2>Barchart</h2>
         <BarChartExample/>
-        <h2>Cholopleth</h2>
-        <CholoplethExample/>
+        <h2>Choropleth</h2>
+        <ChoroplethExample/>
         <h2>Punchcard</h2>
         <PunchcardExample/>
       </div>

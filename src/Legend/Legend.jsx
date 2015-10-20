@@ -1,14 +1,11 @@
-'use strict';
-
-import * as React from 'react';
+import React, { PropTypes } from 'react';
 require('./style.scss');
-
 
 export default class Legend extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      selectedItem: this.props.data.initialSelection || null
+      selectedItem: this.props.initialSelection
     };
 
     // manually bind event handlers,
@@ -55,12 +52,12 @@ export default class Legend extends React.Component {
 
   }
 
-  render() {
+  render () {
 
     return (
       <div className='panorama legend'>
         <ul>
-        {this.props.data.items.map(item => {
+        {this.props.items.map(item => {
           return (
             <li
               className = {'item' + (this.state.selectedItem === item ? ' selected' : '')}
@@ -85,3 +82,14 @@ export default class Legend extends React.Component {
   }
 
 }
+
+Legend.propTypes = {
+  initialSelection: PropTypes.string,
+  items: PropTypes.array.isRequired
+};
+
+Legend.defaultProps = {
+  initialSelection: '',
+  items: []
+};
+

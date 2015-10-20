@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { PropTypes } from 'react';
 import * as d3 from 'd3';
 import './style.scss';
 
@@ -40,19 +40,19 @@ export default class Punchcard extends React.Component {
 
   componentDidMount () {
 
-    d3Punchcard.create(this.refs.content.getDOMNode(), this.props.categories, this.props.items);
-
-  }
-
-  componentWillUnmount () {
-
-    d3Punchcard.destroy(this.refs.content.getDOMNode());
+    d3Punchcard.create(this.refs.content, this.props.categories, this.props.items);
 
   }
 
   componentDidUpdate () {
 
-    d3Punchcard.update(this.refs.content.getDOMNode(), this.props.categories, this.props.items);
+    d3Punchcard.update(this.refs.content, this.props.categories, this.props.items);
+
+  }
+
+  componentWillUnmount () {
+
+    d3Punchcard.destroy(this.refs.content);
 
   }
 
@@ -84,6 +84,19 @@ export default class Punchcard extends React.Component {
   }
 
 }
+
+Punchcard.propTypes = {
+  header: PropTypes.object,
+  categories: PropTypes.array.isRequired,
+  items: PropTypes.array.isRequired
+};
+
+Punchcard.defaultProps = {
+  header: {},
+  categories: [],
+  items: []
+};
+
 
 const d3Punchcard = {
 
