@@ -2,6 +2,7 @@ import d3 from 'd3';
 import DiscreteBarChart, { DiscreteBarChartImpl } from '../DiscreteBarChart/DiscreteBarChart';
 
 export default class HorizontalDiscreteBarChart extends DiscreteBarChart {
+
   constructor (props) {
     super(props);
     this.chartConstructor = HorizontalDiscreteBarChartImpl;
@@ -10,11 +11,12 @@ export default class HorizontalDiscreteBarChart extends DiscreteBarChart {
   makeClassName () {
     return 'panorama chart barchart';
   }
+
 }
 
 
 export class HorizontalDiscreteBarChartImpl extends DiscreteBarChartImpl {
-  constructor(selection){
+  constructor (selection) {
     super(selection);
 
     var _Chart = this;
@@ -38,7 +40,7 @@ export class HorizontalDiscreteBarChartImpl extends DiscreteBarChartImpl {
     });
   }
 
-  updateScales(data) {
+  updateScales (data) {
     var _Chart = this;
     this.yScale.rangeRoundBands([0, this._height], this.configs['barSpacing'].value);
     this.yScale.domain(data.map(function(d) { return _Chart.accessor('y')(d); }));
