@@ -13,7 +13,8 @@ export default class MapChoropleth extends PanoramaChart {
 
 export class MapChoroplethImpl extends Koto {
 
-  constructor(selection){
+  constructor (selection) {
+
     super(selection);
 
     var _Chart = this;
@@ -70,7 +71,7 @@ export class MapChoroplethImpl extends Koto {
 
   }
 
-  fitMap(geo) {
+  fitMap (geo) {
     var projection = d3.geo[this.configs['projection'].value]()
       .scale(1)
       .translate([0, 0]);
@@ -88,7 +89,7 @@ export class MapChoroplethImpl extends Koto {
     return [s,t];
   }
 
-  updateDimensions() {
+  updateDimensions () {
     var margin = this.configs['margin'].value;
     this._width = this.configs['width'].value - margin.left - margin.right;
     this._height = this.configs['height'].value - margin.top - margin.bottom;
@@ -99,7 +100,7 @@ export class MapChoroplethImpl extends Koto {
     this.baseLayer.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
   }
 
-  updateProjection(data) {
+  updateProjection (data) {
     let scale = this.configs['mapScale'].value;
     let translate = [this._width/2, this._height/2];
 
@@ -114,7 +115,7 @@ export class MapChoroplethImpl extends Koto {
     this._path.projection(this._projection);
   }
 
-  updateColorScale(data) {
+  updateColorScale (data) {
     let max = -Infinity;
     for (let value of data.values.values()) {
       if (value > max) max = value;
@@ -125,10 +126,10 @@ export class MapChoroplethImpl extends Koto {
       .range(this.configs['range'].value);
   }
 
-  preDraw(data) {
+  preDraw (data) {
     this.updateDimensions();
     this.updateProjection(data);
     this.updateColorScale(data);
   }
-  
+
 }
