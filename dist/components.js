@@ -560,6 +560,36 @@ return /******/ (function(modules) { // webpackBootstrap
 	var PanoramaChart = (function (_React$Component) {
 	  _inherits(PanoramaChart, _React$Component);
 	
+	  _createClass(PanoramaChart, null, [{
+	    key: 'propTypes',
+	    value: {
+	      data: _react.PropTypes.oneOfType([_react.PropTypes.array, _react.PropTypes.object]),
+	      xAccessor: _react.PropTypes.func,
+	      yAccessor: _react.PropTypes.func,
+	      width: _react.PropTypes.number,
+	      height: _react.PropTypes.number,
+	      margin: _react.PropTypes.object,
+	      barSpacing: _react.PropTypes.number
+	    },
+	    enumerable: true
+	  }, {
+	    key: 'defaultProps',
+	    value: {
+	      data: [],
+	      width: 600,
+	      height: 400,
+	      margin: { top: 0, right: 0, bottom: 0, left: 0 },
+	      barSpacing: 0.1,
+	      xAccessor: function xAccessor(d) {
+	        return d.key;
+	      },
+	      yAccessor: function yAccessor(d) {
+	        return d.value;
+	      }
+	    },
+	    enumerable: true
+	  }]);
+	
 	  function PanoramaChart(props) {
 	    _classCallCheck(this, PanoramaChart);
 	
@@ -569,31 +599,41 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _createClass(PanoramaChart, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
+	
 	      this.update();
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
+	
 	      if (this.chart) this.chart.destroy(this.refs.chart);
 	      this.chart = null;
 	    }
 	  }, {
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate() {
+	
 	      this.update();
 	    }
 	  }, {
 	    key: 'update',
 	    value: function update() {
+	
 	      if (!this.chart) {
 	        this.chart = new this.chartConstructor(d3.select(this.refs.chart));
 	      }
 	
 	      this.chart.config('height', this.props.height).config('width', this.props.width).accessor('x', this.props.xAccessor).accessor('y', this.props.yAccessor).draw(this.props.data);
 	    }
+	
+	    /**
+	     * Determine class name to be applied to container element.
+	     * Typically overridden by subclasses.
+	     */
 	  }, {
 	    key: 'makeClassName',
 	    value: function makeClassName() {
+	
 	      return 'panorama chart';
 	    }
 	  }, {
@@ -612,30 +652,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	})(_react2['default'].Component);
 	
 	exports['default'] = PanoramaChart;
-	
-	PanoramaChart.propTypes = {
-	  data: _react.PropTypes.oneOfType([_react.PropTypes.array, _react.PropTypes.object]),
-	  xAccessor: _react.PropTypes.func,
-	  yAccessor: _react.PropTypes.func,
-	  width: _react.PropTypes.number,
-	  height: _react.PropTypes.number,
-	  margin: _react.PropTypes.object,
-	  barSpacing: _react.PropTypes.number
-	};
-	
-	PanoramaChart.defaultProps = {
-	  data: [],
-	  width: 600,
-	  height: 400,
-	  margin: { top: 0, right: 0, bottom: 0, left: 0 },
-	  barSpacing: 0.1,
-	  xAccessor: function xAccessor(d) {
-	    return d.key;
-	  },
-	  yAccessor: function yAccessor(d) {
-	    return d.value;
-	  }
-	};
 	module.exports = exports['default'];
 
 /***/ },
@@ -976,6 +992,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Legend = (function (_React$Component) {
 	  _inherits(Legend, _React$Component);
 	
+	  _createClass(Legend, null, [{
+	    key: 'propTypes',
+	    value: {
+	      initialSelection: _react.PropTypes.string,
+	      items: _react.PropTypes.array.isRequired
+	    },
+	    enumerable: true
+	  }, {
+	    key: 'defaultProps',
+	    value: {
+	      initialSelection: '',
+	      items: []
+	    },
+	    enumerable: true
+	  }]);
+	
 	  function Legend(props) {
 	    _classCallCheck(this, Legend);
 	
@@ -1063,6 +1095,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'capitalize',
 	    value: function capitalize(str) {
+	
 	      return str.charAt(0).toUpperCase() + str.slice(1);
 	    }
 	  }]);
@@ -1071,16 +1104,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	})(_react2['default'].Component);
 	
 	exports['default'] = Legend;
-	
-	Legend.propTypes = {
-	  initialSelection: _react.PropTypes.string,
-	  items: _react.PropTypes.array.isRequired
-	};
-	
-	Legend.defaultProps = {
-	  initialSelection: '',
-	  items: []
-	};
 	module.exports = exports['default'];
 
 /***/ },
@@ -1358,11 +1381,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  _createClass(Punchcard, [{
 	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	
-	      //
-	
-	    }
+	    value: function componentWillMount() {}
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
