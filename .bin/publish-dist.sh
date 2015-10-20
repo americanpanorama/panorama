@@ -19,9 +19,10 @@ build () {
     git add .
     git commit -m "Rebuild dist for npm version update"
 
-    # create a version update commit
+    # create a version update (tag) commit
     npm version patch
 
+    # get the commit message from the tag commit
     local PATCHMSG = "$(git log --format=%B -1)"
 
     # squash the dist rebuild and version update commits

@@ -3,13 +3,16 @@ import Koto from 'koto';
 import PanoramaChart from '../charts/PanoramaChart';
 
 export default class MapChoropleth extends PanoramaChart {
+
   constructor (props) {
     super(props);
     this.chartConstructor = MapChoroplethImpl;
   }
+
 }
 
 export class MapChoroplethImpl extends Koto {
+
   constructor(selection){
     super(selection);
 
@@ -127,4 +130,5 @@ export class MapChoroplethImpl extends Koto {
     this.updateProjection(data);
     this.updateColorScale(data);
   }
+  
 }
