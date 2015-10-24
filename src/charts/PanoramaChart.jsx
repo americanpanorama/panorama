@@ -1,25 +1,19 @@
 import React, { PropTypes } from 'react';
 
+const BASE_CLASS_NAME = 'panorama chart ';
+
 export default class PanoramaChart extends React.Component {
 
   static propTypes = {
     data: PropTypes.oneOfType([PropTypes.array,PropTypes.object]),
-    xAccessor: PropTypes.func,
-    yAccessor: PropTypes.func,
     width: PropTypes.number,
-    height: PropTypes.number,
-    margin: PropTypes.object,
-    barSpacing: PropTypes.number
+    height: PropTypes.number
   }
 
   static defaultProps = {
     data: [],
     width: 600,
     height: 400,
-    margin: {top: 0, right: 0, bottom: 0, left: 0},
-    barSpacing: 0.1,
-    xAccessor: function(d){return d.key;},
-    yAccessor: function(d){return d.value;}
   }
 
   constructor (props) {
@@ -53,29 +47,30 @@ export default class PanoramaChart extends React.Component {
       this.chart = new this.chartConstructor(d3.select(this.refs.chart));
     }
 
-    this.chart
-      .config('height', this.props.height)
-      .config('width', this.props.width)
-      .accessor('x', this.props.xAccessor)
-      .accessor('y', this.props.yAccessor)
-      .draw(this.props.data);
+    // Pass in a mutable shallow copy of this.props,
+    // so it can be modified and defaults can be added as needed.
+    let propsCopy = {};
+    Object.keys(this.props).forEach(key => {
+      propsCopy[key] = this.props[key];
+    });
+    this.chart.updateConfigs(propsCopy);
 
   }
 
   /**
-   * Determine class name to be applied to container element.
+   * Determine class name to be appended to container element.
    * Typically overridden by subclasses.
    */
-  makeClassName () {
+  getClassSuffix () {
 
-    return 'panorama chart';
+    return '';
     
   }
 
   render () {
 
     return (
-      <div className={this.makeClassName()}>
+      <div className={ BASE_CLASS_NAME + this.getClassSuffix() }>
         <svg ref='chart' className='wrapper'></svg>
       </div>
     );

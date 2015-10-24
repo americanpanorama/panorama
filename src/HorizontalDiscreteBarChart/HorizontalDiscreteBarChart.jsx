@@ -1,28 +1,35 @@
 import d3 from 'd3';
 import DiscreteBarChart, { DiscreteBarChartImpl } from '../DiscreteBarChart/DiscreteBarChart';
+import _ from 'lodash';
 
 export default class HorizontalDiscreteBarChart extends DiscreteBarChart {
 
+  // 'inherit' static validatorsand defaults
+  static propTypes = _.merge(DiscreteBarChart.propTypes);
+  static defaultProps = _.merge(DiscreteBarChart.defaultProps);
+
   constructor (props) {
+
     super(props);
     this.chartConstructor = HorizontalDiscreteBarChartImpl;
+
   }
 
-  makeClassName () {
-    return 'panorama chart barchart';
+  getClassSuffix () {
+    return 'barchart';
   }
 
 }
 
-
 export class HorizontalDiscreteBarChartImpl extends DiscreteBarChartImpl {
+
   constructor (selection) {
+
     super(selection);
 
-    var _Chart = this;
-    this.yScale = d3.scale.ordinal();
-    this.xScale = d3.scale.linear();
-    var layer = this.layer('bars');
+    let _Chart = this;
+
+    let layer = this.layer('bars');
 
     layer.insert = function () {
       return this.append('rect')
@@ -33,23 +40,36 @@ export class HorizontalDiscreteBarChartImpl extends DiscreteBarChartImpl {
 
     layer.on('enter', function () {
       return this
-        .attr('x', function(d) { return '0'; })
-        .attr('y', function(d) { return _Chart.yScale(_Chart.accessor('y')(d)); })
-        .attr('width', function(d) { return _Chart.xScale(_Chart.accessor('x')(d)); })
+        .attr('x', d => '0')
+        .attr('y', d => _Chart.yScale(_Chart.accessor('y')(d)))
+        .attr('width', d => _Chart.xScale(_Chart.accessor('x')(d)))
         .attr('height', _Chart.yScale.rangeBand());
     });
+
+  }
+
+  updateConfigs (props) {
+    
+    // In React, default props are cached, and therefore non-primitives are shared across all instances.
+    // Therefore, we cannot rely on React to apply default non-primitive props;
+    // they must be set manually here.
+    props = _.merge(props, {
+      xScale: d3.scale.linear(),
+      yScale: d3.scale.ordinal()
+    });
+
+    super.updateConfigs(props);
+
   }
 
   updateScales (data) {
-    var _Chart = this;
+
     this.yScale.rangeRoundBands([0, this._height], this.configs['barSpacing'].value);
-    this.yScale.domain(data.map(function(d) { return _Chart.accessor('y')(d); }));
+    this.yScale.domain(data.map(d => this.accessor('y')(d)));
 
     this.xScale.range([0, this._width]);
-    this.xScale.domain([0, d3.max(data, function(d) { return _Chart.accessor('x')(d); })]);
+    this.xScale.domain([0, d3.max(data, d => this.accessor('x')(d))]);
 
-    if (this.xAxis) this.xAxis.config('scale', this.xScale);
-    if (this.yAxis) this.yAxis.config('scale', this.yScale);
   }
 
 }

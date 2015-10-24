@@ -1,33 +1,59 @@
-import d3 from 'd3';
-import ChartBase from '../charts/ChartBase';
+import { PropTypes } from 'react';
 import PanoramaChart from '../charts/PanoramaChart';
+import ChartBase from '../charts/ChartBase';
+import d3 from 'd3';
 import './style.scss';
+import _ from 'lodash';
 
 export default class DiscreteBarChart extends PanoramaChart {
+
+  // 'inherit' static validators
+  static propTypes = _.merge(PanoramaChart.propTypes, {
+    barSpacing: PropTypes.number
+  });
+
+  // 'inherit' static defaults
+  static defaultProps = _.merge(PanoramaChart.defaultProps, {
+    barSpacing: 0.1,
+  });
+
   constructor (props) {
+
+    console.log('>>>>>> DBC props:', props);
+
     super(props);
     this.chartConstructor = DiscreteBarChartImpl;
+
   }
 
-  makeClassName () {
-    return 'panorama chart barchart';
+  getClassSuffix () {
+    return 'barchart';
   }
+
 }
 
 export class DiscreteBarChartImpl extends ChartBase {
-  constructor(selection){
+
+  constructor (selection) {
+
     super(selection);
-    var _Chart = this;
+
+    let _Chart = this;
 
     this.configs['barSpacing'] = {value: 0.1};
 
     // append group to chart
-    var bars = this.baseLayer = this.base.append('g').classed('bars', true);
+    let bars = this.baseLayer = this.base.append('g').classed('bars', true);
 
-    this.updateDimensions();
+
+
+    // TODO: WHY IS THIS HERE????
+    // this.updateDimensions();
+
+
 
     // define layer
-    var layer = this.layer('bars', bars, {
+    let layer = this.layer('bars', bars, {
       dataBind: function (data) {
         return this.selectAll('rect').data(data);
       },
@@ -38,12 +64,12 @@ export class DiscreteBarChartImpl extends ChartBase {
       }
     });
 
-    // Setup life-cycle events on layers
+    // Set up lifecycle events on layers
     layer.on('enter', function () {
       return this
-        .attr('x', function(d) { return _Chart.xScale(_Chart.accessor('x')(d)); })
-        .attr('y', function(d) { return _Chart.yScale(_Chart.accessor('y')(d)); })
-        .attr('height', function(d) { return _Chart._height - _Chart.yScale(_Chart.accessor('y')(d)); });
+        .attr('x', d => _Chart.xScale(_Chart.accessor('x')(d)))
+        .attr('y', d => _Chart.yScale(_Chart.accessor('y')(d)))
+        .attr('height', d => _Chart._height - _Chart.yScale(_Chart.accessor('y')(d)));
     })
     .on('merge', function () {
       // this => base selection
@@ -51,42 +77,42 @@ export class DiscreteBarChartImpl extends ChartBase {
     .on('exit', function () {
       // this => exit selection
     });
+
   }
 
-  updateScales(data) {
-    var _Chart = this;
+  updateConfigs (props) {
+
+    // In React, default props are cached, and therefore non-primitives are shared across all instances.
+    // Therefore, we cannot rely on React to apply default non-primitive props;
+    // they must be set manually here.
+    props = _.merge(props, {
+      xScale: d3.scale.ordinal(),
+      yScale: d3.scale.linear()
+    });
+
+    super.updateConfigs(props);
+
+  }
+
+  updateScales (data) {
+
     this.xScale.rangeRoundBands([0, this._width], this.configs['barSpacing'].value);
     this.yScale.range([this._height, 0]);
-    this.xScale.domain(data.map(function(d) { return _Chart.accessor('x')(d); }));
-    this.yScale.domain([0, d3.max(data, function(d) { return _Chart.accessor('y')(d); })]);
+    this.xScale.domain(data.map(d => this.accessor('x')(d)));
+    this.yScale.domain([0, d3.max(data, d => this.accessor('y')(d))]);
 
-    if (this.xAxis) this.xAxis.config('scale', this.xScale);
-    if (this.yAxis) this.yAxis.config('scale', this.yScale);
-  }
-
-  updateDimensions() {
-    var margin = this.configs['margin'].value;
-    this._width = this.configs['width'].value - margin.left - margin.right;
-    this._height = this.configs['height'].value - margin.top - margin.bottom;
-
-    this.base.attr('height', this.configs['height'].value);
-    this.base.attr('width', this.configs['width'].value);
-
-    this.baseLayer.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-
-    if (this.xAxis) this.xAxis.config('offset', [margin.left, this._height + margin.bottom]);
-    if (this.yAxis) this.yAxis.config('offset', [margin.left, margin.top]);
   }
 
   // Do something before `dataBind`
-  preDraw(data) {
-    this.updateDimensions();
-    this.updateScales(data);
+  preDraw (data) {
 
-    if (this.xAxis) this.xAxis.update();
+    super.preDraw(data);
+
     if (this.yAxis) {
       this.yAxis.config('orient', 'left');
       this.yAxis.update();
     }
+
   }
+
 }

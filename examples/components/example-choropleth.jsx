@@ -26,7 +26,7 @@ export default class ChoroplethExample extends React.Component {
     };
     return (
       <div>
-        <MapChoropleth data={data}/>
+        {/*<MapChoropleth data={data}/>*/}
       </div>
     );
 

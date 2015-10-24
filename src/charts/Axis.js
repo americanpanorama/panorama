@@ -2,7 +2,9 @@ import d3 from 'd3';
 import Koto from 'koto';
 
 export default class Axis extends Koto {
-  constructor(selection, axisType){
+
+  constructor (selection, axisType) {
+
     super(selection);
 
     this.configs['scale'] = {value: d3.scale.linear()};
@@ -12,9 +14,11 @@ export default class Axis extends Koto {
 
     this.axis = d3.svg.axis();
     this.baseLayer = this.base.append('g').classed(axisType + ' axis', true);
+
   }
 
-  update() {
+  update () {
+
     this.axis
       .scale(this.configs['scale'].value)
       .ticks(this.configs['ticks'].value)
@@ -25,5 +29,7 @@ export default class Axis extends Koto {
     this.baseLayer
       .attr('transform', 'translate(' + offset[0] + ',' + offset[1] + ')')
       .call(this.axis);
+
   }
+  
 }
