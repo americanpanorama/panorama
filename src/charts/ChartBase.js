@@ -36,8 +36,7 @@ export default class ChartBase extends Koto {
       .config('xScale', props.xScale)
       .config('yScale', props.yScale)
       .accessor('x', props.xAccessor)
-      .accessor('y', props.yAccessor)
-      .draw(props.data);
+      .accessor('y', props.yAccessor);
 
   }
 

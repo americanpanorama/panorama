@@ -23,7 +23,7 @@ export default class DiscreteBarChart extends PanoramaChart {
   }
 
   getClassSuffix () {
-    return 'barchart vertical';
+    return 'bar-chart vertical';
   }
 
 }

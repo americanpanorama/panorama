@@ -79,7 +79,12 @@ export default class PanoramaChart extends React.Component {
     if (!this.chart) {
       this.chart = new this.chartConstructor(d3.select(this.refs.chart), this.props);
     }
-    this.chart.updateConfigs(this.props);
+
+    if (this.chart.updateConfigs) {
+      this.chart.updateConfigs(this.props);
+    }
+
+    this.chart.draw(this.props.data);
 
   }
 
