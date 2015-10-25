@@ -1,0 +1,1526 @@
+[
+  [
+    {
+      "year": 1825,
+      "commodities": {
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 6500,
+          "normalizedValue": 6500
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 6500,
+              "normalizedValue": 6500
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 6500
+        }
+      },
+      "totalNormalizedValue": null
+    },
+    {
+      "year": 1826,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 15637,
+          "normalizedValue": 15637
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 16767,
+          "normalizedValue": 16767
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 16767,
+              "normalizedValue": 16767
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 16767
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 15637,
+              "normalizedValue": 15637
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 15637
+        }
+      },
+      "totalNormalizedValue": 32404
+    },
+    {
+      "year": 1827,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 33871,
+          "normalizedValue": 33871
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 31630,
+          "normalizedValue": 31630
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 31630,
+              "normalizedValue": 31630
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 31630
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 33871,
+              "normalizedValue": 33871
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 33871
+        }
+      },
+      "totalNormalizedValue": 65501
+    },
+    {
+      "year": 1828,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 58179,
+          "normalizedValue": 58179
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 47284,
+          "normalizedValue": 47284
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 47284,
+              "normalizedValue": 47284
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 47284
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 58179,
+              "normalizedValue": 58179
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 58179
+        }
+      },
+      "totalNormalizedValue": 105463
+    },
+    {
+      "year": 1829,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 54551,
+          "normalizedValue": 54551
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 79973,
+          "normalizedValue": 79973
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 79973,
+              "normalizedValue": 79973
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 79973
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 54551,
+              "normalizedValue": 54551
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 54551
+        }
+      },
+      "totalNormalizedValue": 134524
+    },
+    {
+      "year": 1830,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 90771,
+          "normalizedValue": 90771
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 89984,
+          "normalizedValue": 89984
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 89984,
+              "normalizedValue": 89984
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 89984
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 90771,
+              "normalizedValue": 90771
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 90771
+        }
+      },
+      "totalNormalizedValue": 180755
+    },
+    {
+      "year": 1831,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 114559,
+          "normalizedValue": 114559
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 81854,
+          "normalizedValue": 81854
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 81854,
+              "normalizedValue": 81854
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 81854
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 114559,
+              "normalizedValue": 114559
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 114559
+        }
+      },
+      "totalNormalizedValue": 196413
+    },
+    {
+      "year": 1832,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 118650,
+          "normalizedValue": 118650
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 209271,
+          "normalizedValue": 209271
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 209271,
+              "normalizedValue": 209271
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 209271
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 118650,
+              "normalizedValue": 118650
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 118650
+        }
+      },
+      "totalNormalizedValue": 327921
+    },
+    {
+      "year": 1833,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 192878,
+          "normalizedValue": 192878
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 252971,
+          "normalizedValue": 252971
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 252971,
+              "normalizedValue": 252971
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 252971
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 192878,
+              "normalizedValue": 192878
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 192878
+        }
+      },
+      "totalNormalizedValue": 445849
+    },
+    {
+      "year": 1834,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 169028,
+          "normalizedValue": 169028
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 226692,
+          "normalizedValue": 226692
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 226692,
+              "normalizedValue": 226692
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 226692
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 169028,
+              "normalizedValue": 169028
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 169028
+        }
+      },
+      "totalNormalizedValue": 395720
+    },
+    {
+      "year": 1835,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 195686,
+          "normalizedValue": 195686
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 339508,
+          "normalizedValue": 339508
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 339508,
+              "normalizedValue": 339508
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 339508
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 195686,
+              "normalizedValue": 195686
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 195686
+        }
+      },
+      "totalNormalizedValue": 535194
+    },
+    {
+      "year": 1836,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 199128,
+          "normalizedValue": 199128
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 432045,
+          "normalizedValue": 432045
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 432045,
+              "normalizedValue": 432045
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 432045
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 199128,
+              "normalizedValue": 199128
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 199128
+        }
+      },
+      "totalNormalizedValue": 631173
+    },
+    {
+      "year": 1837,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 203578,
+          "normalizedValue": 203578
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 523152,
+          "normalizedValue": 523152
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 523152,
+              "normalizedValue": 523152
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 523152
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 203578,
+              "normalizedValue": 203578
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 203578
+        }
+      },
+      "totalNormalizedValue": 726730
+    },
+    {
+      "year": 1838,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 209758,
+          "normalizedValue": 209758
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 433875,
+          "normalizedValue": 433875
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 433875,
+              "normalizedValue": 433875
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 433875
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 209758,
+              "normalizedValue": 209758
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 209758
+        }
+      },
+      "totalNormalizedValue": 643633
+    },
+    {
+      "year": 1839,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 244108,
+          "normalizedValue": 244108
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 442608,
+          "normalizedValue": 442608
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 442608,
+              "normalizedValue": 442608
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 442608
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 244108,
+              "normalizedValue": 244108
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 244108
+        }
+      },
+      "totalNormalizedValue": 686716
+    },
+    {
+      "year": 1840,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 206253,
+          "normalizedValue": 206253
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 452291,
+          "normalizedValue": 452291
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 452291,
+              "normalizedValue": 452291
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 452291
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 206253,
+              "normalizedValue": 206253
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 206253
+        }
+      },
+      "totalNormalizedValue": 658544
+    },
+    {
+      "year": 1841,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 152825,
+          "normalizedValue": 152825
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 584692,
+          "normalizedValue": 584692
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 584692,
+              "normalizedValue": 584692
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 584692
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 152825,
+              "normalizedValue": 152825
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 152825
+        }
+      },
+      "totalNormalizedValue": 737517
+    },
+    {
+      "year": 1842,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 152096,
+          "normalizedValue": 152096
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 491602,
+          "normalizedValue": 491602
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 491602,
+              "normalizedValue": 491602
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 491602
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 152096,
+              "normalizedValue": 152096
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 152096
+        }
+      },
+      "totalNormalizedValue": 643698
+    },
+    {
+      "year": 1843,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 146348,
+          "normalizedValue": 146348
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 447058,
+          "normalizedValue": 447058
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 447058,
+              "normalizedValue": 447058
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 447058
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 146348,
+              "normalizedValue": 146348
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 146348
+        }
+      },
+      "totalNormalizedValue": 593406
+    },
+    {
+      "year": 1844,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 174584,
+          "normalizedValue": 174584
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 398887,
+          "normalizedValue": 398887
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 398887,
+              "normalizedValue": 398887
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 398887
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 174584,
+              "normalizedValue": 174584
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 174584
+        }
+      },
+      "totalNormalizedValue": 573471
+    },
+    {
+      "year": 1845,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 204155,
+          "normalizedValue": 204155
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 263587,
+          "normalizedValue": 263587
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 263587,
+              "normalizedValue": 263587
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 263587
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 204155,
+              "normalizedValue": 204155
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 204155
+        }
+      },
+      "totalNormalizedValue": 467742
+    },
+    {
+      "year": 1846,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 105351,
+          "normalizedValue": 105351
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 3437,
+          "normalizedValue": 3437
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 3437,
+              "normalizedValue": 3437
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 3437
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 105351,
+              "normalizedValue": 105351
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 105351
+        }
+      },
+      "totalNormalizedValue": 108788
+    },
+    {
+      "year": 1847,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 209704,
+          "normalizedValue": 209704
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 222693,
+          "normalizedValue": 222693
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 222693,
+              "normalizedValue": 222693
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 222693
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 209704,
+              "normalizedValue": 209704
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 209704
+        }
+      },
+      "totalNormalizedValue": 432397
+    },
+    {
+      "year": 1848,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 242972,
+          "normalizedValue": 242972
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 436602,
+          "normalizedValue": 436602
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 436602,
+              "normalizedValue": 436602
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 436602
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 242972,
+              "normalizedValue": 242972
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 242972
+        }
+      },
+      "totalNormalizedValue": 679574
+    },
+    {
+      "year": 1849,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 222317,
+          "normalizedValue": 222317
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 489208,
+          "normalizedValue": 489208
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 489208,
+              "normalizedValue": 489208
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 489208
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 222317,
+              "normalizedValue": 222317
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 222317
+        }
+      },
+      "totalNormalizedValue": 711525
+    },
+    {
+      "year": 1850,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 170019,
+          "normalizedValue": 170019
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 288030,
+          "normalizedValue": 288030
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 288030,
+              "normalizedValue": 288030
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 288030
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 170019,
+              "normalizedValue": 170019
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 170019
+        }
+      },
+      "totalNormalizedValue": 458049
+    },
+    {
+      "year": 1851,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 362941,
+          "normalizedValue": 362941
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 579156,
+          "normalizedValue": 579156
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 579156,
+              "normalizedValue": 579156
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 579156
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 362941,
+              "normalizedValue": 362941
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 362941
+        }
+      },
+      "totalNormalizedValue": 942097
+    },
+    {
+      "year": 1852,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 274061,
+          "normalizedValue": 274061
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 800638,
+          "normalizedValue": 800638
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 800638,
+              "normalizedValue": 800638
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 800638
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 274061,
+              "normalizedValue": 274061
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 274061
+        }
+      },
+      "totalNormalizedValue": 1074699
+    },
+    {
+      "year": 1853,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 327295,
+          "normalizedValue": 327295
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 888695,
+          "normalizedValue": 888695
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 888695,
+              "normalizedValue": 888695
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 888695
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 327295,
+              "normalizedValue": 327295
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 327295
+        }
+      },
+      "totalNormalizedValue": 1215990
+    },
+    {
+      "year": 1854,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 311144,
+          "normalizedValue": 311144
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 907354,
+          "normalizedValue": 907354
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 907354,
+              "normalizedValue": 907354
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 907354
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 311144,
+              "normalizedValue": 311144
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 311144
+        }
+      },
+      "totalNormalizedValue": 1218498
+    },
+    {
+      "year": 1855,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 291230,
+          "normalizedValue": 291230
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 1105263,
+          "normalizedValue": 1105263
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 1105263,
+              "normalizedValue": 1105263
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 1105263
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 291230,
+              "normalizedValue": 291230
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 291230
+        }
+      },
+      "totalNormalizedValue": 1396493
+    },
+    {
+      "year": 1856,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 279558,
+          "normalizedValue": 279558
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 1169453,
+          "normalizedValue": 1169453
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 1169453,
+              "normalizedValue": 1169453
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 1169453
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 279558,
+              "normalizedValue": 279558
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 279558
+        }
+      },
+      "totalNormalizedValue": 1449011
+    },
+    {
+      "year": 1857,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 319520,
+          "normalizedValue": 319520
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 1275988,
+          "normalizedValue": 1275988
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 1275988,
+              "normalizedValue": 1275988
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 1275988
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 319520,
+              "normalizedValue": 319520
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 319520
+        }
+      },
+      "totalNormalizedValue": 1595508
+    },
+    {
+      "year": 1858,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 298866,
+          "normalizedValue": 298866
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 1323804,
+          "normalizedValue": 1323804
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 1323804,
+              "normalizedValue": 1323804
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 1323804
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 298866,
+              "normalizedValue": 298866
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 298866
+        }
+      },
+      "totalNormalizedValue": 1622670
+    },
+    {
+      "year": 1859,
+      "commodities": {
+        "158": {
+          "id": 158,
+          "name": "Miscellaneous\/Other Articles",
+          "value": 326992,
+          "normalizedValue": 326992
+        },
+        "229": {
+          "id": 229,
+          "name": "Coal",
+          "value": 1372109,
+          "normalizedValue": 1372109
+        }
+      },
+      "commodityCategories": {
+        "5": {
+          "commodities": [
+            {
+              "id": 229,
+              "name": "Coal",
+              "value": 1372109,
+              "normalizedValue": 1372109
+            }
+          ],
+          "name": "Fuel and Ore",
+          "aggregateNormalizedValue": 1372109
+        },
+        "8": {
+          "commodities": [
+            {
+              "id": 158,
+              "name": "Miscellaneous\/Other Articles",
+              "value": 326992,
+              "normalizedValue": 326992
+            }
+          ],
+          "name": "Other Articles",
+          "aggregateNormalizedValue": 326992
+        }
+      },
+      "totalNormalizedValue": 1699101
+    }
+  ]
+]
