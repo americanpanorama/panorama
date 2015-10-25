@@ -3,28 +3,35 @@ import Koto from 'koto';
 
 export default class Axis extends Koto {
 
-  constructor (selection, axisType) {
+  constructor (selection, axisType, props) {
 
     super(selection);
 
-    this.configs['scale'] = {value: d3.scale.linear()};
-    this.configs['ticks'] = {value: 5};
-    this.configs['orient'] = {value: 'bottom'};
-    this.configs['offset'] = {value: [0,0]};
+    this.configs['scale'] = { value: props.scale };
+    this.configs['ticks'] = { value: props.ticks };
+    this.configs['orient'] = { value: props.orient };
+    this.configs['offset'] = { value: props.offset };
 
     this.axis = d3.svg.axis();
     this.baseLayer = this.base.append('g').classed(axisType + ' axis', true);
 
   }
 
-  update () {
+  update (scale, offset) {
+
+    if (scale) {
+      this.config('scale', scale);
+    }
+    if (offset) {
+      this.config('offset', offset);
+    } else {
+      offset = this.config('offset');
+    }
 
     this.axis
-      .scale(this.configs['scale'].value)
-      .ticks(this.configs['ticks'].value)
-      .orient(this.configs['orient'].value);
-
-    var offset = this.configs['offset'].value;
+      .scale(this.config('scale'))
+      .ticks(this.config('ticks'))
+      .orient(this.config('orient'));
 
     this.baseLayer
       .attr('transform', 'translate(' + offset[0] + ',' + offset[1] + ')')

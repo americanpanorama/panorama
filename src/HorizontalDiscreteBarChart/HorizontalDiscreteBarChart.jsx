@@ -1,74 +1,73 @@
 import d3 from 'd3';
 import DiscreteBarChart, { DiscreteBarChartImpl } from '../DiscreteBarChart/DiscreteBarChart';
-import _ from 'lodash';
 
 export default class HorizontalDiscreteBarChart extends DiscreteBarChart {
 
-  // 'inherit' static validatorsand defaults
-  static propTypes = _.merge(DiscreteBarChart.propTypes);
-  static defaultProps = _.merge(DiscreteBarChart.defaultProps);
+  // extend superclass `props` validators
+  static propTypes = Object.assign({}, DiscreteBarChart.propTypes);
+
+  // extend superclass `props` defaults
+  static defaultProps = Object.assign({}, DiscreteBarChart.defaultProps, {
+    xScale: d3.scale.linear(),
+    yScale: d3.scale.ordinal()
+  });
 
   constructor (props) {
-
     super(props);
     this.chartConstructor = HorizontalDiscreteBarChartImpl;
-
   }
 
   getClassSuffix () {
-    return 'barchart';
+    return 'barchart horizontal';
   }
 
 }
 
+
+/*
+TODO NEXT:
+refactor this and map choropleth
+then bring areachart in
+then push to master
+*/
+
 export class HorizontalDiscreteBarChartImpl extends DiscreteBarChartImpl {
 
-  constructor (selection) {
+  constructor (selection, props) {
 
-    super(selection);
+    super(selection, props);
 
-    let _Chart = this;
+    let config = this.config.bind(this),
+      accessor = this.accessor.bind(this);
 
     let layer = this.layer('bars');
 
     layer.insert = function () {
       return this.append('rect')
         .attr('class', 'bar')
-        .attr('height', _Chart.yScale.rangeBand());
+        .attr('height', config('yScale').rangeBand());
     };
 
 
     layer.on('enter', function () {
       return this
         .attr('x', d => '0')
-        .attr('y', d => _Chart.yScale(_Chart.accessor('y')(d)))
-        .attr('width', d => _Chart.xScale(_Chart.accessor('x')(d)))
-        .attr('height', _Chart.yScale.rangeBand());
+        .attr('y', d => config('yScale')(accessor('y')(d)))
+        .attr('width', d => config('xScale')(accessor('x')(d)))
+        .attr('height', config('yScale').rangeBand());
     });
-
-  }
-
-  updateConfigs (props) {
-    
-    // In React, default props are cached, and therefore non-primitives are shared across all instances.
-    // Therefore, we cannot rely on React to apply default non-primitive props;
-    // they must be set manually here.
-    props = _.merge(props, {
-      xScale: d3.scale.linear(),
-      yScale: d3.scale.ordinal()
-    });
-
-    super.updateConfigs(props);
 
   }
 
   updateScales (data) {
 
-    this.yScale.rangeRoundBands([0, this._height], this.configs['barSpacing'].value);
-    this.yScale.domain(data.map(d => this.accessor('y')(d)));
+    // TODO: I think this is a bug waiting to happen.
+    // See TODO in DiscreteBarChart.updateScales().
+    this.config('yScale').rangeRoundBands([0, this._height], this.config('barSpacing'));
+    this.config('yScale').domain(data.map(d => this.accessor('y')(d)));
 
-    this.xScale.range([0, this._width]);
-    this.xScale.domain([0, d3.max(data, d => this.accessor('x')(d))]);
+    this.config('xScale').range([0, this._width]);
+    this.config('xScale').domain([0, d3.max(data, d => this.accessor('x')(d))]);
 
   }
 

@@ -13,9 +13,9 @@ export default class MapChoropleth extends PanoramaChart {
 
 export class MapChoroplethImpl extends Koto {
 
-  constructor (selection) {
+  constructor (selection, props) {
 
-    super(selection);
+    super(selection, props);
 
     var _Chart = this;
 

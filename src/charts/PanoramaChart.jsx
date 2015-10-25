@@ -7,13 +7,46 @@ export default class PanoramaChart extends React.Component {
   static propTypes = {
     data: PropTypes.oneOfType([PropTypes.array,PropTypes.object]),
     width: PropTypes.number,
-    height: PropTypes.number
+    height: PropTypes.number,
+    margin: PropTypes.shape({
+      top: PropTypes.number,
+      right: PropTypes.number,
+      bottom: PropTypes.number,
+      left: PropTypes.number
+    }),
+    xScale: PropTypes.func,
+    yScale: PropTypes.func,
+    xAccessor: PropTypes.func,
+    yAccessor: PropTypes.func,
+    axisProps: PropTypes.shape({
+      scale: PropTypes.func,
+      ticks: PropTypes.number,
+      orient: PropTypes.string,
+      offset: PropTypes.array
+    })
   }
 
   static defaultProps = {
     data: [],
     width: 600,
     height: 400,
+    margin: {
+      top: 20,
+      right: 30,
+      bottom: 20,
+      left: 30
+    },
+    xScale: d3.scale.linear(),
+    yScale: d3.scale.linear(),
+    xAccessor: d => d.key,
+    yAccessor: d => d.value,
+    axisProps: {
+      scale: d3.scale.linear(),
+      ticks: 5,
+      xOrient: 'bottom',
+      yOrient: 'left',
+      offset: [0, 0]
+    }
   }
 
   constructor (props) {
@@ -44,16 +77,9 @@ export default class PanoramaChart extends React.Component {
   update () {
 
     if (!this.chart) {
-      this.chart = new this.chartConstructor(d3.select(this.refs.chart));
+      this.chart = new this.chartConstructor(d3.select(this.refs.chart), this.props);
     }
-
-    // Pass in a mutable shallow copy of this.props,
-    // so it can be modified and defaults can be added as needed.
-    let propsCopy = {};
-    Object.keys(this.props).forEach(key => {
-      propsCopy[key] = this.props[key];
-    });
-    this.chart.updateConfigs(propsCopy);
+    this.chart.updateConfigs(this.props);
 
   }
 
