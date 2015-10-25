@@ -1,3 +1,29 @@
+.panorama.area-chart path {
+  fill: steelblue; }
+
+.panorama.area-chart .axis {
+  font: 10px sans-serif; }
+
+.panorama.area-chart .axis path,
+.panorama.area-chart .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges; }
+.panorama.bar-chart {
+  position: relative; }
+  .panorama.bar-chart .bar {
+    fill: steelblue; }
+  .panorama.bar-chart .bar:hover {
+    fill: brown; }
+  .panorama.bar-chart .axis {
+    font: 10px sans-serif; }
+  .panorama.bar-chart .axis path,
+  .panorama.bar-chart .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges; }
+  .panorama.bar-chart .x.axis path {
+    display: none; }
 .panorama.legend {
   position: relative;
   width: auto;
@@ -67,20 +93,5 @@
       width: 50%;
       display: inline-block;
       shape-rendering: 'crispEdges'; }
-.panorama.barchart {
-  position: relative; }
-  .panorama.barchart .bar {
-    fill: steelblue; }
-  .panorama.barchart .bar:hover {
-    fill: brown; }
-  .panorama.barchart .axis {
-    font: 10px sans-serif; }
-  .panorama.barchart .axis path,
-  .panorama.barchart .axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges; }
-  .panorama.barchart .x.axis path {
-    display: none; }
 
 /*# sourceMappingURL=components.css.map*/
