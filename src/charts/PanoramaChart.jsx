@@ -1,25 +1,52 @@
 import React, { PropTypes } from 'react';
 
+const BASE_CLASS_NAME = 'panorama chart ';
+
 export default class PanoramaChart extends React.Component {
 
   static propTypes = {
     data: PropTypes.oneOfType([PropTypes.array,PropTypes.object]),
-    xAccessor: PropTypes.func,
-    yAccessor: PropTypes.func,
     width: PropTypes.number,
     height: PropTypes.number,
-    margin: PropTypes.object,
-    barSpacing: PropTypes.number
+    margin: PropTypes.shape({
+      top: PropTypes.number,
+      right: PropTypes.number,
+      bottom: PropTypes.number,
+      left: PropTypes.number
+    }),
+    xScale: PropTypes.func,
+    yScale: PropTypes.func,
+    xAccessor: PropTypes.func,
+    yAccessor: PropTypes.func,
+    axisProps: PropTypes.shape({
+      scale: PropTypes.func,
+      ticks: PropTypes.number,
+      orient: PropTypes.string,
+      offset: PropTypes.array
+    })
   }
 
   static defaultProps = {
     data: [],
     width: 600,
     height: 400,
-    margin: {top: 0, right: 0, bottom: 0, left: 0},
-    barSpacing: 0.1,
-    xAccessor: function(d){return d.key;},
-    yAccessor: function(d){return d.value;}
+    margin: {
+      top: 20,
+      right: 30,
+      bottom: 20,
+      left: 30
+    },
+    xScale: d3.scale.linear(),
+    yScale: d3.scale.linear(),
+    xAccessor: d => d.key,
+    yAccessor: d => d.value,
+    axisProps: {
+      scale: d3.scale.linear(),
+      ticks: 5,
+      xOrient: 'bottom',
+      yOrient: 'left',
+      offset: [0, 0]
+    }
   }
 
   constructor (props) {
@@ -50,32 +77,31 @@ export default class PanoramaChart extends React.Component {
   update () {
 
     if (!this.chart) {
-      this.chart = new this.chartConstructor(d3.select(this.refs.chart));
+      this.chart = new this.chartConstructor(d3.select(this.refs.chart), this.props);
     }
 
-    this.chart
-      .config('height', this.props.height)
-      .config('width', this.props.width)
-      .accessor('x', this.props.xAccessor)
-      .accessor('y', this.props.yAccessor)
-      .draw(this.props.data);
+    if (this.chart.updateConfigs) {
+      this.chart.updateConfigs(this.props);
+    }
+
+    this.chart.draw(this.props.data);
 
   }
 
   /**
-   * Determine class name to be applied to container element.
+   * Determine class name to be appended to container element.
    * Typically overridden by subclasses.
    */
-  makeClassName () {
+  getClassSuffix () {
 
-    return 'panorama chart';
+    return '';
     
   }
 
   render () {
 
     return (
-      <div className={this.makeClassName()}>
+      <div className={ BASE_CLASS_NAME + this.getClassSuffix() }>
         <svg ref='chart' className='wrapper'></svg>
       </div>
     );

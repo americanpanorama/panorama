@@ -2,9 +2,10 @@
 
 import React, { Component } from 'react';
 
-import LegendExample from './components/example-legend.jsx';
+import AreaChartExample from './components/example-areachart.jsx';
 import BarChartExample from './components/example-barchart';
 import ChoroplethExample from './components/example-choropleth';
+import LegendExample from './components/example-legend.jsx';
 import PunchcardExample from './components/example-punchcard.jsx';
 
 class App extends Component {
@@ -15,12 +16,14 @@ class App extends Component {
       <div>
         <h1>Panorama Toolkit examples</h1>
         <hr />
-        <h2>Legend</h2>
-        <LegendExample/>
-        <h2>Barchart</h2>
+        <h2>Area Chart</h2>
+        <AreaChartExample/>
+        <h2>Bar Chart</h2>
         <BarChartExample/>
         <h2>Choropleth</h2>
         <ChoroplethExample/>
+        <h2>Legend</h2>
+        <LegendExample/>
         <h2>Punchcard</h2>
         <PunchcardExample/>
       </div>

@@ -3,53 +3,70 @@ import DiscreteBarChart, { DiscreteBarChartImpl } from '../DiscreteBarChart/Disc
 
 export default class HorizontalDiscreteBarChart extends DiscreteBarChart {
 
+  // extend superclass `props` validators
+  static propTypes = Object.assign({}, DiscreteBarChart.propTypes);
+
+  // extend superclass `props` defaults
+  static defaultProps = Object.assign({}, DiscreteBarChart.defaultProps, {
+    xScale: d3.scale.linear(),
+    yScale: d3.scale.ordinal()
+  });
+
   constructor (props) {
     super(props);
     this.chartConstructor = HorizontalDiscreteBarChartImpl;
   }
 
-  makeClassName () {
-    return 'panorama chart barchart';
+  getClassSuffix () {
+    return 'bar-chart horizontal';
   }
 
 }
 
 
-export class HorizontalDiscreteBarChartImpl extends DiscreteBarChartImpl {
-  constructor (selection) {
-    super(selection);
+/*
+TODO NEXT:
+refactor this and map choropleth
+then bring areachart in
+then push to master
+*/
 
-    var _Chart = this;
-    this.yScale = d3.scale.ordinal();
-    this.xScale = d3.scale.linear();
-    var layer = this.layer('bars');
+export class HorizontalDiscreteBarChartImpl extends DiscreteBarChartImpl {
+
+  constructor (selection, props) {
+
+    super(selection, props);
+
+    let _Chart = this;
+
+    let layer = this.layer('bars');
 
     layer.insert = function () {
       return this.append('rect')
         .attr('class', 'bar')
-        .attr('height', _Chart.yScale.rangeBand());
+        .attr('height', _Chart.config('yScale').rangeBand());
     };
-
 
     layer.on('enter', function () {
       return this
-        .attr('x', function(d) { return '0'; })
-        .attr('y', function(d) { return _Chart.yScale(_Chart.accessor('y')(d)); })
-        .attr('width', function(d) { return _Chart.xScale(_Chart.accessor('x')(d)); })
-        .attr('height', _Chart.yScale.rangeBand());
+        .attr('x', d => '0')
+        .attr('y', d => _Chart.config('yScale')(_Chart.accessor('y')(d)))
+        .attr('width', d => _Chart.config('xScale')(_Chart.accessor('x')(d)))
+        .attr('height', _Chart.config('yScale').rangeBand());
     });
+
   }
 
   updateScales (data) {
-    var _Chart = this;
-    this.yScale.rangeRoundBands([0, this._height], this.configs['barSpacing'].value);
-    this.yScale.domain(data.map(function(d) { return _Chart.accessor('y')(d); }));
 
-    this.xScale.range([0, this._width]);
-    this.xScale.domain([0, d3.max(data, function(d) { return _Chart.accessor('x')(d); })]);
+    // TODO: I think this is a bug waiting to happen.
+    // See TODO in DiscreteBarChart.updateScales().
+    this.config('yScale').rangeRoundBands([0, this._innerHeight], this.config('barSpacing'));
+    this.config('yScale').domain(data.map(d => this.accessor('y')(d)));
 
-    if (this.xAxis) this.xAxis.config('scale', this.xScale);
-    if (this.yAxis) this.yAxis.config('scale', this.yScale);
+    this.config('xScale').range([0, this._innerWidth]);
+    this.config('xScale').domain([0, d3.max(data, d => this.accessor('x')(d))]);
+
   }
 
 }

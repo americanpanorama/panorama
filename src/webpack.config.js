@@ -9,7 +9,7 @@ module.exports = {
 
   debug: process.env.NODE_ENV !== 'production',
 
-  devtool: 'sourcemap',
+  devtool: 'source-map',
 
   entry: './main.js',
 

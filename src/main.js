@@ -1,15 +1,17 @@
 'use strict';
 
-import Legend from './Legend/Legend';
-import Punchcard from './Punchcard/Punchcard';
+import AreaChart from './AreaChart/AreaChart';
 import DiscreteBarChart from './DiscreteBarChart/DiscreteBarChart';
 import HorizontalDiscreteBarChart from './HorizontalDiscreteBarChart/HorizontalDiscreteBarChart';
+import Legend from './Legend/Legend';
 import MapChoropleth from './MapChoropleth/MapChoropleth';
+import Punchcard from './Punchcard/Punchcard';
 
 export default {
-  Legend,
-  Punchcard,
+  AreaChart,
   DiscreteBarChart,
   HorizontalDiscreteBarChart,
-  MapChoropleth
+  Legend,
+  MapChoropleth,
+  Punchcard
 };

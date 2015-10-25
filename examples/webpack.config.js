@@ -10,7 +10,7 @@ module.exports = {
 
   debug: process.env.NODE_ENV !== 'production',
 
-  devtool: 'sourcemap',
+  devtool: 'source-map',
 
   devServer: {
     port: WEBSERVER_PORT

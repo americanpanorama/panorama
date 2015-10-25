@@ -4,36 +4,38 @@ import { DiscreteBarChart, HorizontalDiscreteBarChart } from '../../src/main';
 export default class BarchartExample extends React.Component {
 
   constructor () {
+
     super();
+
   }
 
   render () {
+
     var opts1 = {
       data: [
-        {key: 'red', value: 20},
-        {key: 'blue', value: 40},
-        {key: 'green', value: 10}
+        { key: 'red', value: 20 },
+        { key: 'blue', value: 40 },
+        { key: 'green', value: 10 }
       ],
       width: 400,
-      height: 400,
-      margin: {top: 20, right: 30, bottom: 20, left: 30},
-      barSpacing: 0.1,
-      xAccessor: function(d){return d.key;},
-      yAccessor: function(d){return d.value;}
+      height: 400
     };
 
     var opts2 = {
       data: [
-        {key: 'red', value: 20},
-        {key: 'blue', value: 40},
-        {key: 'green', value: 10}
+        { colorName: 'red', amount: 20 },
+        { colorName: 'blue', amount: 40 },
+        { colorName: 'green', amount: 10 }
       ],
       width: 600,
       height: 200,
-      margin: {top: 20, right: 30, bottom: 20, left: 50},
-      barSpacing: 0.1,
-      xAccessor: function(d){return d.value;},
-      yAccessor: function(d){return d.key;}
+
+      // Optionally specify custom margins
+      margin: { top: 20, right: 30, bottom: 20, left: 50 },
+
+      // Optionally specify accessors to match your data format
+      xAccessor: d => d.amount,
+      yAccessor: d => d.colorName
     };
 
     return (
@@ -44,6 +46,7 @@ export default class BarchartExample extends React.Component {
         <HorizontalDiscreteBarChart key='2' {...opts2}/>
       </div>
     );
+
   }
 
 }
