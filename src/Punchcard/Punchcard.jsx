@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import * as d3 from 'd3';
+import _ from 'lodash';
 import './style.scss';
 
 export default class Punchcard extends React.Component {
@@ -40,13 +41,17 @@ export default class Punchcard extends React.Component {
 
   componentDidMount () {
 
-    d3Punchcard.create(this.refs.content, this.props.categories, this.props.items);
-
+    this.renderVisualization();
+    
   }
 
   componentDidUpdate () {
 
-    d3Punchcard.update(this.refs.content, this.props.categories, this.props.items);
+    // Blow away what's there. If we want pretty transitions,
+    // remove this and handle transitions in d3Punchcard.
+    d3Punchcard.destroy(this.refs.content);
+
+    this.renderVisualization();
 
   }
 
@@ -60,7 +65,8 @@ export default class Punchcard extends React.Component {
 
     return (
       <div className='panorama punchcard'>
-        { this.renderHeaderContent() }
+        { this.renderPlaceholder() }
+        { this.renderHeader() }
         <div className='content' ref='content'></div>
       </div>
 
@@ -68,18 +74,46 @@ export default class Punchcard extends React.Component {
 
   }
 
-  renderHeaderContent () {
+  renderVisualization () {
 
-    if (!this.props.header) {
-      return null;
+    if (!_.isEmpty(this.props.categories)) {
+      // cannot remove the node, because React complains
+      this.refs.placeholder.style.display = 'none';
+      d3Punchcard.update(this.refs.content, this.props.categories, this.props.items);
+    } else {
+      this.refs.placeholder.style.display = '';
     }
+
+  }
+
+  renderHeader () {
 
     return (
       <div className='header' ref='header'>
-        <h2>{ this.props.header.title.toUpperCase() }</h2>
+        <h2>{ this.props.header.title ? this.props.header.title.toUpperCase() : '' }</h2>
         <h3><span className='subtitle'>{ this.props.header.subtitle }</span><span className='caption'>{ this.props.header.caption } total tonnage</span></h3>
       </div>
     );
+
+  }
+
+  renderPlaceholder () {
+
+    // TODO: provide links to years with data, if they exist for this canal.
+    // TODO: make placeholder messages configurable via props
+    if (_.isEmpty(this.props.categories)) {
+      return (
+        <div className='placeholder' ref='placeholder'>
+          <h4>No commodities data available for this canal in the selected year.</h4>
+        </div>
+      );
+    } else {
+      return (
+        <div className='placeholder' ref='placeholder'>
+          <h4>Loading...</h4>
+        </div>
+      );
+    }
 
   }
 
@@ -101,9 +135,7 @@ const d3Punchcard = {
    */
   create: function (node, categories, items) {
 
-    if (categories && items) {
-      this.update(node, categories, items);
-    }
+    this.update(node, categories, items);
 
   },
 
@@ -173,7 +205,7 @@ const d3Punchcard = {
    */
   destroy: function (node) {
 
-    //
+    d3.select(node).html('');
 
   }
 

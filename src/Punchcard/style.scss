@@ -1,4 +1,5 @@
 .panorama.punchcard {
+	position: relative;
 	height: 100%;
 	overflow-x: hidden;
 	overflow-y: scroll;
@@ -27,6 +28,7 @@
 
 	.category {
 		margin-bottom: 20px;
+		white-space: normal;
 
 		h4 {
 			width: 45%;
@@ -43,5 +45,13 @@
 			display: inline-block;
 			shape-rendering: 'crispEdges';
 		}
+	}
+
+	.placeholder {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
 	}
 }

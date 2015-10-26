@@ -14,6 +14,7 @@ export default class PanoramaChart extends React.Component {
       bottom: PropTypes.number,
       left: PropTypes.number
     }),
+    style: PropTypes.object,
     xScale: PropTypes.func,
     yScale: PropTypes.func,
     xAccessor: PropTypes.func,
@@ -36,6 +37,7 @@ export default class PanoramaChart extends React.Component {
       bottom: 20,
       left: 30
     },
+    style: {},
     xScale: d3.scale.linear(),
     yScale: d3.scale.linear(),
     xAccessor: d => d.key,
@@ -101,7 +103,7 @@ export default class PanoramaChart extends React.Component {
   render () {
 
     return (
-      <div className={ BASE_CLASS_NAME + this.getClassSuffix() }>
+      <div className={ BASE_CLASS_NAME + this.getClassSuffix() } style={ this.props.style }>
         <svg ref='chart' className='wrapper'></svg>
       </div>
     );
