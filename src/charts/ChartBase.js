@@ -8,12 +8,17 @@ export default class ChartBase extends Koto {
 
     super(selection);
 
-    let xAxisProps = Object.assign({}, props.axisProps, {
+    let xAxisProps,
+      yAxisProps;
+
+    if (props.axisProps) {
+      xAxisProps = Object.assign({}, props.axisProps, {
         orient: props.axisProps.xOrient
-      }),
+      });
       yAxisProps = Object.assign({}, props.axisProps, {
         orient: props.axisProps.yOrient
       });
+    }
 
     Object.assign(this.configs, {
       width: { value: props.width },
@@ -21,8 +26,8 @@ export default class ChartBase extends Koto {
       margin: { value: props.margin },
       xScale: { value: props.xScale },
       yScale: { value: props.yScale },
-      xAxis: { value: new Axis(this.base, 'x', xAxisProps) },
-      yAxis: { value: new Axis(this.base, 'y', yAxisProps) }
+      xAxis: { value: props.axisProps ? new Axis(this.base, 'x', xAxisProps) : null },
+      yAxis: { value: props.axisProps ? new Axis(this.base, 'y', yAxisProps) : null }
     });
 
   }
