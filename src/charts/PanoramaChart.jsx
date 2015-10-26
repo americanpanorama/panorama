@@ -53,8 +53,6 @@ export default class PanoramaChart extends React.Component {
 
     super(props);
 
-    console.log('>>>>> axisProps:', props.axisProps);
-
   }
 
   componentDidMount () {
