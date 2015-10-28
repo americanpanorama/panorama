@@ -17,6 +17,15 @@ export default class Axis extends Koto {
 
   }
 
+  updateConfigs (props) {
+
+    this.config('scale', props.scale);
+    this.config('ticks', props.ticks);
+    this.config('orient', props.orient);
+    this.config('offset', props.offset);
+
+  }
+
   update (scale, offset) {
 
     if (scale) {
@@ -38,5 +47,12 @@ export default class Axis extends Koto {
       .call(this.axis);
 
   }
-  
+
+  destroy () {
+
+    this.base.remove();
+    this.base = null;
+
+  }
+
 }

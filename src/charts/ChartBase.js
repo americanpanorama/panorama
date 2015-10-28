@@ -43,6 +43,29 @@ export default class ChartBase extends Koto {
       .accessor('x', props.xAccessor)
       .accessor('y', props.yAccessor);
 
+    // update axes, or remove them if no longer configured
+    if (this.config('xAxis')) {
+      if (props.axisProps) {
+        this.config('xAxis').updateConfigs(Object.assign({}, props.axisProps, {
+          orient: props.axisProps.xOrient
+        }));
+      } else {
+        this.config('xAxis').destroy();
+        this.config('xAxis', null);
+      }
+    }
+
+    if (this.config('yAxis')) {
+      if (props.axisProps) {
+        this.config('yAxis').updateConfigs(Object.assign({}, props.axisProps, {
+          orient: props.axisProps.yOrient
+        }));
+      } else {
+        this.config('yAxis').destroy();
+        this.config('yAxis', null);
+      }
+    }
+
   }
 
   /**
