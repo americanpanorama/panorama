@@ -100,11 +100,21 @@ export default class PanoramaChart extends React.Component {
     
   }
 
+  /** 
+   * Subclasses can override if they need to implement custom rendering.
+   */
+  renderChildren () {
+
+    return '';
+
+  }
+
   render () {
 
     return (
       <div className={ BASE_CLASS_NAME + this.getClassSuffix() } style={ this.props.style }>
         <svg ref='chart' className='wrapper'></svg>
+        { this.renderChildren() }
       </div>
     );
 

@@ -86,7 +86,7 @@ export default class ChartBase extends Koto {
     if (this.config('xAxis')) {
       this.config('xAxis').update(
         this.config('xScale'),
-        [margin.left, this._innerHeight + margin.bottom]
+        [margin.left, margin.top + this._innerHeight]
       );
     }
     if (this.config('yAxis')) {

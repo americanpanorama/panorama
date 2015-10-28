@@ -18,8 +18,6 @@ export default class AreaChartExample extends React.Component {
 
     let areaChartConfig = {
       data: require('../data/areaChart.json'),
-      // data: _.values(CommodityStore.getAllCommodities()).map(v => _.values(v)),  // TODO: we will want commodities for all canals...
-      // data: [_.values(CommodityStore.getAllCommodities()[data.selectedCanal.id])],  // ...but for now let's just grab the selected canal.
 
       width: 600,
       height: 200,
