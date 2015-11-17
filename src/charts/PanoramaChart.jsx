@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import d3 from 'd3';
 
 const BASE_CLASS_NAME = 'panorama chart ';
 
