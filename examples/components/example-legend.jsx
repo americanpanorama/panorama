@@ -4,8 +4,14 @@ import { Legend } from '../../src/main';
 
 export default class LegendExample extends React.Component {
 
-  constructor () {
-    super();
+  static propTypes = {
+    selected: React.PropTypes.string
+  }
+
+  constructor (props) {
+
+    super(props);
+
   }
 
   render () {
@@ -16,7 +22,7 @@ export default class LegendExample extends React.Component {
         'cotton',
         'sugar'
       ],
-      initialSelection: 'narratives'
+      selectedItem: this.props.selected || 'narratives'
     };
 
     return (

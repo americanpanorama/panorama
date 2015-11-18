@@ -1,0 +1,56 @@
+.panorama.chart-slider {
+	position: relative;
+	color: black;
+	border-color: black;
+
+	svg {
+		fill: black;
+		stroke: black;
+	}
+
+	.top-rule {
+		position: absolute;
+		width: 100%;
+		height: 10px;
+		border-bottom-width: 1px;
+		border-bottom-style: solid;
+		pointer-events: none;
+	}
+
+	.d3-chart-slider {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+
+	.axis {
+		path,
+		line {
+		  fill: none;
+		}
+	}
+
+	.secondary,
+	.tertiary {
+		path {
+			display: none;
+		}
+	}
+
+	.handle {
+		line {
+			stroke-width: 2px;
+			height: 100%;
+		}
+
+		path {
+			stroke: none;
+			fill: black;
+		}
+
+		.resize {
+			display: none;
+		}
+	}
+
+}

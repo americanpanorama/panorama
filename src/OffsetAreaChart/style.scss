@@ -1,0 +1,27 @@
+.panorama.offset-area-chart {
+  position: relative;
+
+  .area-chart {
+    position: absolute;
+
+    path.area {
+      opacity: 0.7;
+    }
+  }
+
+  .axis {
+    font: 10px sans-serif;
+  }
+
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+
+  .metadata circle {
+    stroke: none;
+  }
+  
+}

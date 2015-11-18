@@ -1,0 +1,51 @@
+.panorama.item-selector {
+	position: relative;
+	display: inline-block;
+	width: 10em;
+	height: 100%;
+
+	h3 {
+		margin-bottom: 0.5em;
+	}
+
+	ul {
+		margin: 0;
+		padding: 0 0.5em 0 0;
+		height: 65%;
+		overflow-y: auto;
+
+		li {
+			margin-bottom: 0.1em;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+
+			cursor: pointer;
+			list-style-type: none;
+
+			&.selected {
+				border-width: 1px;
+				border-style: solid;
+				padding: 0.1em;
+			}
+		}
+	}
+
+	.scroll-arrow {
+		width: 100%;
+		text-align: center;
+		cursor: pointer;
+
+		&::before {
+			content: '〉';
+			display: inline-block;
+			padding-left: 0.5em;
+			transform: rotate(-0.25turn);
+		}
+
+		&.down-arrow::before {
+			transform: rotate(0.25turn);
+		}
+
+	}
+}

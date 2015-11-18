@@ -1,24 +1,22 @@
 import React, { PropTypes } from 'react';
+import { PanoramaDispatcher, PanoramaEventTypes } from '../PanoramaDispatcher.js';
 require('./style.scss');
 
 export default class Legend extends React.Component {
 
   static propTypes = {
-    initialSelection: PropTypes.string,
-    items: PropTypes.array.isRequired
+    items: PropTypes.array.isRequired,
+    selectedItem: PropTypes.string
   }
 
   static defaultProps = {
-    initialSelection: '',
-    items: []
+    items: [],
+    selectedItem: ''
   }
 
   constructor (props) {
 
     super(props);
-    this.state = {
-      selectedItem: this.props.initialSelection
-    };
 
     // manually bind event handlers,
     // since React ES6 doesn't do this automatically
@@ -39,16 +37,11 @@ export default class Legend extends React.Component {
     // Defense.
     if (!event.currentTarget || !event.currentTarget.dataset) { return; }
 
-    // Store the selected item for use in render().
-    this.setState({ selectedItem: event.currentTarget.dataset.item });
+    // // Store the selected item for use in render().
+    // this.setState({ selectedItem: event.currentTarget.dataset.item });
 
-    // TODO WEDS:
-    // Set up AppActionCreator for panorama components
-    // that components can call directly, and consumers can listen to.
-
-    // reminder:
-    // panorama-template is now `npm link`ed to this local repo,
-    // so will pick up changes from running `npm run build:dist` here.
+    // Notify any subscribers of item selection
+    PanoramaDispatcher.Legend.selected(event.currentTarget.dataset.item, this.props.items.indexOf(event.currentTarget.dataset.item));
 
   }
 
@@ -74,7 +67,7 @@ export default class Legend extends React.Component {
         { this.props.items.map(item => {
           return (
             <li
-              className = { 'item' + (this.state.selectedItem === item ? ' selected' : '') }
+              className = { 'item' + (this.props.selectedItem === item ? ' selected' : '') }
               data-item = { item }
               key = { item }
               onClick = { this.onItemClick }
