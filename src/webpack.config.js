@@ -19,13 +19,19 @@ module.exports = {
 
   externals: [
     {
-      react: {
+      'd3': 'd3',
+      'koto': 'koto',
+      'leaflet': 'leaflet',
+      'lodash': 'lodash',
+      'react': {
         root: 'React',
         commonjs: 'react',
         commonjs2: 'react',
         amd: 'react'
       },
-      d3: 'd3'
+      'react-dom': 'react-dom',
+      'react-leaflet': 'react-leaflet',
+      'topojson': 'topojson',
     }
   ],
 
@@ -67,7 +73,12 @@ module.exports = {
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(true),
     new webpack.optimize.AggressiveMergingPlugin(),
-    new ExtractTextPlugin('components.css', { allChunks: true })
+    new ExtractTextPlugin('components.css', { allChunks: true }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
   ],
 
   resolve: {

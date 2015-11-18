@@ -37,9 +37,6 @@ export default class Legend extends React.Component {
     // Defense.
     if (!event.currentTarget || !event.currentTarget.dataset) { return; }
 
-    // // Store the selected item for use in render().
-    // this.setState({ selectedItem: event.currentTarget.dataset.item });
-
     // Notify any subscribers of item selection
     PanoramaDispatcher.Legend.selected(event.currentTarget.dataset.item, this.props.items.indexOf(event.currentTarget.dataset.item));
 

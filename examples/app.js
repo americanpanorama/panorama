@@ -74,12 +74,12 @@ class App extends Component {
         <BarChartExample />
         <h2>Choropleth</h2>
         <ChoroplethExample />
+        <h2>Leaflet Choropleth</h2>
+        <LeafletChoropleth />
         <h2>Legend</h2>
         <LegendExample { ...this.state.legend } />
         <h2>Punchcard</h2>
         <PunchcardExample />
-        <h2>Leaflet Choropleth</h2>
-        <LeafletChoropleth />
       </div>
     );
 

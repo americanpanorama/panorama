@@ -1,6 +1,6 @@
 'use strict';
 
-import PanoramaDispatcher from './PanoramaDispatcher.js';
+import { PanoramaDispatcher, PanoramaEventTypes } from './PanoramaDispatcher.js';
 import AreaChart from './AreaChart/AreaChart';
 import DiscreteBarChart from './DiscreteBarChart/DiscreteBarChart';
 import HorizontalDiscreteBarChart from './HorizontalDiscreteBarChart/HorizontalDiscreteBarChart';
@@ -11,7 +11,10 @@ import Punchcard from './Punchcard/Punchcard';
 import Tooltip from './Leaflet/Tooltip';
 
 export default {
+
   PanoramaDispatcher,
+  PanoramaEventTypes,
+
   AreaChart,
   DiscreteBarChart,
   HorizontalDiscreteBarChart,
@@ -20,4 +23,5 @@ export default {
   MapChoropleth,
   Punchcard,
   Tooltip
+  
 };
