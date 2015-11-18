@@ -22,7 +22,7 @@ export default class ChoroplethExample extends React.Component {
     mapValues.map(r => {
       vals.set(r.id, r.rate);
     });
-    
+
     var data = {
       geometry: topojson.feature(geodata, geodata.objects.counties),
       values: vals

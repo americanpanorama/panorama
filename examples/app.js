@@ -7,6 +7,7 @@ import BarChartExample from './components/example-barchart';
 import ChoroplethExample from './components/example-choropleth';
 import LegendExample from './components/example-legend.jsx';
 import PunchcardExample from './components/example-punchcard.jsx';
+import LeafletChoropleth from './components/example-leafletChoropleth.jsx';
 
 class App extends Component {
   static displayName = 'App';
@@ -26,6 +27,8 @@ class App extends Component {
         <LegendExample/>
         <h2>Punchcard</h2>
         <PunchcardExample/>
+        <h2>Leaflet Choropleth</h2>
+        <LeafletChoropleth />
       </div>
     );
   }
