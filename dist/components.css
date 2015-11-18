@@ -68,10 +68,9 @@
         border-color: #768a66;
         background-color: rgba(118, 138, 102, 0.7); }
 .panorama.punchcard {
-  position: relative;
   height: 100%;
   overflow-x: hidden;
-  overflow-y: scroll; }
+  overflow-y: auto; }
   .panorama.punchcard h2, .panorama.punchcard h3 {
     margin-bottom: 0; }
   .panorama.punchcard .header {
@@ -99,8 +98,10 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    max-width: 20em;
     transform: translate(-50%, -50%);
-    text-align: center; }
+    text-align: center;
+    white-space: normal; }
 .panorama-leaflet-tip {
   pointer-events: none; }
   .panorama-leaflet-tip .leaflet-popup-content-wrapper {

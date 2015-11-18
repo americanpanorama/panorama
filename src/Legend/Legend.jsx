@@ -42,6 +42,14 @@ export default class Legend extends React.Component {
     // Store the selected item for use in render().
     this.setState({ selectedItem: event.currentTarget.dataset.item });
 
+    // TODO WEDS:
+    // Set up AppActionCreator for panorama components
+    // that components can call directly, and consumers can listen to.
+
+    // reminder:
+    // panorama-template is now `npm link`ed to this local repo,
+    // so will pick up changes from running `npm run build:dist` here.
+
   }
 
   onItemEnter (event) {
@@ -63,20 +71,20 @@ export default class Legend extends React.Component {
     return (
       <div className='panorama legend'>
         <ul>
-        {this.props.items.map(item => {
+        { this.props.items.map(item => {
           return (
             <li
-              className = {'item' + (this.state.selectedItem === item ? ' selected' : '')}
-              data-item = {item}
-              key = {item}
-              onClick = {this.onItemClick}
-              onMouseEnter = {this.onItemEnter}
-              onMouseLeave = {this.onItemLeave}
+              className = { 'item' + (this.state.selectedItem === item ? ' selected' : '') }
+              data-item = { item }
+              key = { item }
+              onClick = { this.onItemClick }
+              onMouseEnter = { this.onItemEnter }
+              onMouseLeave = { this.onItemLeave }
             >
-              <span>{this.capitalize(item)}</span>
+              <span>{ this.capitalize(item) }</span>
             </li>
           );
-        })}
+        }) }
         </ul>
       </div>
     );

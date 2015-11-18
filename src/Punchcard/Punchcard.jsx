@@ -28,13 +28,6 @@ export default class Punchcard extends React.Component {
 
     super(props);
 
-    // set up initial state (instead of ES5-style getInitialState)
-    // this.state =
-
-    // bind handlers to this component instance,
-    // since React no longer does this automatically when using ES6
-    // this.onThingClicked = this.onThingClicked.bind(this);
-
   }
 
   componentWillMount () {}
@@ -123,7 +116,7 @@ export default class Punchcard extends React.Component {
 const d3Punchcard = {
 
   // layout constants
-  ROW_HEIGHT: 20,
+  ROW_HEIGHT: 25,
   COMMODITY_TEXT_OFFSET_Y: 5,
 
   /**
@@ -180,11 +173,13 @@ const d3Punchcard = {
       .attr('height', (d) => d.commodities.length * scope.ROW_HEIGHT)
       .style('fill', (d) => colorScale(d.aggregateNormalizedValue));
 
+    let categoryNodeWidth = categoryNodes.node().offsetWidth;
+
     // <g> for each commodity within each category
     let commodityNodes = categoryNodes.selectAll('g')
       .data((d) => d.commodities)
-      .enter().append('g')
-      .attr('transform', (d, i) => `translate(${ 0.5 * scope.ROW_HEIGHT }, ${ (i+0.5) * scope.ROW_HEIGHT })`);
+      .enter().append('g');
+      // .attr('transform', (d, i) => `translate(${ 0.5 * scope.ROW_HEIGHT }, ${ (i+0.5) * scope.ROW_HEIGHT })`);
 
     // <circle> displaying scaled amount of each commodity
     commodityNodes.append('circle')
@@ -194,7 +189,26 @@ const d3Punchcard = {
     commodityNodes.append('text')
       .text((d) => d.name)
       .attr('x', 2 * scope.ROW_HEIGHT)
-      .attr('y', scope.COMMODITY_TEXT_OFFSET_Y);
+      .attr('y', scope.COMMODITY_TEXT_OFFSET_Y)
+      .call(this.wrap, categoryNodeWidth - 2.5 * scope.ROW_HEIGHT);
+
+    // adjust dimensions to account for text wrapping
+    let numLineWraps;
+    categoryNodes.each(function (d0, i0) {
+      d3.select(this).selectAll('g').each(function (d1, i1) {
+        if (!i1) { numLineWraps = 0; }
+
+        let g = d3.select(this);
+        g.attr('transform', `translate(${ 0.5 * scope.ROW_HEIGHT }, ${ (i1+0.5 + numLineWraps) * scope.ROW_HEIGHT })`);
+
+        // Increment number of linewraps within this <g>
+        numLineWraps += (g.selectAll('tspan').size() - 1);
+      });
+
+      // Increase height of <svg> accordingly
+      let svg = d3.select(this);
+      svg.attr('height', parseFloat(svg.attr('height')) + numLineWraps * scope.ROW_HEIGHT);
+    });
 
   },
 
@@ -206,6 +220,52 @@ const d3Punchcard = {
   destroy: function (node) {
 
     d3.select(node).html('');
+
+  },
+
+  /**
+   * Wrap SVG text. Adapted from http://bl.ocks.org/mbostock/7555321
+   */
+  wrap: function (text, width) {
+
+    text.each(function() {
+
+      let breakChars = ['/', '&'],
+        text = d3.select(this),
+        textContent = text.text(),
+        spanContent;
+
+      breakChars.forEach(char => {
+        // Add a space after each break char for the function to use to determine line breaks
+        textContent = textContent.replace(char, char + ' ');
+      });
+
+      let words = textContent.split(/\s+/).reverse(),
+        word,
+        line = [],
+        lineNumber = 0,
+        lineHeight = 1.1, // ems
+        x = text.attr('x'),
+        y = text.attr('y'),
+        dy = parseFloat(text.attr('dy') || 0),
+        tspan = text.text(null).append('tspan').attr('x', x).attr('y', y).attr('dy', dy + 'em');
+
+      while (word = words.pop()) {
+        line.push(word);
+        tspan.text(line.join(' '));
+        if (tspan.node().getComputedTextLength() > width) {
+          line.pop();
+          spanContent = line.join(' ');
+          breakChars.forEach(char => {
+            // Remove spaces trailing breakChars that were added above
+            spanContent = spanContent.replace(char + ' ', char);
+          });
+          tspan.text(spanContent);
+          line = [word];
+          tspan = text.append('tspan').attr('x', x).attr('y', y).attr('dy', ++lineNumber * lineHeight + dy + 'em').text(word);
+        }
+      }
+    });
 
   }
 
