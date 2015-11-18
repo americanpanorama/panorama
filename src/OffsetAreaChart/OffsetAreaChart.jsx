@@ -3,7 +3,7 @@ import ChartBase from '../charts/ChartBase';
 import PanoramaChart from '../charts/PanoramaChart.jsx';
 import AreaChart from '../AreaChart/AreaChart.jsx';
 import React, { PropTypes } from 'react';
-// import './style.scss';
+import './style.scss';
 
 export default class OffsetAreaChart extends PanoramaChart {
 

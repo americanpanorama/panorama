@@ -7,6 +7,7 @@ import HorizontalDiscreteBarChart from './HorizontalDiscreteBarChart/HorizontalD
 import LeafletChoropleth from './Leaflet/Choropleth';
 import Legend from './Legend/Legend';
 import MapChoropleth from './MapChoropleth/MapChoropleth';
+import OffsetAreaChart from './OffsetAreaChart/OffsetAreaChart';
 import Punchcard from './Punchcard/Punchcard';
 import Tooltip from './Leaflet/Tooltip';
 
@@ -21,7 +22,8 @@ export default {
   LeafletChoropleth,
   Legend,
   MapChoropleth,
+  OffsetAreaChart,
   Punchcard,
   Tooltip
-  
+
 };

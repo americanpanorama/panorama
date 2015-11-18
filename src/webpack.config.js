@@ -51,7 +51,7 @@ module.exports = {
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader?-advanced!sass-loader?sourceMap'),
         exclude: /node_modules/
       },
-      { test: /\.json$/, loader: "json-loader" }
+      { test: /\.json$/, loader: 'json-loader' }
     ],
     preLoaders: [
       {
