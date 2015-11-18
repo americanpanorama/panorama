@@ -8,5 +8,12 @@ var config = require('./webpack.config.js');
 module.exports = merge(config, {
   output: {
     path: path.join(__dirname, '..', 'dist')
-  }
+  },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
+  ]
 });

@@ -73,12 +73,7 @@ module.exports = {
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(true),
     new webpack.optimize.AggressiveMergingPlugin(),
-    new ExtractTextPlugin('components.css', { allChunks: true }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
-    })
+    new ExtractTextPlugin('components.css', { allChunks: true })
   ],
 
   resolve: {
