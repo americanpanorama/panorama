@@ -4,6 +4,7 @@ import { PanoramaDispatcher, PanoramaEventTypes } from './PanoramaDispatcher.js'
 import AreaChart from './AreaChart/AreaChart';
 import DiscreteBarChart from './DiscreteBarChart/DiscreteBarChart';
 import HorizontalDiscreteBarChart from './HorizontalDiscreteBarChart/HorizontalDiscreteBarChart';
+import ItemSelector from './ItemSelector/ItemSelector';
 import LeafletChoropleth from './Leaflet/Choropleth';
 import Legend from './Legend/Legend';
 import MapChoropleth from './MapChoropleth/MapChoropleth';
@@ -19,6 +20,7 @@ export default {
   AreaChart,
   DiscreteBarChart,
   HorizontalDiscreteBarChart,
+  ItemSelector,
   LeafletChoropleth,
   Legend,
   MapChoropleth,

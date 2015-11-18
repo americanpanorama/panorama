@@ -1,0 +1,254 @@
+[
+  {
+    "id": 1,
+    "name": "Albemarle & Cheasapeake"
+  },
+  {
+    "id": 2,
+    "name": "Alexandria (and Georgetown) Canal"
+  },
+  {
+    "id": 3,
+    "name": "Bald Eagle and Spring Creek Navigation"
+  },
+  {
+    "id": 4,
+    "name": "Erie Canal (French Creek Division)"
+  },
+  {
+    "id": 5,
+    "name": "Black River Canal"
+  },
+  {
+    "id": 6,
+    "name": "Blackstone Canal"
+  },
+  {
+    "id": 7,
+    "name": "Cayuga & Seneca Canal"
+  },
+  {
+    "id": 8,
+    "name": "Champlain Canal (to Whitehead)"
+  },
+  {
+    "id": 9,
+    "name": "Cheaspeake & Ohio"
+  },
+  {
+    "id": 10,
+    "name": "Chemung Canal"
+  },
+  {
+    "id": 11,
+    "name": "Chenango Extension"
+  },
+  {
+    "id": 12,
+    "name": "Chesapeake and Delaware"
+  },
+  {
+    "id": 13,
+    "name": "Cicinnati and Whitewater"
+  },
+  {
+    "id": 14,
+    "name": "Codurus Navigation"
+  },
+  {
+    "id": 15,
+    "name": "Columbus Feeder (Ohio and Erie Canal)"
+  },
+  {
+    "id": 16,
+    "name": "Conestoga Canal"
+  },
+  {
+    "id": 17,
+    "name": "Crooked Lake Canal"
+  },
+  {
+    "id": 18,
+    "name": "Cumberland and Oxford"
+  },
+  {
+    "id": 19,
+    "name": "Dalles-Celilo Canal"
+  },
+  {
+    "id": 20,
+    "name": "Delaware and Hudson"
+  },
+  {
+    "id": 21,
+    "name": "Delaware and Raritan (Feeder)"
+  },
+  {
+    "id": 22,
+    "name": "Erie Canal"
+  },
+  {
+    "id": 23,
+    "name": "Feeder"
+  },
+  {
+    "id": 24,
+    "name": "Fox River Portage"
+  },
+  {
+    "id": 25,
+    "name": "Genesee Valley Canal"
+  },
+  {
+    "id": 26,
+    "name": "Grand Reservoir Feeder"
+  },
+  {
+    "id": 27,
+    "name": "Granville Feeder (Ohio and line Canal)"
+  },
+  {
+    "id": 28,
+    "name": "Great Dismal Swamp Canal"
+  },
+  {
+    "id": 29,
+    "name": "Hocking Valley Canal"
+  },
+  {
+    "id": 30,
+    "name": "Illinois and Michigan Canal"
+  },
+  {
+    "id": 31,
+    "name": "James River and Kanawha"
+  },
+  {
+    "id": 32,
+    "name": "Junction Canal"
+  },
+  {
+    "id": 34,
+    "name": "Keweenaw Waterway"
+  },
+  {
+    "id": 35,
+    "name": "Kittanning Feeder"
+  },
+  {
+    "id": 37,
+    "name": "Lehigh Canal"
+  },
+  {
+    "id": 38,
+    "name": "Leiper Canal"
+  },
+  {
+    "id": 39,
+    "name": "Louisville and Portland Canal"
+  },
+  {
+    "id": 40,
+    "name": "Mainline (Eastern Division)"
+  },
+  {
+    "id": 41,
+    "name": "Miami & Erie"
+  },
+  {
+    "id": 42,
+    "name": "Middlesex Canal"
+  },
+  {
+    "id": 43,
+    "name": "Milan Canal"
+  },
+  {
+    "id": 44,
+    "name": "Monongahela Navigation"
+  },
+  {
+    "id": 45,
+    "name": "Morris Canal"
+  },
+  {
+    "id": 46,
+    "name": "Muskingham River Improvement"
+  },
+  {
+    "id": 47,
+    "name": "New Haven and Northampton (Farmington to Northampt"
+  },
+  {
+    "id": 48,
+    "name": "Lancaster lateral (Ohio and Erie)"
+  },
+  {
+    "id": 49,
+    "name": "Ohio and Pennsylvania Caner (Mahoning Canal)"
+  },
+  {
+    "id": 50,
+    "name": "Oswego Canal"
+  },
+  {
+    "id": 51,
+    "name": "Pennsylvania Canal (Delaware Division)"
+  },
+  {
+    "id": 52,
+    "name": "Pine Grove Feeder"
+  },
+  {
+    "id": 53,
+    "name": "Sandy and Beaver Canal (Eastern Division)"
+  },
+  {
+    "id": 54,
+    "name": "Santee Canal"
+  },
+  {
+    "id": 55,
+    "name": "Schuylkill Navigation"
+  },
+  {
+    "id": 56,
+    "name": "Soo Locks"
+  },
+  {
+    "id": 57,
+    "name": "Susquehanna and Tidewater"
+  },
+  {
+    "id": 58,
+    "name": "Tennessee-Tombigbee waterway"
+  },
+  {
+    "id": 59,
+    "name": "Union Canal"
+  },
+  {
+    "id": 60,
+    "name": "Wabash & Erie (Miami and Erie)"
+  },
+  {
+    "id": 61,
+    "name": "Walhonding Canal"
+  },
+  {
+    "id": 62,
+    "name": "Warren County Canal"
+  },
+  {
+    "id": 63,
+    "name": "Whitewater Canal"
+  },
+  {
+    "id": 64,
+    "name": "Willamette Falls Locks"
+  },
+  {
+    "id": 65,
+    "name": "Youghiogheny Navigation"
+  }
+]

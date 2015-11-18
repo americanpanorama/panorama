@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { PanoramaDispatcher, PanoramaEventTypes } from '../PanoramaDispatcher.js';
-require('./style.scss');
+import './style.scss';
 
 export default class Legend extends React.Component {
 
