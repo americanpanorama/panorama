@@ -68,13 +68,17 @@ export class MapChoroplethImpl extends Koto {
     // define layer
     var layer = this.layer('geo', this.baseLayer, {
       dataBind: function (data) {
-        _Chart.data.geometry = data.geometry;
-        _Chart.data.values = data.values;
+        _Chart.data.geometry = data.geometry || {geometry: {features: []}};
+        _Chart.data.values = data.values || [];
 
+        if (!data.geometry) return this.selectAll('path')
+          .data([]);
+        console.log('REAL');
         return this.selectAll('path')
           .data(_Chart.data.geometry.features);
       },
       insert: function () {
+        console.log('Insert');
         return this.append('path')
           .attr('class', 'geometry')
           .style('fill', function (d) {return _Chart.colorScale(_Chart.data.values.get(d.id)); })
@@ -88,6 +92,7 @@ export class MapChoroplethImpl extends Koto {
     })
     .on('merge', function () {
       // this => base selection
+      // return this.style('fill', function (d) {return _Chart.colorScale(_Chart.data.values.get(d.id)); });
     })
     .on('exit', function () {
       // this => exit selection
@@ -129,7 +134,7 @@ export class MapChoroplethImpl extends Koto {
   }
 
   updateProjection (data) {
-
+    if (!data.geometry) return;
     let scale = this.config('mapScale');
     let translate = [this._innerWidth/2, this._innerHeight/2];
 
@@ -146,16 +151,19 @@ export class MapChoroplethImpl extends Koto {
   }
 
   updateColorScale (data) {
+    let max = 0;
+    if (data.values) {
+      max = -Infinity;
+      for (let value of data.values.values()) {
+        if (value > max) max = value;
+      }
 
-    let max = -Infinity;
-    for (let value of data.values.values()) {
-      if (value > max) max = value;
+      console.log('MAX: ', max);
     }
 
     this.colorScale
       .domain([0, max])
       .range(this.config('range'));
-
   }
 
   preDraw (data) {

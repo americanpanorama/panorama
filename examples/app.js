@@ -6,7 +6,7 @@ import { PanoramaDispatcher, PanoramaEventTypes } from '../src/PanoramaDispatche
 
 import AreaChartExample from './components/example-areachart.jsx';
 import BarChartExample from './components/example-barchart';
-import ChoroplethExample from './components/example-choropleth';
+import D3ChoroplethExample from './components/example-d3Choropleth';
 import LegendExample from './components/example-legend.jsx';
 import PunchcardExample from './components/example-punchcard.jsx';
 import LeafletChoropleth from './components/example-leafletChoropleth.jsx';
@@ -73,7 +73,7 @@ class App extends Component {
         <h2>Bar Chart</h2>
         <BarChartExample />
         <h2>Choropleth</h2>
-        <ChoroplethExample />
+        <D3ChoroplethExample />
         <h2>Leaflet Choropleth</h2>
         <LeafletChoropleth />
         <h2>Legend</h2>
