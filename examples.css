@@ -24,6 +24,11 @@
     shape-rendering: crispEdges; }
   .panorama.bar-chart .x.axis path {
     display: none; }
+.panorama.intro-manager {
+  display: none; }
+
+.introjs-tooltiptext {
+  font-size: 0.66667em; }
 @charset "UTF-8";
 .panorama.item-selector {
   position: relative;
