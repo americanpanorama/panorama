@@ -25,7 +25,7 @@ const OPTIONS = [
 
 require('./style.scss');
 
-export default class Cholopleth extends MapLayer {
+export default class Choropleth extends MapLayer {
   static PropTypes = {
     styler: PropTypes.func,
     onEachFeature: PropTypes.func,

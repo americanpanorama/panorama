@@ -3,6 +3,21 @@ Visualization components developed for the American Panorama project of the Digi
 
 
 ## Install
+
+Ensure that your Node version matches that present in `.nvmrc`.
+[`nvm`](https://github.com/creationix/nvm) is the easiest way to do this,
+especially when using projects that require multiple versions of Node (see the
+`nvm` repo for installation instructions):
+
+```bash
+$ nvm install
+Found '/Users/seth/src/americanpanorama/panorama-template/.nvmrc' with version <0.12.7>
+######################################################################## 100.0%
+Now using node v0.12.7 (npm v2.11.3)
+```
+
+NOTE: you'll need to run `nvm install` (or `nvm use`) in each shell instance.
+
 Ensure your npm version is > `2.7.0` (required for support of npm scoped packages):
 
 `npm --version`
