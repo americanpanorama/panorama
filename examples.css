@@ -24,6 +24,50 @@
     shape-rendering: crispEdges; }
   .panorama.bar-chart .x.axis path {
     display: none; }
+@charset "UTF-8";
+.panorama.item-selector {
+  position: relative;
+  display: inline-block;
+  width: 10em;
+  height: 100%; }
+  .panorama.item-selector h3 {
+    margin-bottom: 0.5em; }
+  .panorama.item-selector ul {
+    margin: 0;
+    padding: 0 0.5em 0 0;
+    height: 65%;
+    overflow-y: auto; }
+    .panorama.item-selector ul li {
+      margin-bottom: 0.1em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      cursor: pointer;
+      list-style-type: none; }
+      .panorama.item-selector ul li.selected {
+        border-width: 1px;
+        border-style: solid;
+        padding: 0.1em; }
+  .panorama.item-selector .scroll-arrow {
+    width: 100%;
+    text-align: center;
+    cursor: pointer; }
+    .panorama.item-selector .scroll-arrow::before {
+      content: '\3009';
+      display: inline-block;
+      padding-left: 0.5em;
+      transform: rotate(-0.25turn); }
+    .panorama.item-selector .scroll-arrow.down-arrow::before {
+      transform: rotate(0.25turn); }
+.panorama-leaflet-tip {
+  pointer-events: none; }
+  .panorama-leaflet-tip .leaflet-popup-content-wrapper {
+    background: #fff;
+    background: rgba(255, 255, 255, 0.8); }
+  .panorama-leaflet-tip .leaflet-popup-tip-container {
+    display: none; }
+  .panorama-leaflet-tip .leaflet-popup-content-wrapper {
+    border-radius: 4px; }
 .panorama.legend {
   position: relative;
   width: auto;
@@ -67,11 +111,25 @@
       .panorama.legend ul li:nth-child(3) span:before {
         border-color: #768a66;
         background-color: rgba(118, 138, 102, 0.7); }
+.panorama.offset-area-chart {
+  position: relative; }
+  .panorama.offset-area-chart .area-chart {
+    position: absolute; }
+    .panorama.offset-area-chart .area-chart path.area {
+      opacity: 0.7; }
+  .panorama.offset-area-chart .axis {
+    font: 10px sans-serif; }
+  .panorama.offset-area-chart .axis path,
+  .panorama.offset-area-chart .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges; }
+  .panorama.offset-area-chart .metadata circle {
+    stroke: none; }
 .panorama.punchcard {
-  position: relative;
   height: 100%;
   overflow-x: hidden;
-  overflow-y: scroll; }
+  overflow-y: auto; }
   .panorama.punchcard h2, .panorama.punchcard h3 {
     margin-bottom: 0; }
   .panorama.punchcard .header {
@@ -99,16 +157,9 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    max-width: 20em;
     transform: translate(-50%, -50%);
-    text-align: center; }
-.panorama-leaflet-tip {
-  pointer-events: none; }
-  .panorama-leaflet-tip .leaflet-popup-content-wrapper {
-    background: #fff;
-    background: rgba(255, 255, 255, 0.8); }
-  .panorama-leaflet-tip .leaflet-popup-tip-container {
-    display: none; }
-  .panorama-leaflet-tip .leaflet-popup-content-wrapper {
-    border-radius: 4px; }
+    text-align: center;
+    white-space: normal; }
 
 /*# sourceMappingURL=examples.css.map*/
