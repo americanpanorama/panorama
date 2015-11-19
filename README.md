@@ -75,8 +75,10 @@ npm run components:test
 ```
 
 ### Publish to NPM
-`$ npm login`
-`> Username: panorama`
-`> Password: TODO: how to share npm password with contributors?`
-`> Email: ericsoco@stamen.com`
-`$ npm run publish:dist`
+```bash
+$ npm login
+> Username: panorama
+> Password: TODO: how to share npm password with contributors?
+> Email: ericsoco@stamen.com
+$ npm run publish:dist
+```
