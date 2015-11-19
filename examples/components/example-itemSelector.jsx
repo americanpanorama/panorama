@@ -17,7 +17,7 @@ export default class ItemSelectorExample extends React.Component {
   render () {
 
     let data = {
-      title: 'Select a canal:',
+      title: 'Select an item:',
       items: itemSelectorData
     };
 
