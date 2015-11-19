@@ -65,7 +65,7 @@ export default class LeafletChoroplethExample extends Component {
   render() {
     return (
       <div>
-        <Map style={{width: '800px', height: '500px'}} center={[37.8, -96]} zoom={4}>
+        <Map style={{width: '800px', height: '500px'}} center={[37.8, -96]} zoom={4} scrollWheelZoom={false}>
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
