@@ -7,34 +7,41 @@ import { Map as Map, TileLayer } from 'react-leaflet';
 import { LeafletChoropleth } from '../../src/main';
 import { Tooltip } from '../../src/main';
 
-// Our data for the map
-// In a real scenario, this would most likely have to loaded
-// from an external source
-const geodata = require('../data/us.json');
-const mapValues = require('../data/unemployment.json');
-
 export default class LeafletChoroplethExample extends Component {
-
   constructor() {
     super();
+    this.state = {
+      geometry: null
+    };
+
+    this.vals = {};
+    this.colorScale = d3.scale.quantize()
+      .range(['#EDF8FB', '#BFD3E6', '#9EBCDA', '#8C96C6', '#8C6BB1','#88419D', '#6E016B']);
+  }
+
+  dataLoader() {
+    d3.json('../data/us.geojson', (err, rsp) => {
+      const geometry = topojson.feature(rsp, rsp.objects.counties);
+
+      d3.json('../data/unemployment.json', (err, rsp) => {
+        let max = -Infinity;
+
+        rsp.forEach(r => {
+          this.vals[r.id] = +r.rate;
+          max = Math.max(max, +r.rate);
+        });
+
+        this.colorScale.domain([0, max]);
+        this.setState({geometry: geometry});
+      });
+    });
   }
 
   componentWillMount() {
-    const colorRange = ['#EDF8FB', '#BFD3E6', '#9EBCDA', '#8C96C6', '#8C6BB1','#88419D', '#6E016B'];
-    let max = -Infinity;
-
-    this.vals = {};
-
-    mapValues.forEach(r => {
-      this.vals[r.id] = +r.rate;
-      max = Math.max(max, +r.rate);
-    });
-
-    this.geometry = topojson.feature(geodata, geodata.objects.counties);
-    this.colorScale = d3.scale.quantize()
-      .range(colorRange)
-      .domain([0, max]);
+    this.dataLoader();
   }
+
+  componentDidMount() {}
 
   styler(feature) {
     const value = this.vals[feature.id] || 0;
@@ -63,7 +70,7 @@ export default class LeafletChoroplethExample extends Component {
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
           <LeafletChoropleth
-            data={this.geometry}
+            data={this.state.geometry}
             style={this.styler.bind(this)}
             onFeatureClick={this.onClickHandler.bind(this)}
             setTooltipContent={this.setTooltipContent.bind(this)}

@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, {PropTypes, Children} from 'react';
 import { MapLayer } from 'react-leaflet';
 import { geoJson, DomEvent } from 'leaflet';
 import pick from 'lodash/object/pick';
@@ -41,9 +41,12 @@ export default class Cholopleth extends MapLayer {
   constructor() {
     super();
 
+    // Internal variables
     this.mouseTimer = null;
     this.currentId = null;
     this.hasTooltip = false;
+
+    // State used to update tooltip
     this.state = {
       showTooltip: false,
       tooltipPosition: null,
@@ -51,41 +54,54 @@ export default class Cholopleth extends MapLayer {
     };
   }
 
+  // TODO: Handle updates
   shouldComponentUpdate(nextProps) {
     return true;
   }
 
   componentWillMount() {
-    console.log(this.props.children);
     super.componentWillMount();
-    const { data, children, ...props } = this.props;
-    this.setTooltipFlag();
 
-    const options = {
+    const { data } = this.props;
+    const options = this.setGeoJSONOptions();
+    this.setTooltipFlag();
+    this.leafletElement = geoJson(data, options);
+  }
+
+  componentDidMount() {
+    const { map } = this.props;
+    this.leafletElement.addTo(map);
+    if (this.hasTooltip) map.on('mousemove', this.onMouseMove.bind(this));
+  }
+
+  componentWillUnmount() {}
+
+  componentDidUpdate(prevProps) {
+    const { data } = this.props;
+    if (prevProps.data !== data) {
+      this.leafletElement.addData(data);
+    }
+  }
+
+  setGeoJSONOptions() {
+    const { ...props } = this.props;
+    return {
       style: props.style || null,
       onEachFeature: props.onEachFeature || this.onEachFeature.bind(this),
       filter: props.filter || null,
       pointToLayer: props.pointToLayer || null,
       coordsToLatLng: props.coordsToLatLng || null,
     };
-
-    this.leafletElement = geoJson(data, options);
   }
-
-  componentDidMount() {
-    this.leafletElement.addTo(this.props.map);
-    if (this.hasTooltip) this.props.map.on('mousemove', this.onMouseMove.bind(this));
-  }
-
-  componentWillUnmount() {}
-
-  componentDidUpdate() {}
 
   setTooltipFlag() {
     const { children } = this.props;
-    try{
-      this.hasTooltip = (children.type.name === 'Tooltip') ? true : false;
-    }catch(err) {}
+
+    Children.forEach(children, (child) => {
+      if (child.type &&
+          child.type.name &&
+          child.type.name === 'Tooltip') this.hasTooltip = true;
+    });
   }
 
   getPathOptions(props) {
