@@ -10,10 +10,13 @@ especially when using projects that require multiple versions of Node (see the
 `nvm` repo for installation instructions):
 
 ```bash
-$ nvm use
-Found '/Users/seth/src/americanpanorama/panorama/.nvmrc' with version <0.12.7>
+$ nvm install
+Found '/Users/seth/src/americanpanorama/panorama-template/.nvmrc' with version <0.12.7>
+######################################################################## 100.0%
 Now using node v0.12.7 (npm v2.11.3)
 ```
+
+NOTE: you'll need to run `nvm install` (or `nvm use`) in each shell instance.
 
 Ensure your npm version is > `2.7.0` (required for support of npm scoped packages):
 
