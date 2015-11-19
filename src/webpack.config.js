@@ -20,6 +20,7 @@ module.exports = {
   externals: [
     {
       'd3': 'd3',
+      'intro.js': 'intro.js',
       'koto': 'koto',
       'leaflet': 'leaflet',
       'lodash': 'lodash',

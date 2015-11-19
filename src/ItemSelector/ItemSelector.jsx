@@ -1,185 +1,188 @@
 import React, { PropTypes } from 'react';
-
-// TODO: either pass this into the component from the host application (add to panorama-template),
-// or set up an AppDispatcher shared across all @panorama/toolkit components.
-import { AppActions } from '../../utils/AppActionCreator';
-
-// import './style.scss';
+import { PanoramaDispatcher, PanoramaEventTypes } from '../PanoramaDispatcher.js';
+import './style.scss';
 
 export default class ItemSelector extends React.Component {
 
-	static propTypes = {
-		initialSelection: PropTypes.string,
-		items: PropTypes.object.isRequired
-	}
+  static propTypes = {
+    title: PropTypes.string,
+    items: PropTypes.array.isRequired,
+    selectedIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    selectedItem: PropTypes.object
+  }
 
-	static defaultProps = {
-		initialSelection: '',
-		items: {}
-	}
+  static defaultProps = {
+    title: '',
+    items: [],
+    selectedIndex: '',
+    selectedItem: null
+  }
 
-	constructor (props) {
+  constructor (props) {
 
-		super(props);
+    super(props);
 
-		// manually bind event handlers,
-		// since React ES6 doesn't do this automatically
-		this.onItemClick = this.onItemClick.bind(this);
-		this.onArrowMouseDown = this.onArrowMouseDown.bind(this);
-		this.onArrowMouseUp = this.onArrowMouseUp.bind(this);
-		this.animateScrollPosition = this.animateScrollPosition.bind(this);
+    // manually bind event handlers,
+    // since React ES6 doesn't do this automatically
+    this.onItemClick = this.onItemClick.bind(this);
+    this.onArrowMouseDown = this.onArrowMouseDown.bind(this);
+    this.onArrowMouseUp = this.onArrowMouseUp.bind(this);
+    this.animateScrollPosition = this.animateScrollPosition.bind(this);
 
-	}
+  }
 
-	componentWillMount () {
+  componentWillMount () {
 
-		//
+    //
 
-	}
+  }
 
-	componentDidMount () {
+  componentDidMount () {
 
-		//
+    this.scrollToSelectedItem();
 
-	}
+  }
 
-	componentWillUnmount () {
+  componentWillUnmount () {
 
-		//
+    //
 
-	}
+  }
 
-	componentDidUpdate () {
+  componentDidUpdate () {
 
-		this.scrollToSelectedItem();
+    this.scrollToSelectedItem();
 
-	}
+  }
 
-	onItemClick (event) {
+  onItemClick (event) {
 
-		// Defense.
-		if (!event.currentTarget || !event.currentTarget.dataset) { return; }
+    // Defense.
+    if (!event.currentTarget || !event.currentTarget.dataset) { return; }
 
-		// TODO: how to abstract this? AppActions for @panorama/toolkit? and set up CommodityStore to listen to it?
-		AppActions.canalSelected(event.currentTarget.dataset.item);
+    // Notify any subscribers of item selection
+    PanoramaDispatcher.ItemSelector.selected(this.props.items[event.currentTarget.dataset.index], event.currentTarget.dataset.index);
 
-	}
+  }
 
-	onArrowMouseDown (event) {
+  onArrowMouseDown (event) {
 
-		let dir;
-		if (event.target.classList.contains('up-arrow')) {
-			dir = -1;
-		} else if (event.target.classList.contains('down-arrow')) {
-			dir = 1;
-		}
-		if (!dir) { return; }
+    let dir;
+    if (event.target.classList.contains('up-arrow')) {
+      dir = -1;
+    } else if (event.target.classList.contains('down-arrow')) {
+      dir = 1;
+    }
+    if (!dir) { return; }
 
-		let itemList = this.refs['item-list'],
-			nextAccelCounter = 16,
-			accelCounter = 0,
-			itemEl = itemList.querySelector('li'),
-			itemMetrics = window.getComputedStyle(itemEl),
-			speed = itemEl.offsetHeight + (itemMetrics ? parseFloat(itemMetrics['margin-bottom'].replace('px', '')) : 0);
+    let itemList = this.refs['item-list'],
+      nextAccelCounter = 16,
+      accelCounter = 0,
+      itemEl = itemList.querySelector('li'),
+      itemMetrics = window.getComputedStyle(itemEl),
+      speed = itemEl.offsetHeight + (itemMetrics ? parseFloat(itemMetrics['margin-bottom'].replace('px', '')) : 0);
 
-		this.arrowMouseUp = false;
+    this.arrowMouseUp = false;
 
-		let onArrowMouseHold = function () {
-			if (accelCounter-- <= 1) {
-				this.scrollToPosition(itemList.scrollTop + dir * speed);
-				accelCounter = nextAccelCounter = Math.max(1, Math.floor(nextAccelCounter * 0.75));
-			}
-			
-			if (!this.arrowMouseUp) {
-				window.requestAnimationFrame(onArrowMouseHold);
-			}
-		}.bind(this);
+    let onArrowMouseHold = function () {
+      if (accelCounter-- <= 1) {
+        this.scrollToPosition(itemList.scrollTop + dir * speed);
+        accelCounter = nextAccelCounter = Math.max(1, Math.floor(nextAccelCounter * 0.75));
+      }
+      
+      if (!this.arrowMouseUp) {
+        window.requestAnimationFrame(onArrowMouseHold);
+      }
+    }.bind(this);
 
-		window.requestAnimationFrame(onArrowMouseHold);
+    window.requestAnimationFrame(onArrowMouseHold);
 
-	}
+  }
 
-	onArrowMouseUp (event) {
+  onArrowMouseUp (event) {
 
-		this.arrowMouseUp = true;
-		
-	}
+    this.arrowMouseUp = true;
+    
+  }
 
-	scrollToPosition (position) {
+  scrollToPosition (position) {
 
-		if (typeof this.targetScrollPosition === 'undefined') {
-			// Not currently animating, so start
-			this.targetScrollPosition = position;
-			this.animateScrollPosition();
-		} else {
-			// Already animating; just update target
-			this.targetScrollPosition = position;
-		}
+    if (typeof this.targetScrollPosition === 'undefined') {
+      // Not currently animating, so start
+      this.targetScrollPosition = position;
+      this.animateScrollPosition();
+    } else {
+      // Already animating; just update target
+      this.targetScrollPosition = position;
+    }
 
-	}
+  }
 
-	scrollToSelectedItem () {
+  scrollToSelectedItem () {
 
-		let itemList = this.refs['item-list'],
-			selectedItem = itemList.querySelector('.selected');
+    let itemList = this.refs['item-list'],
+      selectedItem = itemList.querySelector('.selected');
 
-		this.scrollToPosition(selectedItem.offsetTop - itemList.offsetHeight + 20);
+    if (selectedItem) {
+      this.scrollToPosition(selectedItem.offsetTop - itemList.offsetHeight);
+    }
 
-	}
+  }
 
-	animateScrollPosition () {
+  animateScrollPosition () {
 
-		let itemList = this.refs['item-list'],
-			delta;
+    let itemList = this.refs['item-list'],
+      delta;
 
-		if (typeof this.scrollPosition === 'undefined') {
-			this.scrollPosition = itemList.scrollTop;
-		}
+    if (typeof this.scrollPosition === 'undefined') {
+      this.scrollPosition = itemList.scrollTop;
+    }
 
-		delta = this.targetScrollPosition - this.scrollPosition;
-		
-		if (Math.abs(delta) > 1) {
-			this.scrollPosition += 0.25 * delta;
-			itemList.scrollTop = this.scrollPosition;	// scrollTop rounds to the nearest int
-			window.requestAnimationFrame(this.animateScrollPosition);
-		} else {
-			itemList.scrollTop = this.targetScrollPosition;
-			this.targetScrollPosition = undefined;
-			this.scrollPosition = undefined;
-		}
-	}
+    delta = this.targetScrollPosition - this.scrollPosition;
+    
+    if (Math.abs(delta) > 1) {
+      this.scrollPosition += 0.25 * delta;
+      itemList.scrollTop = this.scrollPosition; // scrollTop rounds to the nearest int
+      window.requestAnimationFrame(this.animateScrollPosition);
+    } else {
+      itemList.scrollTop = this.targetScrollPosition;
+      this.targetScrollPosition = undefined;
+      this.scrollPosition = undefined;
+    }
+  }
 
-	getDefaultState () {
+  getDefaultState () {
 
-		return {};
+    return {};
 
-	}
+  }
 
-	render () {
+  render () {
 
-		return (
-			<div className='panorama item-selector'>
-				<h3>SELECT A CANAL:</h3>
-				<div className='scroll-arrow up-arrow' onMouseDown={ this.onArrowMouseDown } onMouseUp={ this.onArrowMouseUp } />
-				<ul ref='item-list'>
-					{ Object.keys(this.props.items).map((itemKey, i) => {
-						let item = this.props.items[itemKey];
-						return (
-							<li
-								className = { 'item' + (this.props.selectedItem.id === item.id ? ' selected' : '') }
-								data-item = { itemKey }
-								key = { i }
-								onClick = { this.onItemClick }
-							>
-								<span>{ item.name.toUpperCase() }</span>
-							</li>
-						);
-					}) }
-				</ul>
-				<div className='scroll-arrow down-arrow' onMouseDown={ this.onArrowMouseDown } onMouseUp={ this.onArrowMouseUp } />
-			</div>
-		);
+    return (
+      <div className='panorama item-selector'>
+        <h3>{ this.props.title }</h3>
+        <div className='scroll-arrow up-arrow' onMouseDown={ this.onArrowMouseDown } onMouseUp={ this.onArrowMouseUp } />
+        <ul ref='item-list'>
+          { this.props.items.map((item, i) => {
 
-	}
+            return (
+              <li
+                className = { 'item' + ((this.props.selectedItem.id == item.id || this.props.selectedIndex === i) ? ' selected' : '') }
+                data-index = { i }
+                key = { i }
+                onClick = { this.onItemClick }
+              >
+                <span>{ item.name.toUpperCase() }</span>
+              </li>
+            );
+
+          }) }
+        </ul>
+        <div className='scroll-arrow down-arrow' onMouseDown={ this.onArrowMouseDown } onMouseUp={ this.onArrowMouseUp } />
+      </div>
+    );
+
+  }
 
 }

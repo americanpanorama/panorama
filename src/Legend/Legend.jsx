@@ -1,17 +1,19 @@
 import React, { PropTypes } from 'react';
 import { PanoramaDispatcher, PanoramaEventTypes } from '../PanoramaDispatcher.js';
-require('./style.scss');
+import './style.scss';
 
 export default class Legend extends React.Component {
 
   static propTypes = {
     items: PropTypes.array.isRequired,
-    selectedItem: PropTypes.string
+    selectedItem: PropTypes.string,
+    onItemSelected: PropTypes.func
   }
 
   static defaultProps = {
     items: [],
-    selectedItem: ''
+    selectedItem: '',
+    onItemSelected: null
   }
 
   constructor (props) {
@@ -37,7 +39,12 @@ export default class Legend extends React.Component {
     // Defense.
     if (!event.currentTarget || !event.currentTarget.dataset) { return; }
 
-    // Notify any subscribers of item selection
+    // Direct communication: call callback if it was passed in.
+    if (this.props.onItemSelected) {
+      this.props.onItemSelected(event.currentTarget.dataset.item, this.props.items.indexOf(event.currentTarget.dataset.item));
+    }
+
+    // Indirect communication: Notify any subscribers of item selection.
     PanoramaDispatcher.Legend.selected(event.currentTarget.dataset.item, this.props.items.indexOf(event.currentTarget.dataset.item));
 
   }

@@ -1,7 +1,6 @@
 import { introJs } from 'intro.js';
 import React, { PropTypes } from 'react';
-
-// import './style.scss';
+import './style.scss';
 
 export default class IntroManager extends React.Component {
 
@@ -9,14 +8,14 @@ export default class IntroManager extends React.Component {
     open: PropTypes.bool,
     step: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     steps: PropTypes.arrayOf(PropTypes.shape({
-        'element': PropTypes.string,
-        'intro': PropTypes.string,
-        'position': (props, propName, componentName) => {
-          if (!/top|right|bottom|left/.test(props[propName])) {
-            return new Error('`position` must be one of \'top\', \'right\', \'bottom\', or \'left\'.');
-          }
+      'element': PropTypes.string,
+      'intro': PropTypes.string,
+      'position': (props, propName, componentName) => {
+        if (!/top|right|bottom|left/.test(props[propName])) {
+          return new Error('`position` must be one of \'top\', \'right\', \'bottom\', or \'left\'.');
         }
-      })).isRequired,
+      }
+    })).isRequired,
     config: PropTypes.object
   }
 
@@ -37,7 +36,7 @@ export default class IntroManager extends React.Component {
 
     super(props);
 
-    this.intro = introJs(document.querySelector("body"));
+    this.intro = introJs(document.querySelector('body'));
     this.introIsOpen = false;
     this.intro.onexit(() => {
       this.introIsOpen = false;
@@ -71,7 +70,7 @@ export default class IntroManager extends React.Component {
       // treat it as stateless, the React way.
       let options = {
         steps: this.props.steps
-      }
+      };
       options = Object.assign(options, this.props.config);
 
       this.intro.setOptions(options);
