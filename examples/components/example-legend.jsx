@@ -11,7 +11,15 @@ export default class LegendExample extends React.Component {
   constructor (props) {
 
     super(props);
+    this.state = {};
+    this.onItemSelected = this.onItemSelected.bind(this);
 
+  }
+
+  onItemSelected (value, index) {
+    this.setState({
+      selectedItem: value
+    });
   }
 
   render () {
@@ -22,11 +30,11 @@ export default class LegendExample extends React.Component {
         'cotton',
         'sugar'
       ],
-      selectedItem: this.props.selected || 'narratives'
+      selectedItem: this.state.selectedItem || 'narratives'
     };
 
     return (
-      <Legend { ...legendData }/>
+      <Legend { ...legendData } onItemSelected={ this.onItemSelected }/>
     );
 
   }

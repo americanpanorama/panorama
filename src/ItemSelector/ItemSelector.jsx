@@ -8,14 +8,16 @@ export default class ItemSelector extends React.Component {
     title: PropTypes.string,
     items: PropTypes.array.isRequired,
     selectedIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    selectedItem: PropTypes.object
+    selectedItem: PropTypes.object,
+    onItemSelected: PropTypes.func
   }
 
   static defaultProps = {
     title: '',
     items: [],
     selectedIndex: '',
-    selectedItem: null
+    selectedItem: null,
+    onItemSelected: null
   }
 
   constructor (props) {
@@ -60,7 +62,12 @@ export default class ItemSelector extends React.Component {
     // Defense.
     if (!event.currentTarget || !event.currentTarget.dataset) { return; }
 
-    // Notify any subscribers of item selection
+    // Direct communication: call callback if it was passed in.
+    if (this.props.onItemSelected) {
+      this.props.onItemSelected(this.props.items[event.currentTarget.dataset.index], event.currentTarget.dataset.index);
+    }
+
+    // Indirect communication: Notify any subscribers of item selection.
     PanoramaDispatcher.ItemSelector.selected(this.props.items[event.currentTarget.dataset.index], event.currentTarget.dataset.index);
 
   }
@@ -159,6 +166,8 @@ export default class ItemSelector extends React.Component {
 
   render () {
 
+    let isSelected;
+
     return (
       <div className='panorama item-selector'>
         <h3>{ this.props.title }</h3>
@@ -166,9 +175,14 @@ export default class ItemSelector extends React.Component {
         <ul ref='item-list'>
           { this.props.items.map((item, i) => {
 
+            isSelected = 
+              this.props.selectedItem.id == item.id ||  // selectedItem with items as Objects
+              this.props.selectedItem === item ||       // selectedItem with items as Strings
+              this.props.selectedIndex === i;           // selectedIndex
+
             return (
               <li
-                className = { 'item' + ((this.props.selectedItem.id == item.id || this.props.selectedIndex === i) ? ' selected' : '') }
+                className = { 'item' + (isSelected ? ' selected' : '') }
                 data-index = { i }
                 key = { i }
                 onClick = { this.onItemClick }

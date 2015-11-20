@@ -31,6 +31,9 @@ class App extends Component {
 
   componentWillMount () {
 
+    // @panorama/toolkit offers a global dispatcher that can be used instead of passing callbacks to child components.
+    // This option can be useful when your component hierarchy is multiple levels deep, and the component
+    // that needs to handle a change is multiple levels above the component dispatching the event.
     PanoramaDispatcher.addListener(PanoramaEventTypes.Legend.selected, this.onLegendSelected);
     PanoramaDispatcher.addListener(PanoramaEventTypes.ItemSelector.selected, this.onItemSelected);
     PanoramaDispatcher.addListener(PanoramaEventTypes.ChartSlider.selected, this.onChartSliderSelected);
@@ -38,30 +41,15 @@ class App extends Component {
   }
 
   onLegendSelected (value, index) {
-    console.log('Legend selected: { value:' + value + ', index:' + index + ' }');
-    this.setState({
-      legend: {
-        selected: value
-      }
-    });
+    console.log('via PanoramaDispatcher: Legend selected: { value:' + value + ', index:' + index + ' }');
   }
 
   onItemSelected (value, index) {
-    console.log('ItemSelector selected: { value:' + value + ', index:' + index + ' }');
-    this.setState({
-      itemSelector: {
-        selected: value
-      }
-    });
+    console.log('via PanoramaDispatcher: ItemSelector selected: { value:' + value + ', index:' + index + ' }');
   }
 
   onChartSliderSelected (value) {
-    console.log('ChartSlider selected: { value:' + value + ' }');
-    this.setState({
-      chartSlider: {
-        selected: value
-      }
-    });
+    console.log('via PanoramaDispatcher: ChartSlider selected: { value:' + value + ' }');
   }
 
   render () {
