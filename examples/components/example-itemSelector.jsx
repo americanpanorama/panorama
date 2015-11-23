@@ -11,7 +11,15 @@ export default class ItemSelectorExample extends React.Component {
   constructor (props) {
 
     super(props);
+    this.state = {};
+    this.onItemSelected = this.onItemSelected.bind(this);
 
+  }
+
+  onItemSelected (value, index) {
+    this.setState({
+      selectedItem: value
+    });
   }
 
   render () {
@@ -21,11 +29,11 @@ export default class ItemSelectorExample extends React.Component {
       items: itemSelectorData
     };
 
-    data.selectedItem = this.props.selected || data.items[21];
+    data.selectedItem = this.state.selectedItem || data.items[21];
 
     return (
       <div style={ { height: '200px' } }>
-        <ItemSelector { ...data }/>
+        <ItemSelector { ...data } onItemSelected={ this.onItemSelected }/>
       </div>
     );
 
