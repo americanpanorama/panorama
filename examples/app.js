@@ -12,6 +12,7 @@ import ItemSelectorExample from './components/example-itemSelector.jsx';
 import LeafletChoropleth from './components/example-leafletChoropleth.jsx';
 import LegendExample from './components/example-legend.jsx';
 import PunchcardExample from './components/example-punchcard.jsx';
+import Donut from './components/example-donut.jsx';
 
 class App extends Component {
 
@@ -86,6 +87,8 @@ class App extends Component {
         <LegendExample { ...this.state.legend } />
         <h2>Punchcard</h2>
         <PunchcardExample />
+        <h2><a name="donut">Donut</a></h2>
+        <Donut />
       </div>
     );
 
