@@ -14,6 +14,9 @@ confirm () {
 }
 
 build () {
+    # push up any local commits to avoid squashing
+    git push
+
     # rebuild dist and commit to clean git working directory
     npm run build:dist
     git add .
