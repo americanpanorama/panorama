@@ -1,8 +1,7 @@
 import React, {PropTypes, Children} from 'react';
 import { Path, PropTypes as LeafletPropTypes } from 'react-leaflet';
 import { DomEvent } from 'leaflet';
-import donut from './L.Donut.js';
-
+import { LeafletDonut } from './L.Donut';
 
 export default class Donut extends Path {
   // Radii are in meters
@@ -21,7 +20,7 @@ export default class Donut extends Path {
   componentWillMount() {
     const {center, outerRadius, innerRadius, ...props} = this.props;
     super.componentWillMount();
-    this.leafletElement = new donut(center, outerRadius, innerRadius, this.getPathOptions(props));
+    this.leafletElement = new LeafletDonut(center, outerRadius, innerRadius, this.getPathOptions(props));
   }
 
   componentDidUpdate(prevProps) {
