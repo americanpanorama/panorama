@@ -1,6 +1,6 @@
 {
   "name": "@panorama/toolkit",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "Panorama visualization toolkit",
   "main": "dist/components.js",
   "scripts": {
@@ -58,7 +58,7 @@
   "dependencies": {
     "d3": "^3.5.6",
     "intro.js": "^1.1.1",
-    "koto": "^0.1.8",
+    "koto": "ericsoco/kotojs#es5ified-patch",
     "leaflet": "^0.7.7",
     "lodash": "^3.10.1",
     "react": "^0.14.0",
