@@ -1,6 +1,6 @@
 import * as L from 'leaflet';
 
-const Donut = (function (L) {
+export const LeafletDonut = (function (L) {
 
   return L.Circle.extend({
 
@@ -20,9 +20,9 @@ const Donut = (function (L) {
 
     projectLatlngs: function () {
       var lngRadius = this._getLngRadius(),
-          latlng = this._latlng,
-          outerPointLeft = this._map.latLngToLayerPoint([latlng.lat, latlng.lng - lngRadius[0]]),
-          innerPointLeft = this._map.latLngToLayerPoint([latlng.lat, latlng.lng - lngRadius[1]]);
+        latlng = this._latlng,
+        outerPointLeft = this._map.latLngToLayerPoint([latlng.lat, latlng.lng - lngRadius[0]]),
+        innerPointLeft = this._map.latLngToLayerPoint([latlng.lat, latlng.lng - lngRadius[1]]);
 
       this._point = this._map.latLngToLayerPoint(latlng);
       this._outerRadius = Math.max(this._point.x - outerPointLeft.x, 1);
@@ -31,8 +31,8 @@ const Donut = (function (L) {
 
     getBounds: function () {
       var lngRadius = this._getLngRadius()[0],
-          latRadius = this._getLatRadius()[0],
-          latlng = this._latlng;
+        latRadius = this._getLatRadius()[0],
+        latlng = this._latlng;
 
       return new L.LatLngBounds(
               [latlng.lat - latRadius, latlng.lng - lngRadius],
@@ -62,8 +62,8 @@ const Donut = (function (L) {
       }
 
       var vp = this._map._pathViewport,
-          outerRadius = this._outerRadius,
-          p = this._point;
+        outerRadius = this._outerRadius,
+        p = this._point;
 
       return p.x - outerRadius > vp.max.x || p.y - outerRadius > vp.max.y ||
              p.x + outerRadius < vp.min.x || p.y + outerRadius < vp.min.y;
@@ -85,20 +85,20 @@ const Donut = (function (L) {
         'M', x2, y2,
         'A', innerRadius, innerRadius, 0, 1, 0, pt.x, y2,
         'Z'
-      ].join(' ')
+      ].join(' ');
     },
 
     getPathString: function () {
       var p = this._point,
-          outerRadius = this._outerRadius,
-          innerRadius = this._innerRadius;
+        outerRadius = this._outerRadius,
+        innerRadius = this._innerRadius;
 
       if (this._checkIfEmpty()) {
         return '';
       }
 
       if (L.Browser.svg) {
-       return this.getArc(p, outerRadius, innerRadius);
+        return this.getArc(p, outerRadius, innerRadius);
       } else { // TODO: VML Donut path
         p._round();
         r = Math.round(r);
@@ -108,5 +108,3 @@ const Donut = (function (L) {
   });
 
 })(L);
-
-export default Donut;

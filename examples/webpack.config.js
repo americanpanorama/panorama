@@ -17,8 +17,6 @@ module.exports = {
   },
 
   entry: [
-    'webpack-dev-server/client?http://0.0.0.0:' + WEBSERVER_PORT, // WebpackDevServer host and port
-    'webpack/hot/only-dev-server',
     './index.jsx'
   ],
 
@@ -29,7 +27,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js[x]?$/,
+        test: /\.jsx?$/,
         loader: 'babel-loader',
         query: {
           cacheDirectory: true,
@@ -71,6 +69,7 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.NoErrorsPlugin(),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(true),
     new webpack.optimize.AggressiveMergingPlugin(),
