@@ -80,8 +80,8 @@ export default class ChartSlider extends React.Component {
     } catch (e) {}
 
     let numChildren = Children.count(this.props.children);
-    if (numChildren > 1) {
-      console.warn(`ChartSlider is designed to wrap only one child component, but it found ${ numChildren } children.`);
+    if (numChildren !== 1) {
+      console.warn(`ChartSlider is designed to wrap exactly one child component, but it found ${ numChildren } children.`);
     }
 
     return (
