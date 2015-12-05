@@ -1,6 +1,6 @@
 import React, { PropTypes, Children } from 'react';
 import ReactDOM from 'react-dom';
-import * as d3 from 'd3';
+import d3 from 'd3';
 
 // TODO: either pass this into the component from the host application (add to panorama-template),
 // or set up an AppDispatcher shared across all @panorama/toolkit components.
