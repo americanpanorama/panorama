@@ -17,11 +17,13 @@ export default class IntroManagerExample extends React.Component {
     };
 
     this.triggerIntro = this.triggerIntro.bind(this);
+    this.onIntroExit = this.onIntroExit.bind(this);
 
   }
 
   triggerIntro (event) {
 
+    // render with intro open to specified step
     this.setState({
       isOpen: true,
       step: (event && event.currentTarget) ? parseInt(event.currentTarget.dataset.step) : null,
@@ -29,6 +31,14 @@ export default class IntroManagerExample extends React.Component {
 
   }
 
+  onIntroExit () {
+
+    // re-render with intro closed
+    this.setState({
+      isOpen: false
+    });
+
+  }
 
   render () {
 
@@ -69,7 +79,9 @@ export default class IntroManagerExample extends React.Component {
           intro: 'This is a map of United States counties, pulled from a <a href="http://geojson.org/">GeoJSON file.</a>',
           position: 'top'
         }
-      ]
+      ],
+
+      onExit: this.onIntroExit
     };
 
     return (

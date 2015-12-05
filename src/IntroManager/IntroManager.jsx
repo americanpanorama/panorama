@@ -16,7 +16,8 @@ export default class IntroManager extends React.Component {
         }
       }
     })).isRequired,
-    config: PropTypes.object
+    config: PropTypes.object,
+    onExit: PropTypes.func
   }
 
   static defaultProps = {
@@ -29,7 +30,8 @@ export default class IntroManager extends React.Component {
       'nextLabel': '⟩',
       'prevLabel': '⟨',
       'doneLabel': '×'
-    }
+    },
+    onExit: null
   }
 
   constructor (props) {
@@ -40,6 +42,9 @@ export default class IntroManager extends React.Component {
     this.introIsOpen = false;
     this.intro.onexit(() => {
       this.introIsOpen = false;
+      if (this.props.onExit) {
+        this.props.onExit();
+      }
     });
 
   }
