@@ -19,6 +19,7 @@ module.exports = {
 
   externals: [
     {
+      'cartodb-client': 'cartodb-client',
       'd3': 'd3',
       'intro.js': 'intro.js',
       'koto': 'koto',
