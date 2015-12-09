@@ -1,6 +1,7 @@
 import { PropTypes } from 'react';
 import { MapLayer } from 'react-leaflet';
 import d3 from 'd3';
+import './style.scss';
 
 export default class TimeBasedMarkers extends MapLayer {
 
