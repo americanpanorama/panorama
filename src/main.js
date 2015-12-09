@@ -13,6 +13,7 @@ import Legend from './Legend/Legend';
 import MapChoropleth from './MapChoropleth/MapChoropleth';
 import OffsetAreaChart from './OffsetAreaChart/OffsetAreaChart';
 import Punchcard from './Punchcard/Punchcard';
+import TimeBasedMarkers from './TimeBasedMarkers/TimeBasedMarkers';
 import Tooltip from './Leaflet/Tooltip/Tooltip';
 
 export default {
@@ -30,5 +31,6 @@ export default {
   MapChoropleth,
   OffsetAreaChart,
   Punchcard,
+  TimeBasedMarkers,
   Tooltip
 };
