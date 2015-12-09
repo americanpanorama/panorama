@@ -3,6 +3,7 @@
 import { PanoramaDispatcher, PanoramaEventTypes } from './PanoramaDispatcher.js';
 import AreaChart from './AreaChart/AreaChart';
 import CartoDBLoader from './CartoDBLoader/CartoDBLoader';
+import CartoDBTileLayer from './CartoDBTileLayer/CartoDBTileLayer';
 import DiscreteBarChart from './DiscreteBarChart/DiscreteBarChart';
 import Donut from './Leaflet/Donut/Donut';
 import HashManager from './HashManager/HashManager';
@@ -22,6 +23,7 @@ export default {
   PanoramaEventTypes,
   AreaChart,
   CartoDBLoader,
+  CartoDBTileLayer,
   DiscreteBarChart,
   Donut,
   HashManager,
