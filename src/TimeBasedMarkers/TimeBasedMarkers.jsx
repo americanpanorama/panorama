@@ -28,12 +28,12 @@ export default class TimeBasedMarkers extends MapLayer {
 
     this.map = this.props.map;
 
-    this._el = L.DomUtil.create('div', 'time-based-markers-layer leaflet-zoom-hide leaflet-d3-overlay');
+    this._el = L.DomUtil.create('div', 'panorama time-based-markers-layer leaflet-zoom-hide leaflet-d3-overlay');
     this.map.getPanes().overlayPane.appendChild(this._el);
 
     this.svg = d3.select(this._el).append('svg');
 
-    this.container = this.svg.append('g').attr('class', 'time-based-markers-container');
+    this.container = this.svg.append('g').attr('class', 'panorama time-based-markers-container');
 
     this.setOverlayPosition();
 
