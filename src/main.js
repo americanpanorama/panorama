@@ -5,6 +5,7 @@ import AreaChart from './AreaChart/AreaChart';
 import CartoDBLoader from './CartoDBLoader/CartoDBLoader';
 import DiscreteBarChart from './DiscreteBarChart/DiscreteBarChart';
 import Donut from './Leaflet/Donut/Donut';
+import HashManager from './HashManager/HashManager';
 import HorizontalDiscreteBarChart from './HorizontalDiscreteBarChart/HorizontalDiscreteBarChart';
 import IntroManager from './IntroManager/IntroManager';
 import ItemSelector from './ItemSelector/ItemSelector';
@@ -23,6 +24,7 @@ export default {
   CartoDBLoader,
   DiscreteBarChart,
   Donut,
+  HashManager,
   HorizontalDiscreteBarChart,
   IntroManager,
   ItemSelector,
