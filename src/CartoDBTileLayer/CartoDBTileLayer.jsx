@@ -7,7 +7,6 @@ import { BaseTileLayer } from 'react-leaflet';
 
 // Until then, consumer applications must include the cartodb.js script elsewhere,
 // e.g. in index.html as <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.core.js"></script>
-const Tiles = cartodb && cartodb.Tiles;
 
 
 export default class CartoDBTileLayer extends BaseTileLayer {
@@ -22,7 +21,7 @@ export default class CartoDBTileLayer extends BaseTileLayer {
 
     super.componentWillMount();
 
-    if (!Tiles) {
+    if (!cartodb) {
       throw new Error('CartoDBTileLayer requires `cartodb`. `cartodb` is not currently available as an npm package and therefore must be loaded as a global, e.g. via a CDN script in your index.html, such as <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.core.js">');
     }
 
@@ -39,7 +38,7 @@ export default class CartoDBTileLayer extends BaseTileLayer {
   }
 
   _getCartoDBTilesTemplates (callback) {
-    Tiles.getTiles({
+    cartodb.Tiles.getTiles({
       type: 'cartodb',
       user_name: this.props.userId,
       sublayers: [{

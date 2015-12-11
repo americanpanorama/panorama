@@ -9,7 +9,8 @@ export default class Punchcard extends React.Component {
   static propTypes = {
     header: PropTypes.object,
     categories: PropTypes.array.isRequired,
-    items: PropTypes.array.isRequired
+    items: PropTypes.array.isRequired,
+    onItemClick: PropTypes.func
   };
 
   // property defaults (ES7-style React)
@@ -21,7 +22,8 @@ export default class Punchcard extends React.Component {
       caption: ''
     },
     categories: [],
-    items: []
+    items: [],
+    onItemClick: null
   };
 
   constructor (props) {
@@ -72,7 +74,7 @@ export default class Punchcard extends React.Component {
     if (!_.isEmpty(this.props.categories)) {
       // cannot remove the node, because React complains
       this.refs.placeholder.style.display = 'none';
-      d3Punchcard.update(this.refs.content, this.props.categories, this.props.items);
+      d3Punchcard.update(this.refs.content, this.props.categories, this.props.items, this.props.onItemClick);
     } else {
       this.refs.placeholder.style.display = '';
     }
@@ -84,7 +86,7 @@ export default class Punchcard extends React.Component {
     return (
       <div className='header' ref='header'>
         <h2>{ this.props.header.title ? this.props.header.title.toUpperCase() : '' }</h2>
-        <h3><span className='subtitle'>{ this.props.header.subtitle }</span><span className='caption'>{ d3.format(',')(this.props.header.caption) } total tonnage</span></h3>
+        <h3><span className='subtitle'>{ this.props.header.subtitle }</span><span className='caption'>{ this.props.header.caption }</span></h3>
       </div>
     );
 
@@ -139,14 +141,18 @@ const d3Punchcard = {
    * @param  {Object}  Categorized map of items (TODO: document expected format)
    * @param  {Object}  Flat map of items (TODO: document expected format)
    */
-  update: function (node, categories, items) {
+  update: function (node, categories, items, onItemClick) {
 
+    const MAX_RAD = 10;
     let scope = this,
 
       // scale by normalizedValue of all items
       rScale = d3.scale.sqrt()
-      .range([2, 8])
-      .domain([1, d3.max(items, (d) => d.normalizedValue)]),
+      .range([2, MAX_RAD])
+      .domain([1, d3.max(items, (d) => d.normalizedValue || 0)]),
+
+      rScaleDomain = rScale.domain(),
+      rDomainMid = rScaleDomain[0] + Math.sqrt(0.25) * (rScaleDomain[1] - rScaleDomain[0]),
 
       // color by aggregateNormalizedValue of all categories
       colorScale = d3.scale.ordinal()
@@ -171,26 +177,33 @@ const d3Punchcard = {
       .append('svg')
       // .attr('width', '50%')
       .attr('height', (d) => d.commodities.length * scope.ROW_HEIGHT)
+      .style('stroke', (d) => colorScale(d.aggregateNormalizedValue))
       .style('fill', (d) => colorScale(d.aggregateNormalizedValue));
 
-    let categoryNodeWidth = categoryNodes.node().offsetWidth;
+    // width of each category svg, minus padding for scrollbar
+    this.categoryNodeWidth = categoryNodes.node().offsetWidth - 2.5 * this.ROW_HEIGHT;
 
-    // <g> for each commodity within each category
-    let commodityNodes = categoryNodes.selectAll('g')
+    // <g> for each item within each category
+    let itemNodes = categoryNodes.selectAll('g')
       .data((d) => d.commodities)
       .enter().append('g');
-      // .attr('transform', (d, i) => `translate(${ 0.5 * scope.ROW_HEIGHT }, ${ (i+0.5) * scope.ROW_HEIGHT })`);
 
-    // <circle> displaying scaled amount of each commodity
-    commodityNodes.append('circle')
-      .attr('r', (d) => rScale(d.normalizedValue));
+    // <circle> displaying scaled amount of each item
+    itemNodes.append('circle')
+      .attr('r', (d) => rScale(d.normalizedValue ? d.normalizedValue : rDomainMid))
 
-    // <text> displaying name of each commodity
-    commodityNodes.append('text')
+      // render differently if normalizedValue is invalid
+      .style('fill', (d) => d.normalizedValue ? null : 'none')
+      .style('stroke', (d) => d.normalizedValue ? 'none' : null)
+      .style('stroke-width', (d) => d.normalizedValue ? null : 2);
+
+    // <text> displaying name of each item
+    itemNodes.append('text')
       .text((d) => d.name)
+      .style('stroke', 'none')
       .attr('x', 2 * scope.ROW_HEIGHT)
       .attr('y', scope.COMMODITY_TEXT_OFFSET_Y)
-      .call(this.wrap, categoryNodeWidth - 2.5 * scope.ROW_HEIGHT);
+      .call(this.wrap, this.categoryNodeWidth);
 
     // adjust dimensions to account for text wrapping
     let numLineWraps;
@@ -209,6 +222,45 @@ const d3Punchcard = {
       let svg = d3.select(this);
       svg.attr('height', parseFloat(svg.attr('height')) + numLineWraps * scope.ROW_HEIGHT);
     });
+
+    // Create hit areas that do not change size on interaction
+    itemNodes.append('rect')
+      .attr('x', -MAX_RAD)
+      .attr('y', -MAX_RAD)
+      .attr('width', this.categoryNodeWidth + 2.5 * this.ROW_HEIGHT)
+      .attr('height', this.ROW_HEIGHT)
+      .on('mouseover', function (d, i) {
+        scope.onItemMouseOver(this, d, i);
+      })
+      .on('mouseout', function (d, i) {
+        scope.onItemMouseOut(this, d, i);
+      })
+      .on('click', (d, i) => {
+        if (onItemClick) {
+          onItemClick.call(this, d, i);
+        }
+      });
+
+  },
+
+  onItemMouseOver: function (target, d, i) {
+
+    let g = d3.select(target.parentNode);
+
+    let text = g.select('text')
+      .text((d.prettyValue || d.value) + (d.units ? (' ' + d.units) : ''))
+      .style('font-weight', 400);
+
+  },
+
+  onItemMouseOut: function (target, d, i) {
+
+    let g = d3.select(target.parentNode);
+
+    g.select('text')
+      .text(d.name)
+      .style('font-weight', null)
+      .call(this.wrap, this.categoryNodeWidth);
 
   },
 

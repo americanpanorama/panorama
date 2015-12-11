@@ -22,7 +22,12 @@
 	}
 
 	.content {
-		
+		rect {
+			cursor: pointer;
+			stroke: none;
+			fill: black;
+			fill-opacity: 0;
+		}
 	}
 
 	.category {
