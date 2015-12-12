@@ -1,6 +1,6 @@
 import { introJs } from 'intro.js';
 import React, { PropTypes } from 'react';
-import './style.scss';
+// import './style.scss';
 
 export default class IntroManager extends React.Component {
 
@@ -43,11 +43,18 @@ export default class IntroManager extends React.Component {
     this.intro = introJs(document.querySelector('body'));
     this.introIsOpen = false;
     this.hasBeenOpened = false;
+
     this.intro.onexit(() => {
       introManager.introIsOpen = false;
       if (introManager.props.onExit) {
         introManager.props.onExit();
       }
+    });
+
+    this.intro.oncomplete(() => {
+      this.intro.exit();
+      // TODO: there is still a bug here;
+      // after completing the intro, the overlay no longer appears and navigation ceases to work.
     });
 
   }
@@ -88,18 +95,25 @@ export default class IntroManager extends React.Component {
         if (!this.introIsOpen) {
           // step specfied, but intro not currently open;
           // open it and jump immediately to specified step
-          this.intro.goToStep(this.props.step).start();
-
-          // Either an IntroJS bug or i'm using it wrong:
-          // on first open, `step` acts as 0-indexed,
-          // but is 1-indexed every time beyond that.
+          
+          // Turns out Intro.js is full of bugs.
+          // Sometimes it treats steps as zero-indexed,
+          // other times it treats them as one-indexed.
+          // This logic handles all the cases.
           if (!this.hasBeenOpened) {
             this.hasBeenOpened = true;
-            this.intro.nextStep();
+            this.intro.goToStep(this.props.step).start();
+          } else {
+            if (this.props.step === 1) {
+              this.intro.start();
+            } else {
+              this.intro.goToStep(this.props.step-1).start();
+            }
           }
+
         } else {
           // intro already open; just go to step
-          this.intro.goToStep(this.props.step).nextStep();
+          this.intro.goToStep(this.props.step);//.nextStep();
         }
       } else {
         // no step specified; just start from the beginning
