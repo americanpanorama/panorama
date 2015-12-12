@@ -1,6 +1,6 @@
 import { introJs } from 'intro.js';
 import React, { PropTypes } from 'react';
-// import './style.scss';
+import './style.scss';
 
 export default class IntroManager extends React.Component {
 
