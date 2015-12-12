@@ -85,7 +85,7 @@ export default class IntroManager extends React.Component {
     if (this.props.open) {
 
       // Intro.js manages its own state when open.
-      if (this.introIsOpen) { console.log("BAIL"); return; }
+      if (this.introIsOpen) { return; }
 
 
       if (!this.intro._introItems) {

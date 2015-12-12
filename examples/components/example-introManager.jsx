@@ -86,8 +86,8 @@ export default class IntroManagerExample extends React.Component {
 
     return (
       <div>
-        <a href='#' data-step='0' onClick={ this.triggerIntro }>Click here to start your tour at the first item.</a><br />
-        <a href='#' data-step='4' onClick={ this.triggerIntro }>Click here to start your tour at the last item.</a>
+        <a href='#' data-step='1' onClick={ this.triggerIntro }>Click here to start your tour at the first item.</a><br />
+        <a href='#' data-step='5' onClick={ this.triggerIntro }>Click here to start your tour at the last item.</a>
         <IntroManager { ...introData } />
       </div>
     );
