@@ -38,12 +38,15 @@ export default class IntroManager extends React.Component {
 
     super(props);
 
+    let introManager = this;
+
     this.intro = introJs(document.querySelector('body'));
     this.introIsOpen = false;
+    this.hasBeenOpened = false;
     this.intro.onexit(() => {
-      this.introIsOpen = false;
-      if (this.props.onExit) {
-        this.props.onExit();
+      introManager.introIsOpen = false;
+      if (introManager.props.onExit) {
+        introManager.props.onExit();
       }
     });
 
@@ -86,6 +89,14 @@ export default class IntroManager extends React.Component {
           // step specfied, but intro not currently open;
           // open it and jump immediately to specified step
           this.intro.goToStep(this.props.step).start();
+
+          // Either an IntroJS bug or i'm using it wrong:
+          // on first open, `step` acts as 0-indexed,
+          // but is 1-indexed every time beyond that.
+          if (!this.hasBeenOpened) {
+            this.hasBeenOpened = true;
+            this.intro.nextStep();
+          }
         } else {
           // intro already open; just go to step
           this.intro.goToStep(this.props.step).nextStep();
