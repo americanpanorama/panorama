@@ -38,24 +38,27 @@ export default class IntroManager extends React.Component {
 
     super(props);
 
-    let introManager = this;
+    this.onIntroExit = this.onIntroExit.bind(this);
+
+    this.initIntro();
+
+  }
+
+  initIntro () {
 
     this.intro = introJs(document.querySelector('body'));
+    this.intro.onexit(this.onIntroExit);
+    this.intro.oncomplete(this.onIntroExit);
     this.introIsOpen = false;
-    this.hasBeenOpened = false;
 
-    this.intro.onexit(() => {
-      introManager.introIsOpen = false;
-      if (introManager.props.onExit) {
-        introManager.props.onExit();
-      }
-    });
+  }
 
-    this.intro.oncomplete(() => {
-      this.intro.exit();
-      // TODO: there is still a bug here;
-      // after completing the intro, the overlay no longer appears and navigation ceases to work.
-    });
+  onIntroExit () {
+
+    this.introIsOpen = false;
+    if (this.props.onExit) {
+      this.props.onExit();
+    }
 
   }
 
@@ -81,48 +84,39 @@ export default class IntroManager extends React.Component {
 
     if (this.props.open) {
 
-      // reset intro.js options every time props change --
-      // treat it as stateless, the React way.
-      let options = {
-        steps: this.props.steps
-      };
-      options = Object.assign(options, this.props.config);
+      // Intro.js manages its own state when open.
+      if (this.introIsOpen) { console.log("BAIL"); return; }
 
-      this.intro.setOptions(options);
-      this.intro.refresh();
 
-      if (this.props.step) {
-        if (!this.introIsOpen) {
-          // step specfied, but intro not currently open;
-          // open it and jump immediately to specified step
-          
-          // Turns out Intro.js is full of bugs.
-          // Sometimes it treats steps as zero-indexed,
-          // other times it treats them as one-indexed.
-          // This logic handles all the cases.
-          if (!this.hasBeenOpened) {
-            this.hasBeenOpened = true;
-            this.intro.goToStep(this.props.step).start();
-          } else {
-            if (this.props.step === 1) {
-              this.intro.start();
-            } else {
-              this.intro.goToStep(this.props.step-1).start();
-            }
-          }
+      if (!this.intro._introItems) {
 
-        } else {
-          // intro already open; just go to step
-          this.intro.goToStep(this.props.step);//.nextStep();
-        }
+        // initialize only once
+        let options = {
+          steps: this.props.steps
+        };
+        options = Object.assign(options, this.props.config);
+        this.intro.setOptions(options);
+
+        // start from the specified step
+        this.intro.goToStep(this.props.step).start();
+
       } else {
-        // no step specified; just start from the beginning
-        this.intro.start();
+
+        // after initialization, Intro.js does a poor job
+        // of accurately tracking the current step,
+        // so we have to do this dance.
+        if (!this.props.step || this.props.step === 1) {
+          this.intro.start();
+        } else {
+          this.intro.goToStep(this.props.step-1).start();
+        }
+
       }
 
       this.introIsOpen = true;
 
     } else {
+      
       this.intro.exit();
 
     }
