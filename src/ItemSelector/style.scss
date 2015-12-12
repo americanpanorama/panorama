@@ -40,10 +40,12 @@
 			content: '〉';
 			display: inline-block;
 			padding-left: 0.5em;
+			-webkit-transform: rotate(-0.25turn);
 			transform: rotate(-0.25turn);
 		}
 
 		&.down-arrow::before {
+			-webkit-transform: rotate(0.25turn);
 			transform: rotate(0.25turn);
 		}
 
