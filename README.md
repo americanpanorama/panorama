@@ -285,19 +285,53 @@ When you are ready to test your component, expose its module to the toolkit bund
 
 As a general rule, React components should be stateless, and should derive their state from `this.props`. [This article](https://medium.com/@joshblack/stateless-components-in-react-0-14-f9798f8b992d) describes the pattern in more detail. Be sure to specify a `static propTypes` block at the top of the class that both documents and enforces the public API of your component. As much as possible, avoid using state (either React's `this.state` or property instances, e.g. `this.someVar`). This ensures maximum flexibility and reusability of your component, and minimizes state-related bugs; state will always flow into the component from the component's parent (usually the root `App.jsx` file).
 
+Try to avoid adding any but the most basic styles to your component's `style.scss` file. Consumers of your component should be able to customize appearance as desired, so avoid being overly-specific with your CSS rules, and add classes to any elements that might be styled by an end user so that they can be selected in CSS.
+
 #### 2. Add an example
 
-Add an example for your component to `examples/`.
-TODO
+Add an example for your component to `examples/`. Create a React component in `examples/components/` that will load and display your new component. Pass any required and optional props into your new component from this file. Then, `import` your example component into [`examples/app.js`](./examples/app.js).
+
 
 #### 3. Build
 
-To test your component on the examples page, fire up the local development server (running on [http://localhost:8888/](http://localhost:8888/)):
-```
-npm start
-```
+To test your component on the examples page, fire up a local development server by running `npm start` from the root directory. The server runs on [http://localhost:8888/](http://localhost:8888/); open a browser to that page to see the examples page.
+
 
 #### 4. Export
+
+There are a few ways to make your component available to other projects.
+
+##### A. Push builds to GitHub
+
+You can point a project's `package.json` to a GitHub repository in order to pull down and use the `HEAD` of that repo as the dependency. To do this with the American Panorama toolkit, you would add this to the `package.json` of your project (not to the toolkit itself!):
+
+```
+"dependencies": {
+    "@panorama/toolkit": "americanpanorama/panorama",
+    ...
+}
+```
+
+Since the toolkit's [`package.json`](./package.json) specifies `dist/components.js` as the entry point for any application using the toolkit via npm, we need to ensure that our new component is built into `dist/components.js` and pushed to GitHub. To build your new component, run `npm run build:dist` from the root directory. (*Note: This will lint all the source as well -- watch for and fix any build or lint errors before proceeding!*).
+
+Then, `git commit` the build and `git push` it to the toolkit repo.
+
+Finally, switch over to your application that is using `@panorama/toolkit` and uninstall and reinstall the toolkit with these commands:
+
+```
+npm uninstall @panorama/toolkit
+npm install @panorama/toolkit
+```
+
+Now, your new component will be available to your project.
+
+##### B. `npm link`
+
+You can also link one local project directly to another via `npm link`. The procedure is explained [here](https://docs.npmjs.com/cli/link); basically this involves setting up a system-wide pointer to your local install of `@panorama/toolkit` and then symlinking to that install from your application using the toolkit.
+
+This process is less foolproof than pushing builds to GitHub because `npm link` also symlinks dependencies from `@panorama/toolkit`'s `node_modules` folder, and this can cause conflicts between / multiple copies of dependencies in the toolkit and in your application. That said, if you get it working it allows you to develop your new component and consume it in your application simultaneously, without the build/push steps above.
+
+##### C. Publish to npm
 
 TODO: test against latest by pointing your project at GH repo
 TODO: publish (update) to npm
