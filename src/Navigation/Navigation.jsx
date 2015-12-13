@@ -8,13 +8,36 @@ export default class Navigation extends React.Component {
   static propTypes = {
     nav_data: PropTypes.object.isRequired,
     show_menu : PropTypes.boolean,
-    on_hamburger_click: PropTypes.func
+    on_hamburger_click: PropTypes.func,
+    style: PropTypes.object
   }
 
   static defaultProps = {
     nav_data: {},
     show_menu : false,
-    on_hamburger_click: null
+    on_hamburger_click: null,
+    style: {
+      overlay: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        backgroundColor: 'rgba(0,0,0,0.5)'
+      },
+      content: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        bottom: 'auto',
+        right: 'auto',
+        border: 0,
+        background: 'rgba(0,0,0,0.5)',
+        overflow: 'auto',
+        WebkitOverflowScrolling: 'touch',
+        borderRadius: '4px',
+        outline: 'none',
+        padding: 0
+      }
+    }
   }
 
   constructor (props) {
@@ -46,19 +69,20 @@ export default class Navigation extends React.Component {
           isOpen={ this.props.show_menu }
           onRequestClose={ this.props.on_hamburger_click }
           className='nav_header'
+          style={ this.props.style }
         >
           
           <div id='nav_header'>
             <div id='navburger'><img src='http://dsl.richmond.edu/panorama/static/images/hamburger.png' onClick={ this.props.on_hamburger_click } /></div>
   
-            <h1><a href='/panorama/'>American Panorama</a></h1>
+            <h1><a href='http://dsl.richmond.edu/panorama/'>American Panorama</a></h1>
             {
               this.props.nav_data.map((item, i) => {
                 return (
                   <div className='pan_nav_item' style={{width: this.computeDimensions() + 'px'}}>
-                    <img src={item.screenshot } style={{width: this.computeDimensions() + 'px'}} /><br/> 
+                    <a href={ item.url }><img src={item.screenshot } style={{width: this.computeDimensions() + 'px'}} /></a><br/> 
                     <h4>
-                      <a href='{ this.url }'>{ item.title }</a>
+                      <a href={ item.url }>{ item.title }</a>
                     </h4>
                   </div>
                 );
