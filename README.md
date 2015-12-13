@@ -333,30 +333,26 @@ This process is less foolproof than pushing builds to GitHub because `npm link` 
 
 ##### C. Publish to npm
 
-TODO: test against latest by pointing your project at GH repo
-TODO: publish (update) to npm
+Once you're satisfied with the state of your new component, and you have a working example in place, it's time to make it available to the npm-using public! The toolkit has scripts (run from the root directory) set up to ease this process. Here's a quick overview of the process automated by those scripts.
 
-This will build `@panorama/toolkit` to `dist` directory.
-```
-npm run build:dist
-```
+##### `npm run publish:dist`
 
+**Be certain you know what you're doing and are sure the toolkit is in working order before you run this script!** Publishing broken code can break other people's projects if they run `npm install`, and then you will get angry emails. We don't want angry emails.
 
-```
-npm run publish:dist
-npm run publish:examples
-```
+*Before running this script, you'll have to be logged into npm with username: `panorama` / email: `ericsoco@stamen.com`.* Contact a `@panorama/toolkit` administrator for the password. You can either login via [`npm login`](https://docs.npmjs.com/cli/adduser) or via [npm's website](https://www.npmjs.com/login).
 
+This script will automatically bump the toolkit version and publish the repo in its current state to npm. It runs [`.bin/publish-dist.sh`](./.bin/publish-dist.sh), which does these things:
 
+- rebuild the components
+- patch the version (`M.m.p` -> `M.m.(p+1)`)
+- commit and push those changes to GitHub
+- publish to npm
 
-### Publish to NPM
-```bash
-$ npm login
-> Username: panorama
-> Password: TODO: how to share npm password with contributors?
-> Email: ericsoco@stamen.com
-$ npm run publish:dist
-```
+The script is fairly robust, but if you see any errors, you may need to run these steps manually. They're all visible in [the script](./.bin/publish-dist.sh).
+
+##### `npm run publish:examples`
+
+This script updates the [examples page](http://americanpanorama.github.io/panorama/). It runs [`.bin/publish-examples.sh`](./.bin/publish-examples.sh), which simply builds and deploys the examples. There's not much to it, and it's much less risky than `npm run publish:dist`.
 
 ---
 
