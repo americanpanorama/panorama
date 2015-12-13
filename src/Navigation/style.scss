@@ -1,0 +1,73 @@
+// 
+// nav header
+//
+
+#hamburger, #navburger {
+  left: 20px;
+  top: 7px;
+  z-index: 1000000000;
+}
+
+#navburger {
+  position: absolute;
+}
+
+#nav_header {
+
+  @import url(https://fonts.googleapis.com/css?family=Abel);
+
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 200;
+  width: 100%;
+  background-color: white;
+  overflow: visible;
+  z-index: 100000000;
+
+  h1 a {
+    text-decoration: none;
+    color: #28668a;
+  }
+
+  h1 {
+    margin-left: 120px;
+    font-family: 'Oswald';
+    color: #28668a;
+    opacity: 0.5;
+    clear: left;
+  }
+
+  h4 {
+
+    text-align: center;
+  }
+
+  h4 a {
+    text-decoration: none;
+    color: #888;
+    font-family: 'Abel', sans-serif;
+    font-size: 1.5em;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline;
+  }
+
+  li {
+    display: inline;
+  }
+
+  .pan_nav_item {
+    float: left;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+
+
+
+
+}

@@ -13,6 +13,7 @@ import LeafletChoropleth from './components/example-leafletChoropleth.jsx';
 import LegendExample from './components/example-legend.jsx';
 import PunchcardExample from './components/example-punchcard.jsx';
 import Donut from './components/example-donut.jsx';
+import NavigationExample from './components/example-navigation.jsx';
 
 class App extends Component {
 
@@ -77,6 +78,8 @@ class App extends Component {
         <PunchcardExample />
         <h2><a name="donut">Donut</a></h2>
         <Donut />
+        <h2>Navigation</h2>
+        <NavigationExample />
       </div>
     );
 

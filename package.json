@@ -62,9 +62,11 @@
     "koto": "ericsoco/kotojs#es5ified-patch",
     "leaflet": "^0.7.7",
     "lodash": "^3.10.1",
+    "queue-async": "^1.0.7",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-leaflet": "^0.9.0",
+    "react-modal": "^0.6.1",
     "topojson": "^1.6.19"
   },
   "jest": {

@@ -13,6 +13,7 @@ import ItemSelector from './ItemSelector/ItemSelector';
 import LeafletChoropleth from './Leaflet/Choropleth/Choropleth';
 import Legend from './Legend/Legend';
 import MapChoropleth from './MapChoropleth/MapChoropleth';
+import Navigation from './Navigation/Navigation';
 import OffsetAreaChart from './OffsetAreaChart/OffsetAreaChart';
 import Punchcard from './Punchcard/Punchcard';
 import TimeBasedMarkers from './TimeBasedMarkers/TimeBasedMarkers';
@@ -33,6 +34,7 @@ export default {
   LeafletChoropleth,
   Legend,
   MapChoropleth,
+  Navigation,
   OffsetAreaChart,
   Punchcard,
   TimeBasedMarkers,
