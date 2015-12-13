@@ -56,7 +56,7 @@ TODO: description and screenshot
 
 ### AreaChart
 
-![screenshot](https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png)
+![screenshot](https://cloud.githubusercontent.com/assets/1127259/11770149/7448e974-a1ac-11e5-90b6-3185c3630552.png)
 
 TODO: description and screenshot
 
@@ -92,7 +92,7 @@ TODO: description and screenshot
 
 ### DiscreteBarChart
 
-![screenshot](https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png)
+![screenshot](https://cloud.githubusercontent.com/assets/1127259/11770147/743ed722-a1ac-11e5-87ab-5d4b9ea673e9.png)
 
 TODO: description and screenshot
 
@@ -104,7 +104,7 @@ TODO: description and screenshot
 
 ### Donut
 
-![screenshot](https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png)
+![screenshot](https://cloud.githubusercontent.com/assets/1127259/11770150/744a4ec2-a1ac-11e5-8d45-c932e155ae0c.png)
 
 TODO: description and screenshot
 
@@ -128,7 +128,7 @@ TODO: description and screenshot
 
 ### HorizontalDiscreteBarChart
 
-![screenshot](https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png)
+![screenshot](https://cloud.githubusercontent.com/assets/1127259/11770146/743552f6-a1ac-11e5-9ec1-884458177541.png)
 
 TODO: description and screenshot
 
@@ -140,7 +140,7 @@ TODO: description and screenshot
 
 ### IntroManager
 
-![screenshot](https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png)
+![screenshot](https://cloud.githubusercontent.com/assets/1127259/11770141/742b39c4-a1ac-11e5-914f-9dc2966158ed.png)
 
 TODO: description and screenshot
 
@@ -152,7 +152,7 @@ TODO: description and screenshot
 
 ### ItemSelector
 
-![screenshot](https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png)
+![screenshot](https://cloud.githubusercontent.com/assets/1127259/11770143/7432a538-a1ac-11e5-8e89-890621d263ca.png)
 
 TODO: description and screenshot
 
@@ -164,7 +164,7 @@ TODO: description and screenshot
 
 ### LeafletChoropleth
 
-![screenshot](https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png)
+![screenshot](https://cloud.githubusercontent.com/assets/1127259/11770148/7447819c-a1ac-11e5-8e39-7a89049d6e27.png)
 
 TODO: description and screenshot
 
@@ -200,7 +200,19 @@ React.render(<Legend data={legendData}/>, document.body);
 
 ### MapChoropleth
 
-![screenshot](https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png)
+![screenshot](https://cloud.githubusercontent.com/assets/1127259/11770142/74317d52-a1ac-11e5-99bb-d38fbcf7fa02.png)
+
+TODO: description and screenshot
+
+
+#### Usage
+```js
+// TODO: usage
+```
+
+### Navigation
+
+![screenshot](https://cloud.githubusercontent.com/assets/1127259/11770145/7434fc84-a1ac-11e5-9bf4-8a797d19fb8d.png)
 
 TODO: description and screenshot
 
@@ -212,7 +224,7 @@ TODO: description and screenshot
 
 ### OffsetAreaChart
 
-![screenshot](https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png)
+![screenshot](https://cloud.githubusercontent.com/assets/1127259/11770144/7433df16-a1ac-11e5-9226-d3d64e98142a.png)
 
 TODO: description and screenshot
 
