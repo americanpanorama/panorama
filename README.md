@@ -56,19 +56,42 @@ TODO: description and screenshot
 
 ### AreaChart
 
-![screenshot](https://cloud.githubusercontent.com/assets/1127259/11770149/7448e974-a1ac-11e5-90b6-3185c3630552.png)
+<a href='./src/AreaChart/AreaChart.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770149/7448e974-a1ac-11e5-90b6-3185c3630552.png'></a>
 
 TODO: description and screenshot
 
 
 #### Usage
 ```js
-// TODO: usage
+import * as React from 'react';
+import { AreaChart } from '@panorama/toolkit';
+
+let areaChartConfig = {
+  data: areaChartData,
+
+  width: 600,
+  height: 200,
+
+  // Optionally specify custom margins
+  margin: { top: 10, right: 10, bottom: 10, left: 10 },
+
+  // Optionally specify accessors to match your data format
+  xAccessor: d => d.time,
+  yAccessor: d => d.value,
+
+  // Optionally specify custom scales
+  xScale: d3.scale.linear()
+    .domain([minTime, maxTime]),
+  yScale: d3.scale.linear()
+    .domain(minValue, maxValue])
+};
+
+ReactDOM.render(<AreaChart {...areaChartConfig}/>, document.body);
 ```
 
 ### CartoDBLoader
 
-![screenshot](https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png)
+<a href='./src/CartoDBLoader/CartoDBLoader.js'><img src='https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png'></a>
 
 TODO: description and screenshot
 
@@ -80,7 +103,7 @@ TODO: description and screenshot
 
 ### CartoDBTileLayer
 
-![screenshot](https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png)
+<a href='./src/CartoDBTileLayer/CartoDBTileLayer.jsx'><img src='https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png'></a>
 
 TODO: description and screenshot
 
@@ -92,31 +115,45 @@ TODO: description and screenshot
 
 ### DiscreteBarChart
 
-![screenshot](https://cloud.githubusercontent.com/assets/1127259/11770147/743ed722-a1ac-11e5-87ab-5d4b9ea673e9.png)
+<a href='./src/DiscreteBarChart/DiscreteBarChart.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770147/743ed722-a1ac-11e5-87ab-5d4b9ea673e9.png'></a>
 
 TODO: description and screenshot
 
 
 #### Usage
 ```js
-// TODO: usage
+import * as React from 'react';
+import { DiscreteBarChart } from '@panorama/toolkit';
+
+let discreteBarChartConfig = {
+	// TODO
+};
+
+ReactDOM.render(<DiscreteBarChart {...discreteBarChartConfig}/>, document.body);
 ```
 
 ### Donut
 
-![screenshot](https://cloud.githubusercontent.com/assets/1127259/11770150/744a4ec2-a1ac-11e5-8d45-c932e155ae0c.png)
+<a href='./src/Leaflet/Donut/Donut.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770150/744a4ec2-a1ac-11e5-8d45-c932e155ae0c.png'></a>
 
 TODO: description and screenshot
 
 
 #### Usage
 ```js
-// TODO: usage
+import * as React from 'react';
+import { Donut } from '@panorama/toolkit';
+
+let donutConfig = {
+	// TODO
+};
+
+ReactDOM.render(<Donut {...donutConfig}/>, document.body);
 ```
 
 ### HashManager
 
-![screenshot](https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png)
+<a href='./src/HashManager/HashManager.js'><img src='https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png'></a>
 
 TODO: description and screenshot
 
@@ -128,55 +165,83 @@ TODO: description and screenshot
 
 ### HorizontalDiscreteBarChart
 
-![screenshot](https://cloud.githubusercontent.com/assets/1127259/11770146/743552f6-a1ac-11e5-9ec1-884458177541.png)
+<a href='./src/HorizontalDiscreteBarChart/HorizontalDiscreteBarChart.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770146/743552f6-a1ac-11e5-9ec1-884458177541.png'></a>
 
 TODO: description and screenshot
 
 
 #### Usage
 ```js
-// TODO: usage
+import * as React from 'react';
+import { HorizontalDiscreteBarChart } from '@panorama/toolkit';
+
+let hoizontalBarChartConfig = {
+	// TODO
+};
+
+ReactDOM.render(<HorizontalDiscreteBarChart {...hoizontalBarChartConfig}/>, document.body);
 ```
 
 ### IntroManager
 
-![screenshot](https://cloud.githubusercontent.com/assets/1127259/11770141/742b39c4-a1ac-11e5-914f-9dc2966158ed.png)
+<a href='./src/IntroManager/IntroManager.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770141/742b39c4-a1ac-11e5-914f-9dc2966158ed.png'></a>
 
 TODO: description and screenshot
 
 
 #### Usage
 ```js
-// TODO: usage
+import * as React from 'react';
+import { IntroManager } from '@panorama/toolkit';
+
+let introManagerConfig = {
+	// TODO
+};
+
+ReactDOM.render(<IntroManager {...introManagerConfig}/>, document.body);
 ```
 
 ### ItemSelector
 
-![screenshot](https://cloud.githubusercontent.com/assets/1127259/11770143/7432a538-a1ac-11e5-8e89-890621d263ca.png)
+<a href='./src/ItemSelector/ItemSelector.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770143/7432a538-a1ac-11e5-8e89-890621d263ca.png'></a>
 
 TODO: description and screenshot
 
 
 #### Usage
 ```js
-// TODO: usage
+import * as React from 'react';
+import { ItemSelector } from '@panorama/toolkit';
+
+let introManagerConfig = {
+	// TODO
+};
+
+ReactDOM.render(<ItemSelector {...introManagerConfig}/>, document.body);
 ```
 
 ### LeafletChoropleth
 
-![screenshot](https://cloud.githubusercontent.com/assets/1127259/11770148/7447819c-a1ac-11e5-8e39-7a89049d6e27.png)
+<a href='./src/Leaflet/Choropleth/Choropleth.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770148/7447819c-a1ac-11e5-8e39-7a89049d6e27.png'></a>
 
 TODO: description and screenshot
 
 
 #### Usage
 ```js
-// TODO: usage
+import * as React from 'react';
+import { LeafletChoropleth } from '@panorama/toolkit';
+
+let leafletChoroplethConfig = {
+	// TODO
+};
+
+ReactDOM.render(<LeafletChoropleth {...leafletChoroplethConfig}/>, document.body);
 ```
 
 ### Legend
 
-![screenshot](https://cloud.githubusercontent.com/assets/1127259/10005832/610e48b0-606e-11e5-91ee-af887393e22d.png)
+<a href='./src/Legend/Legend.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/10005832/610e48b0-606e-11e5-91ee-af887393e22d.png'></a>
 
 Clickable legend that can be used to label and toggle layers of a visualization.
 
@@ -184,90 +249,174 @@ Clickable legend that can be used to label and toggle layers of a visualization.
 #### Usage
 ```js
 import * as React from 'react';
-import { Legend } from 'panorama';
+import { Legend } from '@panorama/toolkit';
 
-var legendData = {
+let legendData = {
 	items: [
 		'narratives',
 		'cotton',
 		'sugar'
 	],
-	initialSelection: 'narratives'
+	selectedItem: this.state.selectedItem || 'narratives'
 };
 
-React.render(<Legend data={legendData}/>, document.body);
+ReactDOM.render(<Legend { ...legendData } onItemSelected={ this.onItemSelected }/>, document.body);
 ```
 
 ### MapChoropleth
 
-![screenshot](https://cloud.githubusercontent.com/assets/1127259/11770142/74317d52-a1ac-11e5-99bb-d38fbcf7fa02.png)
+<a href='./src/MapChoropleth/MapChoropleth.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770142/74317d52-a1ac-11e5-99bb-d38fbcf7fa02.png'></a>
 
 TODO: description and screenshot
 
 
 #### Usage
 ```js
-// TODO: usage
+import * as React from 'react';
+import { MapChoropleth } from '@panorama/toolkit';
+
+let mapChoroplethConfig = {
+  // TODO
+};
+
+ReactDOM.render(<MapChoropleth {...mapChoroplethConfig}/>, document.body);
 ```
 
 ### Navigation
 
-![screenshot](https://cloud.githubusercontent.com/assets/1127259/11770145/7434fc84-a1ac-11e5-9bf4-8a797d19fb8d.png)
+<a href='./src/Navigation/Navigation.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770145/7434fc84-a1ac-11e5-9bf4-8a797d19fb8d.png'></a>
 
 TODO: description and screenshot
 
 
 #### Usage
 ```js
-// TODO: usage
+import * as React from 'react';
+import { Navigation } from '@panorama/toolkit';
+
+let navigationConfig = {
+	// TODO
+};
+
+ReactDOM.render(<Navigation {...navigationConfig}/>, document.body);
 ```
 
 ### OffsetAreaChart
 
-![screenshot](https://cloud.githubusercontent.com/assets/1127259/11770144/7433df16-a1ac-11e5-9226-d3d64e98142a.png)
+<a href='./src/OffsetAreaChart/OffsetAreaChart.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770144/7433df16-a1ac-11e5-9226-d3d64e98142a.png'></a>
 
 TODO: description and screenshot
 
 
 #### Usage
 ```js
-// TODO: usage
+import * as React from 'react';
+import { AreaChart } from '@panorama/toolkit';
+
+let offsetAreaChartConfig = {
+  width: 600,
+  height: 300,
+
+  // optional; used to draw baselines and metadata presence circles
+  data: offsetAreaChartData.offsetAreaChartMetadata,
+
+  // d3 conventional margins
+  margin: { top: 10, right: 10, bottom: 10, left: 10 },
+
+  // Optionally specify custom scales
+  xScale: d3.scale.linear()
+    .domain([minTime, maxTime]),
+  yScale: d3.scale.linear()
+    .domain(minValue, maxValue])
+
+  // accessor for start and end of baselines
+  xAccessor: (d, i) => i ? d.endTime : d.startTime,
+
+  // accessor for metadata presence circles
+  metadataAccessor: d => d.metadataTimes,
+
+  // hide axes
+  axisProps: null,
+
+  // data and accessors used to render each AreaChart
+  areaChartData: offsetAreaChartData.areaChartsData,
+  areaChartConfig: {
+    xAccessor: d => d.time,
+    yAccessor: d => d.value,
+  },
+
+  // colors applied to AreaCharts
+  colorPalette: [
+    '#466834',
+    '#C163D5',
+    '#D34E2B'
+  ],
+
+  // optionally specify an initially selected chart
+  selectedChartId: 22,
+
+  // id of each chart
+  chartIdAccessor: d => d.length ? d[0].chartId : d.chartId
+};
+
+ReactDOM.render(<OffsetAreaChart {...offsetAreaChartConfig}/>, document.body);
 ```
 
 ### Punchcard
 
-![screenshot](https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png)
+<a href='./src/Punchcard/Punchcard.jsx'><img src='https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png'></a>
 
 TODO: description and screenshot
 
 
 #### Usage
 ```js
-// TODO: usage
+import * as React from 'react';
+import { Punchcard } from '@panorama/toolkit';
+
+let punchcardConfig = {
+	// TODO
+};
+
+ReactDOM.render(<Punchcard {...punchcardConfig}/>, document.body);
 ```
 
 ### TimeBasedMarkers
 
-![screenshot](https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png)
+<a href='./src/TimeBasedMarkers/TimeBasedMarkers.jsx'><img src='https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png'></a>
 
 TODO: description and screenshot
 
 
 #### Usage
 ```js
-// TODO: usage
+import * as React from 'react';
+import { TimeBasedMarkers } from '@panorama/toolkit';
+
+let timeBasedMarkersConfig = {
+	// TODO
+};
+
+ReactDOM.render(<TimeBasedMarkers {...timeBasedMarkersConfig}/>, document.body);
 ```
 
 ### Tooltip
 
-![screenshot](https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png)
+<a href='./src/Leaflet/Tooltip/Tooltip.jsx'><img src='https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png'></a>
 
 TODO: description and screenshot
 
 
 #### Usage
 ```js
-// TODO: usage
+import * as React from 'react';
+import { Tooltip } from '@panorama/toolkit';
+
+let tooltipConfig = {
+	// TODO
+};
+
+ReactDOM.render(<Tooltip {...tooltipConfig}/>, document.body);
 ```
 
 ---
@@ -299,9 +448,11 @@ As a general rule, React components should be stateless, and should derive their
 
 Try to avoid adding any but the most basic styles to your component's `style.scss` file. Consumers of your component should be able to customize appearance as desired, so avoid being overly-specific with your CSS rules, and add classes to any elements that might be styled by an end user so that they can be selected in CSS.
 
-#### 2. Add an example
+#### 2. Add an example and documentation
 
 Add an example for your component to `examples/`. Create a React component in `examples/components/` that will load and display your new component. Pass any required and optional props into your new component from this file. Then, `import` your example component into [`examples/app.js`](./examples/app.js).
+
+Add documentation for your component to [this README](#Components).
 
 
 #### 3. Build
