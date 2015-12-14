@@ -7,6 +7,8 @@ export default class ChartSlider extends React.Component {
 
   // property validation
   static propTypes = {
+    width: PropTypes.number,
+    height: PropTypes.number,
     scale: PropTypes.func,
     orient: PropTypes.string,
     margin: PropTypes.shape({
@@ -15,6 +17,8 @@ export default class ChartSlider extends React.Component {
       bottom: PropTypes.number,
       left: PropTypes.number
     }),
+    children: React.PropTypes.node,
+    selectedValue: PropTypes.number,
     onClickOrMove: PropTypes.func
   };
 
@@ -95,8 +99,8 @@ export default class ChartSlider extends React.Component {
           })
         }
         <div className='top-rule' style={ {
-          marginLeft: this.props.margin.left + "px",
-          marginRight: this.props.margin.right + "px",
+          marginLeft: this.props.margin.left + 'px',
+          marginRight: this.props.margin.right + 'px',
           width: `calc(100% - ${ this.props.margin.left + this.props.margin.right }px)`
         } } />
         <div className='d3-chart-slider' ref='axis'/>
@@ -242,7 +246,7 @@ const d3ChartSlider = {
       .attr('transform', `translate(${ margin.left }, 0)`)
     .select('.background')
       .on('mousedown.brush', this.onBrushMoved)
-      .on('touchstart.brush', this.onBrushMoved)
+      .on('touchstart.brush', this.onBrushMoved);
     this.handle.selectAll('.background')
       .attr('height', '100%');
 
