@@ -46,6 +46,11 @@ Then, install the toolkit:
 ## Components
 The Panorama toolkit comprises a number of components that can be used individually, or wired together with the [Panorama Template](https://github.com/americanpanorama/panorama-template) as a starting point. Below is a list of the components available in the toolkit.
 
+//
+// TODO: move docs for each component into its own README.md, in the component's folder
+// (also, update adding components section below to reflect this)
+//
+
 ### PanoramaDispatcher
 
 ![screenshot](https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png)

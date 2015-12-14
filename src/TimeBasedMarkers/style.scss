@@ -9,9 +9,13 @@
 
 .time-based-label.with-outlines {
   stroke: #f9f9f9;
-  paint-order: stroke;
-  stroke-width: 1.5px;
-  //font-size: 0.5em;
+  @supports (paint-order: stroke) {
+    paint-order: stroke;
+    stroke-width: 1.5px;
+  }
+  @supports not (paint-order: stroke) {
+    stroke-width: 0.25px;
+  }
 }
 
 .time-based-icon {
