@@ -3,6 +3,9 @@ Visualization components developed for [American Panorama](http://dsl.richmond.e
 
 The toolkit is designed for use in the creation of historical maps such as those in the American Panorama Atlas. The components within can be installed via [npm](https://npmjs.com/) and integrated into any web-facing project. American Panorama also includes a [template](https://github.com/americanpanorama/panorama-template) that can be used as a starting point for maps in the American Panorama Atlas, and for other projects that aim to use Panorama components. All of the components within that are "views" (meaning they appear in the DOM) are [React](https://facebook.github.io/react/) components.
 
+For a higher-level overview of the architecture of the [American Panorama](http://dsl.richmond.edu/panorama/) atlas, see: [ARCHITECTURE](ARCHITECTURE.md)
+
+For various server-side database queries that are outside the scope of the toolkit, but which are useful for preparing data for your visualizations, see: [USEFUL QUERIES](USEFUL_QUERIES.md)
 ---
 
 ## Installing components in your project
