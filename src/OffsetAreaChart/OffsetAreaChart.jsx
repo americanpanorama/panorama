@@ -141,9 +141,23 @@ export class OffsetAreaChartImpl extends ChartBase {
       // this => enter selection
     })
     .on('merge', function () {
-      // this => base selection
+
+      // TODO: DRY this out with `lineLayer.insert` above
+      let baseYOffset = chart.config('height') - chart.config('margin').bottom - this.size() * props.chartSpacing,
+        domain = chart.config('xScale').domain();
+
       return this
+          .attr('x1', d => chart.config('xScale')(
+            Math.max(chart.accessor('x')(d, 0), domain[0])
+          ))
+          .attr('x2', d => chart.config('xScale')(
+            Math.min(chart.accessor('x')(d, 1), domain[1])
+          ))
+          .attr('y1', 0)
+          .attr('y2', 0)
+          .attr('transform', (d, i) => 'translate(0,' + (baseYOffset + i * props.chartSpacing) + ')')
         .style('opacity', d => chart.accessor('chartId')(d) == chart.config('selectedChartId') ? 0.9 : 0.25);
+
     })
     .on('exit', function () {
       // this => exit selection
@@ -179,8 +193,19 @@ export class OffsetAreaChartImpl extends ChartBase {
     });
 
     dotsLayer.on('merge', function () {
+
+      // TODO: DRY this out with `dotsLayer.insert` above
+      let baseYOffset = chart.config('height') - chart.config('margin').bottom - this.size() * props.chartSpacing,
+        domain = chart.config('xScale').domain();
+
       return this
+        .attr('transform', (d, i) => 'translate(0,' + (baseYOffset + i * props.chartSpacing) + ')')
+        .selectAll('circle')
+          .attr('cx', d => chart.config('xScale')(
+            Math.max(d, domain[0])
+          ))
         .style('opacity', d => chart.accessor('chartId')(d) == chart.config('selectedChartId') ? 0.9 : 0.25);
+
     });
 
   }
