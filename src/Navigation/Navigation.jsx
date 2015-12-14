@@ -6,8 +6,8 @@ import './style.scss';
 export default class Navigation extends React.Component {
   
   static propTypes = {
-    nav_data: PropTypes.object.isRequired,
-    show_menu : PropTypes.boolean,
+    nav_data: PropTypes.array.isRequired,
+    show_menu : PropTypes.bool,
     on_hamburger_click: PropTypes.func,
     style: PropTypes.object
   }
@@ -79,7 +79,7 @@ export default class Navigation extends React.Component {
             {
               this.props.nav_data.map((item, i) => {
                 return (
-                  <div className='pan_nav_item' style={{width: this.computeDimensions() + 'px'}}>
+                  <div className='pan_nav_item'  key={ 'pan_nav_item_' + i } style={{width: this.computeDimensions() + 'px'}}>
                     <a href={ item.url }><img src={item.screenshot } style={{width: this.computeDimensions() + 'px'}} /></a><br/> 
                     <h4>
                       <a href={ item.url }>{ item.title }</a>
