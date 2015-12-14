@@ -180,8 +180,9 @@ const d3Punchcard = {
       .style('stroke', (d) => colorScale(d.aggregateNormalizedValue))
       .style('fill', (d) => colorScale(d.aggregateNormalizedValue));
 
-    // width of each category svg, minus padding for scrollbar
-    this.categoryNodeWidth = categoryNodes.node().offsetWidth - 2.5 * this.ROW_HEIGHT;
+    // width of each category svg, minus padding for scrollbar,
+    // with cross-browser support.
+    this.categoryNodeWidth = (categoryNodes.node().offsetWidth || categoryNodes.node().getBoundingClientRect().width) - 2.5 * this.ROW_HEIGHT;
 
     // <g> for each item within each category
     let itemNodes = categoryNodes.selectAll('g')
