@@ -28,6 +28,10 @@ import TimeBasedMarkers from './TimeBasedMarkers/TimeBasedMarkers';
 import Tooltip from './Leaflet/Tooltip/Tooltip';
 
 export default {
+  Axis,
+  ChartBase,
+  PanoramaChart,
+
   AreaChart,
   CartoDBLoader,
   CartoDBTileLayer,
