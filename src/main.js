@@ -1,6 +1,12 @@
 'use strict';
 
-import { PanoramaDispatcher, PanoramaEventTypes } from './PanoramaDispatcher.js';
+// Base classes, exposed for subclassing;
+// not intended for direct use.
+import Axis from './charts/Axis';
+import ChartBase from './charts/ChartBase';
+import PanoramaChart from './charts/PanoramaChart';
+
+// Panorama components.
 import AreaChart from './AreaChart/AreaChart';
 import CartoDBLoader from './CartoDBLoader/CartoDBLoader';
 import CartoDBTileLayer from './CartoDBTileLayer/CartoDBTileLayer';
@@ -16,13 +22,12 @@ import Legend from './Legend/Legend';
 import MapChoropleth from './MapChoropleth/MapChoropleth';
 import Navigation from './Navigation/Navigation';
 import OffsetAreaChart from './OffsetAreaChart/OffsetAreaChart';
+import { PanoramaDispatcher, PanoramaEventTypes } from './PanoramaDispatcher.js';
 import Punchcard from './Punchcard/Punchcard';
 import TimeBasedMarkers from './TimeBasedMarkers/TimeBasedMarkers';
 import Tooltip from './Leaflet/Tooltip/Tooltip';
 
 export default {
-  PanoramaDispatcher,
-  PanoramaEventTypes,
   AreaChart,
   CartoDBLoader,
   CartoDBTileLayer,
@@ -38,6 +43,8 @@ export default {
   MapChoropleth,
   Navigation,
   OffsetAreaChart,
+  PanoramaDispatcher,
+  PanoramaEventTypes,
   Punchcard,
   TimeBasedMarkers,
   Tooltip
