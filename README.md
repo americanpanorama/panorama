@@ -6,6 +6,7 @@ The toolkit is designed for use in the creation of historical maps such as those
 For a higher-level overview of the architecture of the [American Panorama](http://dsl.richmond.edu/panorama/) atlas, see: [ARCHITECTURE](ARCHITECTURE.md)
 
 For various server-side database queries that are outside the scope of the toolkit, but which are useful for preparing data for your visualizations, see: [USEFUL QUERIES](USEFUL_QUERIES.md)
+
 ---
 
 ## Installing components in your project
