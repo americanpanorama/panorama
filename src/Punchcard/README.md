@@ -1,6 +1,6 @@
 ## Punchcard
 
-<img src='https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png'>
+<img src='https://cloud.githubusercontent.com/assets/1127259/11770151/744bfde4-a1ac-11e5-9122-341154b5e85a.png'>
 
 A categorized view of a set of values, each with a label and simple graphical representation (a circle).
 
