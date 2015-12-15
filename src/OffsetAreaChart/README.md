@@ -2,12 +2,12 @@
 
 <img src='https://cloud.githubusercontent.com/assets/1127259/11770144/7433df16-a1ac-11e5-9226-d3d64e98142a.png'>
 
-TODO: description and screenshot
-
+A collection of stacked AreaCharts, drawn with a vertical offset between each. Each child AreaChart shares the same axes, so this component is useful for e.g. allowing comparisons between multiple datasets changing over the same period of time. This component can be styled with or without a fill/stroke, meaning it can display filled area charts or simply a series of line charts.
 
 #### Usage
 ```js
-import * as React from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { AreaChart } from '@panorama/toolkit';
 
 let offsetAreaChartConfig = {

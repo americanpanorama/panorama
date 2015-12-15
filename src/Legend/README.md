@@ -4,10 +4,10 @@
 
 Clickable legend that can be used to label and toggle layers of a visualization.
 
-
 #### Usage
 ```js
-import * as React from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { Legend } from '@panorama/toolkit';
 
 let legendData = {

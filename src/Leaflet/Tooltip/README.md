@@ -2,12 +2,12 @@
 
 <img src='https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png'>
 
-TODO: description and screenshot
-
+A tooltip for use with a [`react-leaflet`](https://github.com/PaulLeCam/react-leaflet) map.
 
 #### Usage
 ```js
-import * as React from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { Tooltip } from '@panorama/toolkit';
 
 let tooltipConfig = {

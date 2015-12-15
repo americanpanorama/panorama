@@ -1,18 +1,72 @@
 ## TimeBasedMarkers
 
 <img src='https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png'>
+// TODO: screenshot
 
-TODO: description and screenshot
-
+Load and render GeoJSON features into a [`react-leaflet`](https://github.com/PaulLeCam/react-leaflet) map. Toggle features by timestamp.
 
 #### Usage
 ```js
-import * as React from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { TimeBasedMarkers } from '@panorama/toolkit';
 
-let timeBasedMarkersConfig = {
-	// TODO
+let geoJson = {
+  "features": [
+    {
+      "properties": {
+        "end_year": "2000-01-01T00:00:00Z",
+        "cartodb_id": 1,
+        "startzoom": 8,
+        "endzoom": 12,
+        "maptype": "icon",
+        "type": "place secondary",
+        "justify": "right",
+        "location": "Terre Haute .",
+        "start_year": "1832-01-01T00:00:00Z"
+      },
+      "geometry": {
+        "coordinates": [
+          9.689345,
+          -4.778362
+        ],
+        "type": "Point"
+      },
+      "type": "Feature"
+    },
+    {
+      "properties": {
+        "end_year": "2000-01-01T00:00:00Z",
+        "cartodb_id": 1,
+        "startzoom": 8,
+        "endzoom": 12,
+        "maptype": "label",
+        "type": "place secondary",
+        "justify": "right",
+        "location": "Terre Haute .",
+        "start_year": "1832-01-01T00:00:00Z"
+      },
+      "geometry": {
+        "coordinates": [
+          9.689345,
+          -4.778362
+        ],
+        "type": "Point"
+      },
+      "type": "Feature"
+    },
+    // ...
+  ],
+  "type": "FeatureCollection"
 };
 
-ReactDOM.render(<TimeBasedMarkers {...timeBasedMarkersConfig}/>, document.body);
+let timeBasedMarkersConfig = {
+  features: geoJson,
+	currentDate: new Date(selectedYear, 0)
+};
+
+ReactDOM.render(
+  <Map>
+    <TimeBasedMarkers { ...timeBasedMarkersConfig }/>
+  </Map>, document.body);
 ```
