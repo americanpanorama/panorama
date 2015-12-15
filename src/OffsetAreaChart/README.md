@@ -4,6 +4,8 @@
 
 A collection of stacked AreaCharts, drawn with a vertical offset between each. Each child AreaChart shares the same axes, so this component is useful for e.g. allowing comparisons between multiple datasets changing over the same period of time. This component can be styled with or without a fill/stroke, meaning it can display filled area charts or simply a series of line charts.
 
+This component can also draw baselines for each embedded AreaChart that display the extent of each along the x-axis, and it can render dots on those baselines to indicate the presence of data at each discrete step on the x-axis. These features can be useful to indicate data that cannot be rendered as area charts, due to invalid or unformatted data.
+
 #### Usage
 ```js
 import React from 'react';
