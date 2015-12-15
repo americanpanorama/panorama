@@ -1,6 +1,6 @@
 ## Legend
 
-<img src='https://cloud.githubusercontent.com/assets/1127259/10005832/610e48b0-606e-11e5-91ee-af887393e22d.png'>
+<img src='https://cloud.githubusercontent.com/assets/1127259/11770152/744dafea-a1ac-11e5-8c44-d0e58671461a.png'>
 
 Clickable legend that can be used to label and toggle layers of a visualization.
 
