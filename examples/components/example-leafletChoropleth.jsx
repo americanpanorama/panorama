@@ -20,10 +20,10 @@ export default class LeafletChoroplethExample extends Component {
   }
 
   dataLoader() {
-    d3.json('../data/us.geojson', (err, rsp) => {
+    d3.json('data/us.geojson', (err, rsp) => {
       const geometry = topojson.feature(rsp, rsp.objects.counties);
 
-      d3.json('../data/unemployment.json', (err, rsp) => {
+      d3.json('data/unemployment.json', (err, rsp) => {
         let max = -Infinity;
 
         rsp.forEach(r => {
