@@ -1,6 +1,6 @@
 ## OffsetAreaChart
 
-<a href='./OffsetAreaChart.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770144/7433df16-a1ac-11e5-9226-d3d64e98142a.png'></a>
+<img src='https://cloud.githubusercontent.com/assets/1127259/11770144/7433df16-a1ac-11e5-9226-d3d64e98142a.png'>
 
 TODO: description and screenshot
 

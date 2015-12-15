@@ -1,6 +1,6 @@
 ## AreaChart
 
-<a href='./AreaChart.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770149/7448e974-a1ac-11e5-90b6-3185c3630552.png'></a>
+<img src='https://cloud.githubusercontent.com/assets/1127259/11770149/7448e974-a1ac-11e5-90b6-3185c3630552.png'>
 
 TODO: description and screenshot
 

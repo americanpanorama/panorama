@@ -1,6 +1,6 @@
-### ChartSlider
+## ChartSlider
 
-<a href='./ChartSlider.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770150/744a4ec2-a1ac-11e5-8d45-c932e155ae0c.png'></a>
+<img src='https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png'>
 
 TODO: description and screenshot
 

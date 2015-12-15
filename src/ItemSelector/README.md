@@ -1,6 +1,6 @@
 ## ItemSelector
 
-<a href='./ItemSelector.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770143/7432a538-a1ac-11e5-8e89-890621d263ca.png'></a>
+<img src='https://cloud.githubusercontent.com/assets/1127259/11770143/7432a538-a1ac-11e5-8e89-890621d263ca.png'>
 
 TODO: description and screenshot
 

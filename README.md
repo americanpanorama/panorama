@@ -43,14 +43,15 @@ Then, install the toolkit:
 
 ---
 
+
 ## Components
 The Panorama toolkit comprises a number of components that can be used individually, or wired together with the [Panorama Template](https://github.com/americanpanorama/panorama-template) as a starting point. Below is a list of the components available in the toolkit. Component examples are available [here](http://americanpanorama.github.io/panorama/).
 
 ### [AreaChart](./src/AreaChart)
 
-### [CartoDBLoader](./src/CartDBLoader)
+### [CartoDBLoader](./src/CartoDBLoader)
 
-### [CartoDBTileLayer](./src/CartDBTileLayer)
+### [CartoDBTileLayer](./src/CartoDBTileLayer)
 
 ### [ChartSlider](./src/ChartSlider)
 
@@ -83,7 +84,6 @@ The Panorama toolkit comprises a number of components that can be used individua
 ### [Tooltip](./src/Leaflet/Tooltip)
 
 ### [PanoramaDispatcher](./src/PanoramaDispatcher.js)
-
 
 ---
 

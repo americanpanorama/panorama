@@ -1,6 +1,6 @@
 ## HorizontalDiscreteBarChart
 
-<a href='./HorizontalDiscreteBarChart.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770146/743552f6-a1ac-11e5-9ec1-884458177541.png'></a>
+<img src='https://cloud.githubusercontent.com/assets/1127259/11770146/743552f6-a1ac-11e5-9ec1-884458177541.png'>
 
 TODO: description and screenshot
 
