@@ -1,6 +1,6 @@
 {
   "name": "@panorama/toolkit",
-  "version": "0.0.23",
+  "version": "0.1.0",
   "description": "Panorama visualization toolkit",
   "main": "dist/components.js",
   "scripts": {
