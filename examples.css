@@ -1,4 +1,4 @@
-.panorama.area-chart path {
+@import url(https://fonts.googleapis.com/css?family=Abel|Oswald);.panorama.area-chart path {
   fill: steelblue; }
 
 .panorama.area-chart .axis {
@@ -9,6 +9,38 @@
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges; }
+.panorama.chart-slider {
+  position: relative;
+  color: black;
+  border-color: black; }
+  .panorama.chart-slider svg {
+    fill: black;
+    stroke: black; }
+  .panorama.chart-slider .top-rule {
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    pointer-events: none; }
+  .panorama.chart-slider .d3-chart-slider {
+    position: absolute;
+    width: 100%;
+    height: 100%; }
+  .panorama.chart-slider .axis path,
+  .panorama.chart-slider .axis line {
+    fill: none; }
+  .panorama.chart-slider .secondary path,
+  .panorama.chart-slider .tertiary path {
+    display: none; }
+  .panorama.chart-slider .handle line {
+    stroke-width: 2px;
+    height: 100%; }
+  .panorama.chart-slider .handle path {
+    stroke: none;
+    fill: black; }
+  .panorama.chart-slider .handle .resize {
+    display: none; }
 .panorama.bar-chart {
   position: relative; }
   .panorama.bar-chart .bar {
@@ -61,8 +93,10 @@
       content: '\3009';
       display: inline-block;
       padding-left: 0.5em;
+      -webkit-transform: rotate(-0.25turn);
       transform: rotate(-0.25turn); }
     .panorama.item-selector .scroll-arrow.down-arrow::before {
+      -webkit-transform: rotate(0.25turn);
       transform: rotate(0.25turn); }
 .panorama-leaflet-tip {
   pointer-events: none; }
@@ -116,6 +150,54 @@
       .panorama.legend ul li:nth-child(3) span:before {
         border-color: #768a66;
         background-color: rgba(118, 138, 102, 0.7); }
+#hamburger, #navburger {
+  left: 20px;
+  top: 7px; }
+
+#hamburger {
+  z-index: 1000000; }
+
+#navburger {
+  position: absolute; }
+
+#nav_header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 200;
+  width: 100%;
+  background-color: white;
+  overflow: visible;
+  z-index: 100000000; }
+  #nav_header h1 a {
+    text-decoration: none;
+    color: #28668a; }
+  #nav_header h1 {
+    margin-left: 120px;
+    font-family: 'Oswald';
+    color: #28668a;
+    opacity: 0.5;
+    clear: left;
+    text-transform: none; }
+  #nav_header h4 {
+    text-align: center;
+    text-transform: none; }
+  #nav_header h4 a {
+    text-decoration: none;
+    color: #888;
+    font-family: 'Abel', sans-serif;
+    font-size: 18px; }
+  #nav_header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline; }
+  #nav_header li {
+    display: inline; }
+  #nav_header .pan_nav_item {
+    float: left;
+    margin-right: 20px;
+    margin-left: 20px; }
 .panorama.offset-area-chart {
   position: relative; }
   .panorama.offset-area-chart .area-chart {
@@ -144,6 +226,11 @@
   .panorama.punchcard .caption {
     display: inline-block;
     float: right; }
+  .panorama.punchcard .content rect {
+    cursor: pointer;
+    stroke: none;
+    fill: black;
+    fill-opacity: 0; }
   .panorama.punchcard .category {
     margin-bottom: 20px;
     white-space: normal; }
@@ -166,5 +253,32 @@
     transform: translate(-50%, -50%);
     text-align: center;
     white-space: normal; }
+.time-based-markers-layer {
+  z-index: 1000;
+  pointer-events: none; }
+
+.time-based-label {
+  font-weight: bold; }
+
+.time-based-label.with-outlines {
+  stroke: #f9f9f9; }
+  @supports (paint-order: stroke) {
+    .time-based-label.with-outlines {
+      paint-order: stroke;
+      stroke-width: 1.5px; } }
+  @supports not (paint-order: stroke) {
+    .time-based-label.with-outlines {
+      stroke-width: 0.25px; } }
+
+.time-based-line {
+  stroke-width: 1;
+  stroke: black !important;
+  fill: none !important; }
+
+.place {
+  fill: #666;
+  font-size: 1.0em; }
+  .place.secondary {
+    font-size: 0.8em; }
 
 /*# sourceMappingURL=examples.css.map*/
