@@ -7,7 +7,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   context: __dirname,
 
-  debug: process.env.NODE_ENV !== 'production',
+  debug: true,
 
   devtool: '#source-map',
 
