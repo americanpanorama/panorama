@@ -37,6 +37,7 @@ export default class D3ChoroplethExample extends Component {
   }
 
   render () {
+    console.log('Render');
     return (
       <div>
         <MapChoropleth data={this.state.data}/>

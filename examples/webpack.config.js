@@ -8,7 +8,7 @@ var WEBSERVER_PORT = 8888;
 module.exports = {
   context: __dirname,
 
-  debug: process.env.NODE_ENV !== 'production',
+  debug: true,
 
   devtool: 'source-map',
 
