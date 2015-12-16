@@ -1,6 +1,8 @@
 import React, { PropTypes, Component } from 'react';
 import { DefaultProps, DefaultTypes } from './common/props';
 
+import './style.scss';
+
 export default class D3ReactBase extends Component {
   constructor (props) {
     super(props);
@@ -19,6 +21,7 @@ export default class D3ReactBase extends Component {
 
   componentDidMount() {
     this.chart.selector = this.refs.chart;
+    this.chart.tooltipRef = this.refs.tooltip;
     this.chart.props = this.props;
     this.chart.onMount();
   }
@@ -39,7 +42,13 @@ export default class D3ReactBase extends Component {
 
   render() {
     return (
-      <div ref='chart' className={'panorama' + this.getClassName()}></div>
+      <div className={'panorama' + this.getClassName()}>
+        <div ref='chart' className='panorama--chart-container'>
+          {this.props.tooltip &&
+          <div ref='tooltip' className='panorama--tooltip'></div>
+          }
+        </div>
+      </div>
     );
   }
 }

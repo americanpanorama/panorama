@@ -1,11 +1,24 @@
 .panorama.bar-chart {
   position: relative;
 
+  svg {
+    pointer-events: none;
+  }
+
+  svg.interactive {
+    pointer-events: auto;
+  }
+
   .bar {
     fill: steelblue;
   }
 
-  .bar:hover {
+  svg.interactive .bar {
+    cursor: pointer;
+  }
+
+  .bar:hover,
+  .bar.selected {
     fill: brown;
   }
 

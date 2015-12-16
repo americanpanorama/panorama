@@ -52,10 +52,11 @@ export default class Axis {
   render() {
     this.setPosition();
     this.element.call(this.axis);
-    this.renderExtras();
+    this.renderTickExtras();
+    this.renderLabelExtras();
   }
 
-  renderExtras() {
+  renderTickExtras() {
     const text = this.element.selectAll('text');
 
     if (this.options.attr) {
@@ -64,6 +65,18 @@ export default class Axis {
 
     if (this.options.style) {
       text.style(this.options.style);
+    }
+  }
+
+  renderLabelExtras() {
+    if (!this.label || !this.options.label) return;
+    const {label} = this.options;
+
+    if (label.attr) {
+      this.label.attr(label.attr);
+    }
+    if (label.style) {
+      this.label.style(label.style);
     }
   }
 
@@ -95,15 +108,7 @@ export default class Axis {
 
   axisLabel() {
     if (this.options.label) {
-      const {label} = this.options;
-      this.label = this.element.append('text').text(label.text);
-
-      if (label.attr) {
-        this.label.attr(label.attr);
-      }
-      if (label.style) {
-        this.label.style(label.style);
-      }
+      this.label = this.element.append('text').text(this.options.label.text);
     }
   }
 

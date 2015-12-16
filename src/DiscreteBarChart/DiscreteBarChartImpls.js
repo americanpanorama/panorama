@@ -48,5 +48,21 @@ export default class DiscreteBarChartImpls extends D3Component {
       .attr('y', d => yScale(yAccessor(d)))
       .attr('width',  xScale.rangeBand())
       .attr('height', d => this.height - yScale(yAccessor(d)));
+
+  }
+
+  postRender() {
+    let {selected, selectionAccessor, interactive} = this.props;
+    const bars = this.base.selectAll('.bar');
+    if (interactive) {
+      bars
+        .on('click', this.dispatch.click)
+        .on('mouseover', this.dispatch.mouseOver)
+        .on('mouseout', this.dispatch.mouseOut);
+    }
+    if (selected) {
+      bars
+        .classed('selected', d => selectionAccessor(d) === selected);
+    }
   }
 }

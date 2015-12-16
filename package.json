@@ -67,6 +67,7 @@
     "react-dom": "^0.14.0",
     "react-leaflet": "^0.9.0",
     "react-modal": "^0.6.1",
+    "string-template": "^0.2.1",
     "topojson": "^1.6.19"
   },
   "jest": {

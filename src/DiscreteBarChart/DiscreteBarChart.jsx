@@ -10,7 +10,9 @@ export default class DiscreteBarChart extends D3ReactBase {
     this.chartConstructor = DiscreteBarChartImpls;
   }
 
-  static propTypes = {...D3ReactBase.propTypes, barSpacing: PropTypes.number};
+  static propTypes = {...D3ReactBase.propTypes,
+    barSpacing: PropTypes.number
+  };
 
   static defaultProps = {...D3ReactBase.defaultProps,
     barSpacing: 0.1,

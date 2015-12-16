@@ -1,0 +1,20 @@
+.panorama--tooltip {
+  position: absolute;
+  display: none;
+  padding: 8px;
+  background: rgba(255,255,255,0.8);
+  color: #333;
+  font-size: 12px;
+  border-radius: 4px;
+  border: 1px solid #aaa;
+  box-sizing: border-box;
+  pointer-events: none;
+
+  &.active {
+    display: block;
+  }
+}
+
+.panorama--chart-container {
+  position: relative;
+}

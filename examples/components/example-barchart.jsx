@@ -5,6 +5,30 @@ export default class BarchartExample extends React.Component {
 
   constructor () {
     super();
+    this.state = {
+      verticalSelected: 'red',
+      horizontalSelected: null
+    };
+  }
+
+  onClickHandler(item) {
+    if (item.key !== this.state.verticalSelected) {
+      this.setState({
+        verticalSelected: item.key
+      });
+    }
+  }
+
+  onClickHorizontalHandler(item) {
+    if (item.colorName !== this.state.horizontalSelected) {
+      this.setState({
+        horizontalSelected: item.colorName
+      });
+    }
+  }
+
+  setToolTipContent(element, item) {
+    element.text('The color is ' + item.key);
   }
 
   render () {
@@ -31,6 +55,14 @@ export default class BarchartExample extends React.Component {
             'text-anchor': 'end'
           }
         }
+      },
+      selected: this.state.verticalSelected,
+      tooltip: true,
+      tooltipOptions: {
+        onSetTooltipContent: this.setToolTipContent.bind(this),
+        offset: [0, -10],
+        align: 'top center',
+        closeDelay: 100
       }
     };
 
@@ -48,15 +80,17 @@ export default class BarchartExample extends React.Component {
 
       // Optionally specify accessors to match your data format
       xAccessor: d => d.amount,
-      yAccessor: d => d.colorName
+      yAccessor: d => d.colorName,
+      selectionAccessor: d => d.colorName,
+      selected: this.state.horizontalSelected
     };
 
     return (
       <div>
         <h4>Vertical</h4>
-        <DiscreteBarChart key='1' {...opts1}/>
+        <DiscreteBarChart key='1' onClickHandler={this.onClickHandler.bind(this)} {...opts1}/>
         <h4>Horizontal</h4>
-        <HorizontalDiscreteBarChart key='2' {...opts2}/>
+        <HorizontalDiscreteBarChart key='2' onClickHandler={this.onClickHorizontalHandler.bind(this)} {...opts2}/>
       </div>
     );
 
