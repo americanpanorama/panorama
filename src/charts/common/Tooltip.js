@@ -64,30 +64,30 @@ export default class Tooltip {
 
     // vertical
     switch(alignment[0]) {
-      case 'top':
-        offsetY -= offsetHeight - offset[1];
-        break;
+    case 'top':
+      offsetY -= offsetHeight - offset[1];
+      break;
 
-      case 'bottom':
-      default:
-        offsetY -= offset[1];
-        break;
+    case 'bottom':
+    default:
+      offsetY -= offset[1];
+      break;
     }
 
     // horizontal
     switch(alignment[1]) {
-      case 'center':
-        offsetX -= offsetWidth/2 + offset[0];
-        break;
+    case 'center':
+      offsetX -= offsetWidth/2 + offset[0];
+      break;
 
-      case 'right':
-        offsetX -= offsetWidth + offset[0];
-        break;
+    case 'right':
+      offsetX -= offsetWidth + offset[0];
+      break;
 
-      case 'left':
-      default:
-        offsetX += offset[0];
-        break;
+    case 'left':
+    default:
+      offsetX += offset[0];
+      break;
     }
 
     return [offsetX, offsetY];
