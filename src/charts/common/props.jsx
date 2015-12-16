@@ -1,4 +1,5 @@
 import { PropTypes } from 'react';
+import d3 from 'd3';
 
 export const DefaultTypes = {
   width: PropTypes.number,
