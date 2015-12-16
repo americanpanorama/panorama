@@ -3,6 +3,7 @@ import { EventEmitter } from 'events';
 const HashManager = (function () {
 
   const EVENT_HASH_CHANGED = 'hashChanged';
+  const MAP_STATE_KEY = 'loc';
   
   let hashManager = {},
     state = {};
@@ -14,12 +15,16 @@ const HashManager = (function () {
   window.addEventListener('hashchange', onHashChange);
 
   function updateHash (newState) {
+
     let mergedState = Object.assign({}, state, newState);
 
     // remove null/undefined values
+    // and format map values
     for (let key in mergedState) {
       if (mergedState[key] == null) {
         delete mergedState[key];
+      } else if (key === MAP_STATE_KEY) {
+        mergedState[key] = formatMapCenterAndZoom(mergedState[MAP_STATE_KEY]);
       }
     }
 
@@ -27,6 +32,7 @@ const HashManager = (function () {
     if (document.location.hash !== hash) {
       document.location.replace(hash);
     }
+
   }
 
   /**
@@ -36,33 +42,91 @@ const HashManager = (function () {
    * @return {String|Object}    If `key` is passed, returns the value stored at that key; otherwise, returns all state in the hash.
    */
   function getState (key=null) {
+
     if (key) {
       return state[key];
     } else {
       return Object.assign({}, state);
     }
+
   }
 
   function setState (val, silent) {
+
     state = val;
     if (!silent) {
       hashManager.emit(EVENT_HASH_CHANGED, Object.assign({}, state));
     }
+
   }
 
   function onHashChange () {
+
     setState(parseHash(window.location.hash));
+
   }
 
   function parseHash (hash) {
+
     // Split into `&`-delimited parts and store as key-value pairs
     let hashState = hash.replace(/^#\/?|\/$/g, '').split('&').reduce((obj, pair) => {
       pair = pair.split('=');
+      if (pair[0] === MAP_STATE_KEY) {
+        pair[1] = parseMapCenterAndZoom(pair[1]);
+      }
       obj[pair[0]] = pair[1];
       return obj;
     }, {});
 
     return hashState;
+
+  }
+
+  function parseMapCenterAndZoom (args) {
+
+    args = args.split('/');
+    if (args.length == 3) {
+
+      let zoom = parseInt(args[0], 10),
+        lat = parseFloat(args[1]),
+        lon = parseFloat(args[2]);
+
+      if (isNaN(zoom) || isNaN(lat) || isNaN(lon)) {
+        return false;
+      } else {
+
+        return {
+          center: [lat, lon],
+          zoom: zoom
+        };
+
+      }
+    } else {
+      return false;
+    }
+
+  }
+
+  function formatMapCenterAndZoom (mapState) {
+
+    let lat, lng,
+      zoom = mapState.zoom,
+      precision = Math.max(0, Math.ceil(Math.log(zoom) / Math.LN2));
+
+    if (Array.isArray(mapState.center)) {
+      lat = mapState.center[0];
+      lng = mapState.center[1];
+    } else {
+      lat = mapState.center.lat;
+      lng = mapState.center.lng;
+    }
+
+    return [
+      zoom,
+      lat.toFixed(precision),
+      lng.toFixed(precision)
+    ].join('/');
+
   }
 
   // Establish initial state
@@ -70,6 +134,7 @@ const HashManager = (function () {
 
   // Public interface
   hashManager.EVENT_HASH_CHANGED = EVENT_HASH_CHANGED;
+  hashManager.MAP_STATE_KEY = MAP_STATE_KEY;
   hashManager.updateHash = updateHash;
   hashManager.getState = getState;
   return hashManager;

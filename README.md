@@ -21,7 +21,7 @@ especially when using projects that require multiple versions of Node (see the
 
 ```bash
 $ nvm install
-Found '/Users/seth/src/americanpanorama/panorama-template/.nvmrc' with version <0.12.7>
+Found '/Users/foo/src/americanpanorama/panorama-template/.nvmrc' with version <0.12.7>
 ######################################################################## 100.0%
 Now using node v0.12.7 (npm v2.11.3)
 ```
@@ -43,398 +43,57 @@ Then, install the toolkit:
 
 ---
 
+
 ## Components
-The Panorama toolkit comprises a number of components that can be used individually, or wired together with the [Panorama Template](https://github.com/americanpanorama/panorama-template) as a starting point. Below is a list of the components available in the toolkit.
+The Panorama toolkit comprises a number of components that can be used individually, or wired together with the [Panorama Template](https://github.com/americanpanorama/panorama-template) as a starting point. Below is a list of the components available in the toolkit. Component examples are available [here](http://americanpanorama.github.io/panorama/).
 
-//
-// TODO: move docs for each component into its own README.md, in the component's folder
-// (also, update adding components section below to reflect this)
-//
+### [AreaChart](./src/AreaChart)
 
-### PanoramaDispatcher
+### [CartoDBLoader](./src/CartoDBLoader)
 
-![screenshot](https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png)
+### [CartoDBTileLayer](./src/CartoDBTileLayer)
 
-TODO: description and screenshot
+### [ChartSlider](./src/ChartSlider)
 
+### [DiscreteBarChart](./src/DiscreteBarChart)
 
-#### Usage
-```js
-// TODO: usage
-```
+### [Donut](./src/Leaflet/Donut)
 
-### AreaChart
+### [HashManager](./src/HashManager)
 
-<a href='./src/AreaChart/AreaChart.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770149/7448e974-a1ac-11e5-90b6-3185c3630552.png'></a>
+### [HorizontalDiscreteBarChart](./src/HorizontalDiscreteBarChart)
 
-TODO: description and screenshot
+### [IntroManager](./src/IntroManager)
 
+### [ItemSelector](./src/ItemSelector)
 
-#### Usage
-```js
-import * as React from 'react';
-import { AreaChart } from '@panorama/toolkit';
+### [LeafletChoropleth](./src/Leaflet/Choropleth)
 
-let areaChartConfig = {
-  data: areaChartData,
+### [Legend](./src/Legend)
 
-  width: 600,
-  height: 200,
+### [MapChoropleth](./src/MapChoropleth)
 
-  // Optionally specify custom margins
-  margin: { top: 10, right: 10, bottom: 10, left: 10 },
+### [Navigation](./src/Navigation)
 
-  // Optionally specify accessors to match your data format
-  xAccessor: d => d.time,
-  yAccessor: d => d.value,
+### [OffsetAreaChart](./src/OffsetAreaChart)
 
-  // Optionally specify custom scales
-  xScale: d3.scale.linear()
-    .domain([minTime, maxTime]),
-  yScale: d3.scale.linear()
-    .domain(minValue, maxValue])
-};
+### [Punchcard](./src/Punchcard)
 
-ReactDOM.render(<AreaChart {...areaChartConfig}/>, document.body);
-```
+### [TimeBasedMarkers](./src/TimeBasedMarkers)
 
-### CartoDBLoader
+### [Tooltip](./src/Leaflet/Tooltip)
 
-<a href='./src/CartoDBLoader/CartoDBLoader.js'><img src='https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png'></a>
-
-TODO: description and screenshot
-
-
-#### Usage
-```js
-// TODO: usage
-```
-
-### CartoDBTileLayer
-
-<a href='./src/CartoDBTileLayer/CartoDBTileLayer.jsx'><img src='https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png'></a>
-
-TODO: description and screenshot
-
-
-#### Usage
-```js
-// TODO: usage
-```
-
-### DiscreteBarChart
-
-<a href='./src/DiscreteBarChart/DiscreteBarChart.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770147/743ed722-a1ac-11e5-87ab-5d4b9ea673e9.png'></a>
-
-TODO: description and screenshot
-
-
-#### Usage
-```js
-import * as React from 'react';
-import { DiscreteBarChart } from '@panorama/toolkit';
-
-let discreteBarChartConfig = {
-	// TODO
-};
-
-ReactDOM.render(<DiscreteBarChart {...discreteBarChartConfig}/>, document.body);
-```
-
-### Donut
-
-<a href='./src/Leaflet/Donut/Donut.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770150/744a4ec2-a1ac-11e5-8d45-c932e155ae0c.png'></a>
-
-TODO: description and screenshot
-
-
-#### Usage
-```js
-import * as React from 'react';
-import { Donut } from '@panorama/toolkit';
-
-let donutConfig = {
-	// TODO
-};
-
-ReactDOM.render(<Donut {...donutConfig}/>, document.body);
-```
-
-### HashManager
-
-<a href='./src/HashManager/HashManager.js'><img src='https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png'></a>
-
-TODO: description and screenshot
-
-
-#### Usage
-```js
-// TODO: usage
-```
-
-### HorizontalDiscreteBarChart
-
-<a href='./src/HorizontalDiscreteBarChart/HorizontalDiscreteBarChart.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770146/743552f6-a1ac-11e5-9ec1-884458177541.png'></a>
-
-TODO: description and screenshot
-
-
-#### Usage
-```js
-import * as React from 'react';
-import { HorizontalDiscreteBarChart } from '@panorama/toolkit';
-
-let hoizontalBarChartConfig = {
-	// TODO
-};
-
-ReactDOM.render(<HorizontalDiscreteBarChart {...hoizontalBarChartConfig}/>, document.body);
-```
-
-### IntroManager
-
-<a href='./src/IntroManager/IntroManager.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770141/742b39c4-a1ac-11e5-914f-9dc2966158ed.png'></a>
-
-TODO: description and screenshot
-
-
-#### Usage
-```js
-import * as React from 'react';
-import { IntroManager } from '@panorama/toolkit';
-
-let introManagerConfig = {
-	// TODO
-};
-
-ReactDOM.render(<IntroManager {...introManagerConfig}/>, document.body);
-```
-
-### ItemSelector
-
-<a href='./src/ItemSelector/ItemSelector.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770143/7432a538-a1ac-11e5-8e89-890621d263ca.png'></a>
-
-TODO: description and screenshot
-
-
-#### Usage
-```js
-import * as React from 'react';
-import { ItemSelector } from '@panorama/toolkit';
-
-let introManagerConfig = {
-	// TODO
-};
-
-ReactDOM.render(<ItemSelector {...introManagerConfig}/>, document.body);
-```
-
-### LeafletChoropleth
-
-<a href='./src/Leaflet/Choropleth/Choropleth.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770148/7447819c-a1ac-11e5-8e39-7a89049d6e27.png'></a>
-
-TODO: description and screenshot
-
-
-#### Usage
-```js
-import * as React from 'react';
-import { LeafletChoropleth } from '@panorama/toolkit';
-
-let leafletChoroplethConfig = {
-	// TODO
-};
-
-ReactDOM.render(<LeafletChoropleth {...leafletChoroplethConfig}/>, document.body);
-```
-
-### Legend
-
-<a href='./src/Legend/Legend.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/10005832/610e48b0-606e-11e5-91ee-af887393e22d.png'></a>
-
-Clickable legend that can be used to label and toggle layers of a visualization.
-
-
-#### Usage
-```js
-import * as React from 'react';
-import { Legend } from '@panorama/toolkit';
-
-let legendData = {
-	items: [
-		'narratives',
-		'cotton',
-		'sugar'
-	],
-	selectedItem: this.state.selectedItem || 'narratives'
-};
-
-ReactDOM.render(<Legend { ...legendData } onItemSelected={ this.onItemSelected }/>, document.body);
-```
-
-### MapChoropleth
-
-<a href='./src/MapChoropleth/MapChoropleth.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770142/74317d52-a1ac-11e5-99bb-d38fbcf7fa02.png'></a>
-
-TODO: description and screenshot
-
-
-#### Usage
-```js
-import * as React from 'react';
-import { MapChoropleth } from '@panorama/toolkit';
-
-let mapChoroplethConfig = {
-  // TODO
-};
-
-ReactDOM.render(<MapChoropleth {...mapChoroplethConfig}/>, document.body);
-```
-
-### Navigation
-
-<a href='./src/Navigation/Navigation.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770145/7434fc84-a1ac-11e5-9bf4-8a797d19fb8d.png'></a>
-
-TODO: description and screenshot
-
-
-#### Usage
-```js
-import * as React from 'react';
-import { Navigation } from '@panorama/toolkit';
-
-let navigationConfig = {
-	// TODO
-};
-
-ReactDOM.render(<Navigation {...navigationConfig}/>, document.body);
-```
-
-### OffsetAreaChart
-
-<a href='./src/OffsetAreaChart/OffsetAreaChart.jsx'><img src='https://cloud.githubusercontent.com/assets/1127259/11770144/7433df16-a1ac-11e5-9226-d3d64e98142a.png'></a>
-
-TODO: description and screenshot
-
-
-#### Usage
-```js
-import * as React from 'react';
-import { AreaChart } from '@panorama/toolkit';
-
-let offsetAreaChartConfig = {
-  width: 600,
-  height: 300,
-
-  // optional; used to draw baselines and metadata presence circles
-  data: offsetAreaChartData.offsetAreaChartMetadata,
-
-  // d3 conventional margins
-  margin: { top: 10, right: 10, bottom: 10, left: 10 },
-
-  // Optionally specify custom scales
-  xScale: d3.scale.linear()
-    .domain([minTime, maxTime]),
-  yScale: d3.scale.linear()
-    .domain(minValue, maxValue])
-
-  // accessor for start and end of baselines
-  xAccessor: (d, i) => i ? d.endTime : d.startTime,
-
-  // accessor for metadata presence circles
-  metadataAccessor: d => d.metadataTimes,
-
-  // hide axes
-  axisProps: null,
-
-  // data and accessors used to render each AreaChart
-  areaChartData: offsetAreaChartData.areaChartsData,
-  areaChartConfig: {
-    xAccessor: d => d.time,
-    yAccessor: d => d.value,
-  },
-
-  // colors applied to AreaCharts
-  colorPalette: [
-    '#466834',
-    '#C163D5',
-    '#D34E2B'
-  ],
-
-  // optionally specify an initially selected chart
-  selectedChartId: 22,
-
-  // id of each chart
-  chartIdAccessor: d => d.length ? d[0].chartId : d.chartId
-};
-
-ReactDOM.render(<OffsetAreaChart {...offsetAreaChartConfig}/>, document.body);
-```
-
-### Punchcard
-
-<a href='./src/Punchcard/Punchcard.jsx'><img src='https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png'></a>
-
-TODO: description and screenshot
-
-
-#### Usage
-```js
-import * as React from 'react';
-import { Punchcard } from '@panorama/toolkit';
-
-let punchcardConfig = {
-	// TODO
-};
-
-ReactDOM.render(<Punchcard {...punchcardConfig}/>, document.body);
-```
-
-### TimeBasedMarkers
-
-<a href='./src/TimeBasedMarkers/TimeBasedMarkers.jsx'><img src='https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png'></a>
-
-TODO: description and screenshot
-
-
-#### Usage
-```js
-import * as React from 'react';
-import { TimeBasedMarkers } from '@panorama/toolkit';
-
-let timeBasedMarkersConfig = {
-	// TODO
-};
-
-ReactDOM.render(<TimeBasedMarkers {...timeBasedMarkersConfig}/>, document.body);
-```
-
-### Tooltip
-
-<a href='./src/Leaflet/Tooltip/Tooltip.jsx'><img src='https://cdn0.iconfinder.com/data/icons/feather/96/circle-check-32.png'></a>
-
-TODO: description and screenshot
-
-
-#### Usage
-```js
-import * as React from 'react';
-import { Tooltip } from '@panorama/toolkit';
-
-let tooltipConfig = {
-	// TODO
-};
-
-ReactDOM.render(<Tooltip {...tooltipConfig}/>, document.body);
-```
+### [PanoramaDispatcher](./src/PanoramaDispatcher.js)
 
 ---
+
 
 ## Developing components
 
 Developing new components and modifying existing components requires intermediate knowledge of JavaScript and [React](https://facebook.github.io/react/), as well as basic familiarity with [npm](https://npmjs.com/). To get started, clone this repo, `cd` into the root directory, and install all necessary modules via `npm install`.
 
-All components are in the `src/` folder; examples of components are in the `examples/components/` folder. Note that American Panorama components are written in ES6 and use Babel to transpile to ES5 JavaScript. **TODO: link to ES6 primer**
+All components are in the `src/` folder; examples of components are in the `examples/components/` folder. Note that American Panorama components are written in ES6 and use Babel to transpile to ES5 JavaScript. Luke Hoban offers [clear examples of features new in ES6](https://github.com/lukehoban/es6features); Mozilla Developer Network provides a [solid reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference).
+
 
 #### 1. Add the component
 
@@ -457,11 +116,12 @@ As a general rule, React components should be stateless, and should derive their
 
 Try to avoid adding any but the most basic styles to your component's `style.scss` file. Consumers of your component should be able to customize appearance as desired, so avoid being overly-specific with your CSS rules, and add classes to any elements that might be styled by an end user so that they can be selected in CSS.
 
+
 #### 2. Add an example and documentation
 
 Add an example for your component to `examples/`. Create a React component in `examples/components/` that will load and display your new component. Pass any required and optional props into your new component from this file. Then, `import` your example component into [`examples/app.js`](./examples/app.js).
 
-Add documentation for your component to [this README](#Components).
+Add documentation for your component as a `README.md` within your component's folder (`src/MyComponent/`).
 
 
 #### 3. Build
@@ -528,5 +188,6 @@ This script updates the [examples page](http://americanpanorama.github.io/panora
 
 ---
 
+
 ## Acknowledgements
-TODO: DSL/Richmond, Stamen, Mellon Foundation
+American Panorama is created by the [Digital Scholarship Lab at the University of Richmond](http://dsl.richmond.edu/). [Stamen Design](http://stamen.com/) designed and developed the initial maps and this toolkit. The [Andrew W. Mellon Foundation](https://mellon.org/) and the [University of Richmond](http://www.richmond.edu/) have generously provided funding for American Panorama. 

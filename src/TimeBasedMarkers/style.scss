@@ -1,38 +1,48 @@
-.time-based-markers-layer {
+.panorama.time-based-markers-layer {
   z-index: 1000;
   pointer-events: none;
-}
 
-.time-based-label {
-  font-weight: bold;
-}
+  &.leaflet-d3-overlay {
+    position: absolute;
+    z-index: 1;
 
-.time-based-label.with-outlines {
-  stroke: #f9f9f9;
-  @supports (paint-order: stroke) {
-    paint-order: stroke;
-    stroke-width: 1.5px;
+    svg {
+        overflow: visible;
+      }
   }
-  @supports not (paint-order: stroke) {
-    stroke-width: 0.25px;
+
+  .time-based-label {
+    font-weight: bold;
   }
-}
 
-.time-based-icon {
-
-}
-
-.time-based-line {
-  stroke-width: 1;
-  stroke: black !important;
-  fill: none !important;
-}
-
-.place {
-  fill: #666;
-  font-size: 1.0em;
-
-  &.secondary {
-    font-size: 0.8em;
+  .time-based-label.with-outlines {
+    stroke: #f9f9f9;
+    @supports (paint-order: stroke) {
+      paint-order: stroke;
+      stroke-width: 1.5px;
+    }
+    @supports not (paint-order: stroke) {
+      stroke-width: 0.25px;
+    }
   }
+
+  .time-based-icon {
+
+  }
+
+  .time-based-line {
+    stroke-width: 1;
+    stroke: black !important;
+    fill: none !important;
+  }
+
+  .place {
+    fill: #666;
+    font-size: 1.0em;
+
+    &.secondary {
+      font-size: 0.8em;
+    }
+  }
+
 }
