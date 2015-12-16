@@ -1,3 +1,4 @@
+import d3 from 'd3';
 import DiscreteBarChartImpls from '../DiscreteBarChart/DiscreteBarChartImpls';
 
 export default class HorizontalDiscreteBarChartImpls extends DiscreteBarChartImpls {
