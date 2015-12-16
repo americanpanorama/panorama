@@ -4,13 +4,10 @@ import { DiscreteBarChart, HorizontalDiscreteBarChart } from '../../src/main';
 export default class BarchartExample extends React.Component {
 
   constructor () {
-
     super();
-
   }
 
   render () {
-
     var opts1 = {
       data: [
         { key: 'red', value: 20 },
@@ -18,7 +15,23 @@ export default class BarchartExample extends React.Component {
         { key: 'green', value: 10 }
       ],
       width: 400,
-      height: 400
+      height: 400,
+      yaxis: {
+        className: 'y axis',
+        orient: 'left',
+        position: 'left',
+        label: {
+          text: 'Value',
+          attr: {
+            transform: 'rotate(-90)',
+            y: 6,
+            dy: '0.71em'
+          },
+          style: {
+            'text-anchor': 'end'
+          }
+        }
+      }
     };
 
     var opts2 = {

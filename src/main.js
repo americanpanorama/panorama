@@ -31,7 +31,6 @@ export default {
   Axis,
   ChartBase,
   PanoramaChart,
-
   AreaChart,
   CartoDBLoader,
   CartoDBTileLayer,
