@@ -25,6 +25,7 @@ import OffsetAreaChart from './OffsetAreaChart/OffsetAreaChart';
 import { PanoramaDispatcher, PanoramaEventTypes } from './PanoramaDispatcher.js';
 import Punchcard from './Punchcard/Punchcard';
 import TimeBasedMarkers from './TimeBasedMarkers/TimeBasedMarkers';
+import ScatterPlot from './ScatterPlot/ScatterPlot';
 import Tooltip from './Leaflet/Tooltip/Tooltip';
 
 export default {
@@ -50,5 +51,6 @@ export default {
   PanoramaEventTypes,
   Punchcard,
   TimeBasedMarkers,
-  Tooltip
+  Tooltip,
+  ScatterPlot
 };

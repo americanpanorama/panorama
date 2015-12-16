@@ -14,6 +14,7 @@ import LegendExample from './components/example-legend.jsx';
 import PunchcardExample from './components/example-punchcard.jsx';
 import Donut from './components/example-donut.jsx';
 import NavigationExample from './components/example-navigation.jsx';
+import ScatterplotExample from './components/example-scatterplot';
 
 class App extends Component {
 
@@ -62,6 +63,8 @@ class App extends Component {
         <hr />
         <h2>Area Chart</h2>
         <AreaChartExample />
+        <h2>Scatter Plot</h2>
+        <ScatterplotExample />
         <h2>Bar Chart</h2>
         <BarChartExample />
         <h2>Choropleth</h2>
