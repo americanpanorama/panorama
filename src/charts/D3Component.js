@@ -49,7 +49,7 @@ export default class D3Component {
 
     this.root = d3.select(this.selector);
     this.svg = this.root.append('svg')
-      .classed('interactive', this.props.interactive)
+      .classed('interactive', this.props.interactive);
 
     if (this.props.interactive && this.props.tooltip) {
       this.svg.on('mousemove', this.dispatch.mouseMove);

@@ -5,8 +5,23 @@ import './style.scss';
 export default class Legend extends React.Component {
 
   static propTypes = {
+    /**
+     * @type {Array[String]}
+     * List of items (Strings) to display.
+     */
     items: PropTypes.array.isRequired,
+
+    /**
+     * @type {String}
+     * Currently selected item.
+     * Either the string value of the item (as displayed on-screen) or the index of the item within the `items` array.
+     */
     selectedItem: PropTypes.string,
+
+    /**
+     * @type {Function}
+     * Callback invoked on selection of an item, e.g. a mouse click.
+     */
     onItemSelected: PropTypes.func
   }
 
@@ -68,10 +83,11 @@ export default class Legend extends React.Component {
     return (
       <div className='panorama legend'>
         <ul>
-        { this.props.items.map(item => {
+        { this.props.items.map((item, i) => {
+          let selected = this.props.selectedItem === item || this.props.selectedItem == i;
           return (
             <li
-              className = { 'item' + (this.props.selectedItem === item ? ' selected' : '') }
+              className = { 'item' + (selected ? ' selected' : '') }
               data-item = { item }
               key = { item }
               onClick = { this.onItemClick }
