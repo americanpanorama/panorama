@@ -36,6 +36,3 @@ node_modules
 
 # Examples
 examples/public/examples.*
-
-# Distribution files
-dist
