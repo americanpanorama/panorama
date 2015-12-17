@@ -10,10 +10,17 @@ export default class ScatterPlot extends D3ReactBase {
     this.chartConstructor = ScatterPlotImpls;
   }
 
+  static propTypes = {...D3ReactBase.propTypes,
+    dotRadiusScale: PropTypes.func,
+    dotRadius: PropTypes.number,
+    dotRadiusAccessor: PropTypes.func
+  };
+
   static defaultProps = {...D3ReactBase.defaultProps,
     xScale: d3.scale.linear(),
     yScale: d3.scale.linear(),
     className: 'scatterplot',
+    dotRadius: 3,
     xaxis: {
       className: 'x axis',
       orient: 'bottom',
