@@ -11,7 +11,10 @@ module.exports = {
 
   devtool: '#source-map',
 
-  entry: './main.js',
+  entry: {
+    areachart: './AreaChart/AreaChart',
+    legend: './Legend/Legend'
+  },
 
   eslint: {
     failOnError: true
@@ -66,7 +69,7 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, '..', 'build'),
-    filename: 'components.js',
+    filename: 'components/[name].js',
     library: '@panorama/toolkit',
     libraryTarget: 'umd'
   },
@@ -75,7 +78,8 @@ module.exports = {
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(true),
     new webpack.optimize.AggressiveMergingPlugin(),
-    new ExtractTextPlugin('components.css', { allChunks: true })
+    new webpack.optimize.CommonsChunkPlugin('shared', 'shared.js', null, 2),
+    new ExtractTextPlugin('components/[name].css', { allChunks: true })
   ],
 
   resolve: {
