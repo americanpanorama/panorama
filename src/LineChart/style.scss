@@ -1,8 +1,9 @@
-.panorama.area-chart {
+.panorama.line-chart {
 
   path {
-    stroke: none;
-    fill: steelblue;
+    stroke: steelblue;
+    stroke-width: 1;
+    fill: none;
   }
 
   .axis {

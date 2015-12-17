@@ -7,12 +7,13 @@ import { PanoramaDispatcher, PanoramaEventTypes } from '../src/PanoramaDispatche
 import AreaChartExample from './components/example-areachart.jsx';
 import BarChartExample from './components/example-barchart';
 import D3ChoroplethExample from './components/example-d3Choropleth';
+import Donut from './components/example-donut.jsx';
 import IntroManagerExample from './components/example-introManager.jsx';
 import ItemSelectorExample from './components/example-itemSelector.jsx';
 import LeafletChoropleth from './components/example-leafletChoropleth.jsx';
 import LegendExample from './components/example-legend.jsx';
+import LineChartExample from './components/example-linechart.jsx';
 import PunchcardExample from './components/example-punchcard.jsx';
-import Donut from './components/example-donut.jsx';
 import NavigationExample from './components/example-navigation.jsx';
 import ScatterplotExample from './components/example-scatterplot';
 
@@ -63,12 +64,12 @@ class App extends Component {
         <hr />
         <h2>Area Chart</h2>
         <AreaChartExample />
-        <h2>Scatter Plot</h2>
-        <ScatterplotExample />
         <h2>Bar Chart</h2>
         <BarChartExample />
         <h2>Choropleth</h2>
         <D3ChoroplethExample />
+        <h2><a name="donut">Donut</a></h2>
+        <Donut />
         <h2>IntroManager</h2>
         <IntroManagerExample />
         <h2>ItemSelector</h2>
@@ -77,12 +78,14 @@ class App extends Component {
         <LeafletChoropleth />
         <h2>Legend</h2>
         <LegendExample { ...this.state.legend } />
+        <h2>Line Chart</h2>
+        <LineChartExample />
         <h2>Punchcard</h2>
         <PunchcardExample />
-        <h2><a name="donut">Donut</a></h2>
-        <Donut />
         <h2>Navigation</h2>
         <NavigationExample />
+        <h2>Scatter Plot</h2>
+        <ScatterplotExample />
       </div>
     );
 

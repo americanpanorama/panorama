@@ -19,6 +19,7 @@ import IntroManager from './IntroManager/IntroManager';
 import ItemSelector from './ItemSelector/ItemSelector';
 import LeafletChoropleth from './Leaflet/Choropleth/Choropleth';
 import Legend from './Legend/Legend';
+import LineChart from './LineChart/LineChart';
 import MapChoropleth from './MapChoropleth/MapChoropleth';
 import Navigation from './Navigation/Navigation';
 import OffsetAreaChart from './OffsetAreaChart/OffsetAreaChart';
@@ -44,6 +45,7 @@ export default {
   ItemSelector,
   LeafletChoropleth,
   Legend,
+  LineChart,
   MapChoropleth,
   Navigation,
   OffsetAreaChart,

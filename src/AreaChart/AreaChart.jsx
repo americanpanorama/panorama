@@ -7,7 +7,7 @@ import './style.scss';
 export default class AreaChart extends PanoramaChart {
 
   // extend superclass `props` validators
-  static propTypes = Object.assign({}, AreaChart.propTypes, {
+  static propTypes = Object.assign({}, PanoramaChart.propTypes, {
     fillColor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     fillOpacity: PropTypes.number
   });
@@ -55,8 +55,7 @@ export class AreaChartImpl extends ChartBase {
           .attr('class', 'area')
           .style({
             fill: chart.config('fillColor'),
-            opacity: chart.config('fillOpacity'),
-            stroke: 'none'
+            opacity: chart.config('fillOpacity')
           });
       }
     });
@@ -74,8 +73,7 @@ export class AreaChartImpl extends ChartBase {
         .attr('d', d => areaGenerator(d))
         .style({
           fill: chart.config('fillColor'),
-          opacity: chart.config('fillOpacity'),
-          stroke: 'none'
+          opacity: chart.config('fillOpacity')
         });
     })
     .on('exit', function () {
