@@ -100,6 +100,7 @@ export default class Tooltip {
       this.element.text('');
     }
 
+    return this;
   }
 
   show(evt, item) {
@@ -108,6 +109,8 @@ export default class Tooltip {
     this.element.classed('active', true);
     if (evt) this.setPosition(evt);
     if (item) this.setContent(item);
+
+    return this;
   }
 
   hide(immediate) {
@@ -127,6 +130,8 @@ export default class Tooltip {
         if (!this.isShowing) this.setActiveToFalse();
       }, this.options.closeDelay);
     }
+
+    return this;
   }
 
   setActiveToFalse() {

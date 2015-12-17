@@ -81,6 +81,7 @@ export default class D3Component {
 
   onUnMount() {
     this.axes.forEach(axis => axis.onUnMount());
+    this.axes.length = 0;
     this.removeEvents();
     this.svg.on('move', null);
     this.svg.remove();
@@ -154,6 +155,10 @@ export default class D3Component {
   setAxis(axis) {
     if (axis.toString() !== 'Axis') return;
     this.axes.push(axis);
+  }
+
+  updateAxis(pos, scale, opts) {
+    this.axes[pos].update(scale, opts);
   }
 
   _render() {

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import d3 from 'd3';
 import { AreaChart, OffsetAreaChart } from '../../src/main';
 
 import areaChartData from '../data/areaChart.json';
@@ -7,20 +8,47 @@ import offsetAreaChartData from '../data/offsetAreaChart.json';
 export default class AreaChartExample extends React.Component {
 
   constructor () {
-
     super();
+    this.state = {data: [], minYear: null, maxYear: null};
+  }
 
+  componentWillMount() {
+    this.dataLoader();
+  }
+
+  dataLoader() {
+    d3.json('data/areaChart.json', (err, rsp) => {
+      if (err || !rsp.length) return console.error('Area chart data loading error!');
+
+      rsp[0].forEach((row) => {
+        row.date = new Date(row.year, 0, 1);
+        row.totalNormalizedValue = row.totalNormalizedValue || 0;
+      });
+
+      const min = d3.min(rsp[0], d => d.date);
+      const max = d3.max(rsp[0], d => d.date);
+
+      this.setState({
+        data: rsp,
+        minYear: min,
+        maxYear: max
+      });
+    });
+  }
+
+  setAreaChartTip(element, item) {
+    element.text(item.year + ' : ' + item.totalNormalizedValue);
   }
 
   render () {
 
-    const MIN_YEAR = 1820;
-    const MAX_YEAR = 1860;
+    const MIN_YEAR = this.state.minYear || new Date();
+    const MAX_YEAR = this.state.maxYear || new Date();
     const MIN_VALUE = 0;
     const MAX_VALUE = 3000000;
 
     let areaChartConfig = {
-      data: areaChartData,
+      data: this.state.data,
 
       width: 600,
       height: 200,
@@ -29,11 +57,16 @@ export default class AreaChartExample extends React.Component {
       margin: {top: 20, right: 30, bottom: 20, left: 60},
 
       // Optionally specify accessors to match your data format
-      xAccessor: d => d.year,
-      yAccessor: d => d.totalNormalizedValue || 0,
+      xAccessor: d => d.date,
+      yAccessor: d => d.totalNormalizedValue,
+
+      tooltip: true,
+      tooltipOptions: {
+        onSetTooltipContent: this.setAreaChartTip.bind(this)
+      },
 
       // Optionally specify custom scales
-      xScale: d3.scale.linear()
+      xScale: d3.time.scale()
         .domain([MIN_YEAR, MAX_YEAR]),
       yScale: d3.scale.linear()
         .domain([MIN_VALUE, MAX_VALUE])
@@ -52,7 +85,7 @@ export default class AreaChartExample extends React.Component {
 
       // d3 scales for chart
       xScale: d3.scale.linear()
-        .domain([MIN_YEAR, MAX_YEAR]),
+        .domain([1820, 1860]),
       yScale: d3.scale.linear()
         .domain([MIN_VALUE, MAX_VALUE]),
 

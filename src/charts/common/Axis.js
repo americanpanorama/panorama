@@ -32,9 +32,15 @@ export default class Axis {
     this._height = h;
   }
 
+  update(scale, opts) {
+    this.options = opts;
+    this.axis.scale(scale);
+    this.setAxisMethods();
+  }
+
   onMount(base) {
     this.element = base.append('g')
-      .attr('class', this.options.className);
+      .attr('class', this.options.className || '');
 
     this.setAxisMethods();
     this.axisLabel();
