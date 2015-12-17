@@ -1,27 +1,25 @@
 .panorama.offset-area-chart {
   position: relative;
 
-  .area-chart {
-    position: absolute;
-
-    path.area {
-      opacity: 0.7;
-    }
+  .area {
+    fill-opacity: 0.25;
   }
 
-  .axis {
-    font: 10px sans-serif;
+  .lifespan, circle {
+    opacity: 0.25;
   }
 
-  .axis path,
-  .axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
-  }
-
-  .metadata circle {
+  circle {
     stroke: none;
   }
-  
+
+  .selected {
+    .area {
+      fill-opacity: 0.9;
+    }
+
+    .lifespan, circle {
+      opacity: 0.9;
+    }
+  }
 }

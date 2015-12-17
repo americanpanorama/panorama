@@ -2,14 +2,11 @@ import * as React from 'react';
 import d3 from 'd3';
 import { AreaChart, OffsetAreaChart } from '../../src/main';
 
-import areaChartData from '../data/areaChart.json';
-import offsetAreaChartData from '../data/offsetAreaChart.json';
-
 export default class AreaChartExample extends React.Component {
 
   constructor () {
     super();
-    this.state = {data: [], minYear: null, maxYear: null};
+    this.state = {offsetData: [], data: [], minYear: null, maxYear: null};
   }
 
   componentWillMount() {
@@ -28,18 +25,31 @@ export default class AreaChartExample extends React.Component {
       const min = d3.min(rsp[0], d => d.date);
       const max = d3.max(rsp[0], d => d.date);
 
-      this.setState({
-        data: rsp,
-        minYear: min,
-        maxYear: max
+      d3.json('data/offsetAreaChart.json', (err, rsp2) => {
+        if (err) {
+          console.error('Offset area chart data loading error!');
+
+          return this.setState({
+            data: rsp,
+            minYear: min,
+            maxYear: max
+          });
+        }
+
+        this.setState({
+          offsetData: rsp2,
+          data: rsp,
+          minYear: min,
+          maxYear: max
+        });
       });
+
     });
   }
 
   setAreaChartTip(element, item) {
     element.text(item.year + ' : ' + item.totalNormalizedValue);
   }
-
   render () {
 
     const MIN_YEAR = this.state.minYear || new Date();
@@ -78,7 +88,7 @@ export default class AreaChartExample extends React.Component {
       height: 300,
 
       // used to draw baselines and metadata presence circles
-      data: offsetAreaChartData.offsetAreaChartMetadata,
+      data: this.state.offsetData.offsetAreaChartMetadata,
 
       // d3 conventional margins
       margin: { top: 0, right: 20, bottom: 40, left: 20 },
@@ -99,7 +109,7 @@ export default class AreaChartExample extends React.Component {
       axisProps: null,
 
       // data and accessors used to render each AreaChart
-      areaChartData: offsetAreaChartData.areaChartsData,
+      areaChartData: this.state.offsetData.areaChartsData,
       areaChartConfig: {
         xAccessor: d => d.year,
         yAccessor: d => d.totalNormalizedValue || 0

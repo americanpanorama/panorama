@@ -18,7 +18,6 @@ export default class AreaChart extends D3ReactBase {
   };
 
   static defaultProps = {...D3ReactBase.defaultProps,
-    barSpacing: 0.1,
     xScale: d3.scale.ordinal(),
     className: 'area-chart',
     interpolate: 'basis',
