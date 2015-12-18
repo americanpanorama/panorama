@@ -10,7 +10,8 @@ export default class MapChoropleth extends D3ReactBase {
     projection: PropTypes.string,
     mapScale: PropTypes.number,
     selected: PropTypes.any,
-    selectedAccessor: PropTypes.func
+    selectedAccessor: PropTypes.func,
+    hoverStyle: PropTypes.object
   };
 
   // extend superclass `props` defaults

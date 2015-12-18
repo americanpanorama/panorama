@@ -3,4 +3,12 @@
     fill: red;
     stroke: white;
   }
+
+  .interactive path {
+    cursor: pointer;
+  }
+
+  .hover-dupe {
+    pointer-events: none;
+  }
 }

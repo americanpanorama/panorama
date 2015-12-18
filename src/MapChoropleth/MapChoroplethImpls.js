@@ -13,6 +13,7 @@ export default class MapChoroplethImpls extends D3Component {
 
     this._render();
     this._selected = null;
+    this._hoverElement = null;
   }
 
   preRender() {
@@ -22,6 +23,7 @@ export default class MapChoroplethImpls extends D3Component {
   render() {
     let {data, styler, interactive, selected, selectedAccessor} = this.props;
     if (!data || !data.features) return;
+    const self = this;
 
     const path = this.base.selectAll('path')
       .data(data.features);
@@ -39,14 +41,25 @@ export default class MapChoroplethImpls extends D3Component {
         d3.select(this).style(styler(d));
       });
 
+
     if (interactive) {
+      d3.selectAll('.hover-dupe').remove();
+      this._hoverElement = null;
       path
         .on('click', null)
         .on('mouseover', null)
         .on('mouseout', null)
         .on('click', this.dispatch.click)
-        .on('mouseover', this.dispatch.mouseOver)
-        .on('mouseout', this.dispatch.mouseOut);
+        .on('mouseenter', function(d) {
+          if (selectedAccessor(d) === selected) return;
+          self._hoverElement = self.bringToTop(this, 'hover-dupe sel-' + selectedAccessor(d), self.props.hoverStyle || null);
+          self.dispatch.mouseOver(d);
+        })
+        .on('mouseleave', function(d) {
+          if (self._hoverElement) self._hoverElement.remove();
+          self._hoverElement = null;
+          self.dispatch.mouseOut(d);
+        });
     }
 
     if (selected && selected !== this._selected) {
@@ -58,14 +71,24 @@ export default class MapChoroplethImpls extends D3Component {
         })
         .each(function() {
           // clone node then move to top
-          d3.select(this.parentNode.appendChild(this.cloneNode(true), this.nextSibling))
-            .classed('selected-dupe', true);
+          self.bringToTop(this, 'selected-dupe')
         });
     }
 
   }
 
   postRender() {}
+
+  bringToTop(node, klass, style) {
+    const elm = d3.select(node.parentNode.appendChild(node.cloneNode(true), node.nextSibling))
+      .classed(klass, true);
+
+    if (style) {
+      elm.style(style);
+    }
+
+    return elm;
+  }
 
   updateProjection () {
     let {data, mapScale, projection} = this.props;

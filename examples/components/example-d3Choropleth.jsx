@@ -21,7 +21,11 @@ export default class D3ChoroplethExample extends Component {
       },
       styler: this.styler.bind(this),
       onClickHandler: this.onClickHandler.bind(this),
-      selectedAccessor: d => d.id
+      selectedAccessor: d => d.id,
+      mapScale: 'auto',
+      hoverStyle: {
+        stroke: 'red'
+      }
     };
   }
 
