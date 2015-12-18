@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { LineChart } from '../../src/main';
-
+import d3 from 'd3';
 import lineChartData from '../data/nosCoopsWLV60_2981_514b_bc3a.json';
 
 export default class LineChartExample extends React.Component {
@@ -33,7 +33,21 @@ export default class LineChartExample extends React.Component {
         xScale: d3.time.scale()
           .domain([new Date(data[0][TIME]), new Date(data[data.length-1][TIME])]),
         yScale: d3.scale.linear()
-          .domain([0, d3.max(data, d => d[VALUE]) + 1])
+          .domain([0, d3.max(data, d => d[VALUE]) + 1]),
+        xaxis: {
+          className: 'x axis',
+          orient: 'bottom',
+          position: 'bottom',
+          tickFormat: d3.time.format('%x'),
+          ticks: 5,
+          attr: {
+            dx: '0',
+            dy: '0.5em'
+          },
+          style: {
+            'text-anchor': 'middle'
+          }
+        }
       };
 
     return (

@@ -30,6 +30,9 @@ export default class DiscreteBarChartImpls extends D3Component {
     xScale.domain(data.map(d => xAccessor(d)));
     yScale.range([this.height, 0]);
     yScale.domain([0, d3.max(data, d => yAccessor(d))]);
+
+    this.updateAxis(0, xScale, this.props.xaxis);
+    this.updateAxis(1, yScale, this.props.yaxis);
   }
 
   render() {

@@ -10,6 +10,9 @@ export default class HorizontalDiscreteBarChartImpls extends DiscreteBarChartImp
     yScale.domain(data.map(d => yAccessor(d)));
     xScale.range([0, this.width]);
     xScale.domain([0, d3.max(data, d => xAccessor(d))]);
+
+    this.updateAxis(0, xScale, this.props.xaxis);
+    this.updateAxis(1, yScale, this.props.yaxis);
   }
 
   render() {
