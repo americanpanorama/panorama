@@ -8,7 +8,10 @@ export default class MapChoropleth extends D3ReactBase {
   // extend superclass `props` validators
   static propTypes = {...D3ReactBase.propTypes,
     projection: PropTypes.string,
-    mapScale: PropTypes.number,
+    mapScale: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string
+    ]),
     selected: PropTypes.any,
     selectedAccessor: PropTypes.func,
     hoverStyle: PropTypes.object
