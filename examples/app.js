@@ -66,8 +66,6 @@ class App extends Component {
         <AreaChartExample />
         <h2>Bar Chart</h2>
         <BarChartExample />
-        <h2>Scatter Plot</h2>
-        <ScatterplotExample />
         <h2>Choropleth</h2>
         <D3ChoroplethExample />
         <h2><a name="donut">Donut</a></h2>
