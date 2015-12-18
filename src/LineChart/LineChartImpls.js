@@ -37,10 +37,6 @@ export default class LineChartImpls extends D3Component {
       .interpolate(inter)
       .x(d => xScale(xAccessor(d)))
       .y(d => yScale(yAccessor(d)));
-
-
-
-    console.log(this.lineGenerator.interpolate());
   }
 
   render() {

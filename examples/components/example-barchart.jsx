@@ -9,30 +9,8 @@ export default class BarchartExample extends React.Component {
       verticalSelected: 'red',
       horizontalSelected: null
     };
-  }
 
-  onClickHandler(item) {
-    if (item.key !== this.state.verticalSelected) {
-      this.setState({
-        verticalSelected: item.key
-      });
-    }
-  }
-
-  onClickHorizontalHandler(item) {
-    if (item.colorName !== this.state.horizontalSelected) {
-      this.setState({
-        horizontalSelected: item.colorName
-      });
-    }
-  }
-
-  setToolTipContent(element, item) {
-    element.text('The color is ' + item.key);
-  }
-
-  render () {
-    var opts1 = {
+    this.verticalBarOptions = {
       data: [
         { key: 'red', value: 20 },
         { key: 'blue', value: 40 },
@@ -66,7 +44,7 @@ export default class BarchartExample extends React.Component {
       }
     };
 
-    var opts2 = {
+    this.horizontalBarOptions = {
       data: [
         { colorName: 'red', amount: 20 },
         { colorName: 'blue', amount: 40 },
@@ -84,16 +62,37 @@ export default class BarchartExample extends React.Component {
       selectionAccessor: d => d.colorName,
       selected: this.state.horizontalSelected
     };
+  }
 
+  onClickHandler(item) {
+    if (item.key !== this.state.verticalSelected) {
+      this.setState({
+        verticalSelected: item.key
+      });
+    }
+  }
+
+  onClickHorizontalHandler(item) {
+    if (item.colorName !== this.state.horizontalSelected) {
+      this.setState({
+        horizontalSelected: item.colorName
+      });
+    }
+  }
+
+  setToolTipContent(element, item) {
+    element.text('The color is ' + item.key);
+  }
+
+  render () {
     return (
       <div>
         <h4>Vertical</h4>
-        <DiscreteBarChart key='1' onClickHandler={this.onClickHandler.bind(this)} {...opts1}/>
+        <DiscreteBarChart key='1' onClickHandler={this.onClickHandler.bind(this)} {...this.verticalBarOptions}/>
         <h4>Horizontal</h4>
-        <HorizontalDiscreteBarChart key='2' onClickHandler={this.onClickHorizontalHandler.bind(this)} {...opts2}/>
+        <HorizontalDiscreteBarChart key='2' onClickHandler={this.onClickHorizontalHandler.bind(this)} {...this.horizontalBarOptions}/>
       </div>
     );
-
   }
 
 }
