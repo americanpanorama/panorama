@@ -94,7 +94,7 @@ export default class Tooltip {
   }
 
   setContent(item) {
-    if (typeof this.options.onSetTooltipContent === 'function'){
+    if (typeof this.options.onSetTooltipContent === 'function') {
       this.options.onSetTooltipContent(this.element, item);
     } else {
       this.element.text('');

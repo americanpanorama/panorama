@@ -162,7 +162,7 @@ export default class D3Component {
   }
 
   _render() {
-    if (!this.props.data || !this.props.data.length) return;
+    if (!this.props.data) return;
 
     this.preRender();
     this.axes.forEach(axis => axis.render());
