@@ -17,3 +17,20 @@ h2:first-of-type {
 .panorama.punchcard {
   width: 600px;
 }
+
+
+.punchcard-header {
+  margin-bottom: 20px;
+  width: 600px;
+
+  h2 {margin-top: 0;}
+
+  .subtitle {
+    display: inline-block;
+    width: 50%;
+  }
+
+  .caption {
+    display: inline-block;
+  }
+}

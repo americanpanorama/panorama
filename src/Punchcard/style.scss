@@ -7,20 +7,6 @@
 		margin-bottom: 0;
 	}
 
-	.header {
-		margin-bottom: 20px;
-	}
-
-	.subtitle {
-		@extend %merriweather-light;
-		display: inline-block;
-	}
-
-	.caption {
-		display: inline-block;
-		float: right;
-	}
-
 	.content {
 		rect {
 			cursor: pointer;
@@ -48,6 +34,11 @@
 			width: 50%;
 			display: inline-block;
 			shape-rendering: 'crispEdges';
+		}
+
+		.selected circle {
+			stroke: #4d4d4e !important;
+			stroke-width: 2px;
 		}
 	}
 

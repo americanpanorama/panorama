@@ -45,6 +45,7 @@ export default class LineChartExample extends React.Component {
       }
     };
   }
+
   dataLoader() {
     d3.json('data/nosCoopsWLV60_2981_514b_bc3a.json', (err, rsp) => {
       if (err) return console.error('Line chart data loading error!');

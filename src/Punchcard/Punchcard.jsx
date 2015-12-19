@@ -1,138 +1,103 @@
 import React, { PropTypes } from 'react';
 import * as d3 from 'd3';
-import _ from 'lodash';
 import './style.scss';
 
 export default class Punchcard extends React.Component {
 
   // property validation
   static propTypes = {
-    header: PropTypes.object,
-    categories: PropTypes.array.isRequired,
-    items: PropTypes.array.isRequired,
-    onItemClick: PropTypes.func
+    data: PropTypes.array.isRequired,
+    onItemClick: PropTypes.func,
+    loading: PropTypes.bool,
+    noDataAvailableMsg: PropTypes.string,
+    punchcardOptions: PropTypes.object,
+    selectAccessor: PropTypes.func,
+    textValueFormatter: PropTypes.func
   };
 
-  // property defaults (ES7-style React)
-  // (instead of ES5-style getDefaultProps)
   static defaultProps = {
-    header: {
-      title: '',
-      subtitle: '',
-      caption: ''
-    },
-    categories: [],
-    items: [],
-    onItemClick: null
+    data: [],
+    onItemClick: null,
+    loading: true,
+    noDataAvailableMsg: 'No commodities data available for this canal in the selected year.',
+    radiusExtent: [2, 10],
+    textValueFormatter: d => d,
   };
 
-  constructor (props) {
-
+  constructor(props) {
     super(props);
-
   }
 
-  componentWillMount () {}
+  componentWillMount() {}
 
-  componentDidMount () {
-
+  componentDidMount() {
     this.renderVisualization();
-    
   }
 
-  componentDidUpdate () {
-
+  componentDidUpdate() {
     // Blow away what's there. If we want pretty transitions,
     // remove this and handle transitions in d3Punchcard.
     d3Punchcard.destroy(this.refs.content);
 
     this.renderVisualization();
-
   }
 
-  componentWillUnmount () {
-
+  componentWillUnmount() {
     d3Punchcard.destroy(this.refs.content);
-
   }
 
-  render () {
-
+  render() {
     return (
       <div className='panorama punchcard'>
         { this.renderPlaceholder() }
-        { this.renderHeader() }
         <div className='content' ref='content'></div>
       </div>
-
     );
-
   }
 
-  renderVisualization () {
-
-    if (!_.isEmpty(this.props.categories)) {
-      // cannot remove the node, because React complains
-      this.refs.placeholder.style.display = 'none';
-      d3Punchcard.update(this.refs.content, this.props.categories, this.props.items, this.props.onItemClick);
-    } else {
-      this.refs.placeholder.style.display = '';
+  renderVisualization() {
+    if (!this.isEmpty(this.props.data) && this.refs.content) {
+      d3Punchcard.update(this.refs.content, {...this.props});
     }
-
   }
 
-  renderHeader () {
-
-    return (
-      <div className='header' ref='header'>
-        <h2>{ this.props.header.title ? this.props.header.title.toUpperCase() : '' }</h2>
-        <h3><span className='subtitle'>{ this.props.header.subtitle }</span><span className='caption'>{ this.props.header.caption }</span></h3>
-      </div>
-    );
-
-  }
-
-  renderPlaceholder () {
+  renderPlaceholder() {
+    let {loading, noDataAvailableMsg} = this.props;
 
     // TODO: provide links to years with data, if they exist for this canal.
-    // TODO: make placeholder messages configurable via props
-    if (_.isEmpty(this.props.categories)) {
-      return (
-        <div className='placeholder' ref='placeholder'>
-          <h4>No commodities data available for this canal in the selected year.</h4>
-        </div>
-      );
-    } else {
+    if (loading) {
       return (
         <div className='placeholder' ref='placeholder'>
           <h4>Loading...</h4>
         </div>
       );
+    }else if (!this.props.loading && this.isEmpty(this.props.data)) {
+      return (
+        <div className='placeholder' ref='placeholder'>
+          <h4>{noDataAvailableMsg}</h4>
+        </div>
+      );
+    } else {
+      return null;
     }
-
   }
 
+  isEmpty(val) {
+    return val.length < 1;
+  }
 }
 
 
 const d3Punchcard = {
 
+  _setTextValueFormatter: d => d,
+  setTextValueFormatter: function(fn) {
+    this._setTextValueFormatter = fn;
+  },
+
   // layout constants
   ROW_HEIGHT: 25,
   COMMODITY_TEXT_OFFSET_Y: 5,
-
-  /**
-   * Any necessary setup for d3 component goes here.
-   *
-   * @param  {Node}    HTMLElement to which d3 will attach
-   * @param  {Object}  Categorized map of items (TODO: document expected format)
-   * @param  {Object}  Flat map of items (TODO: document expected format)
-   */
-  create: function (node, categories, items) {
-
-    this.update(node, categories, items);
-
-  },
 
   /**
    * Logic for updating d3 component with new data.
@@ -141,30 +106,28 @@ const d3Punchcard = {
    * @param  {Object}  Categorized map of items (TODO: document expected format)
    * @param  {Object}  Flat map of items (TODO: document expected format)
    */
-  update: function (node, categories, items, onItemClick) {
+  update: function (node, props) {
+    let {colorScale, valueAccessor, onItemClick, textValueFormatter, selected, selectAccessor} = props;
 
-    const MAX_RAD = 10;
-    let scope = this,
+    if (typeof textValueFormatter === 'function') this.setTextValueFormatter(textValueFormatter);
+
+    const MAX_RAD = props.radiusExtent[1];
+    const scope = this;
 
       // scale by normalizedValue of all items
-      rScale = d3.scale.sqrt()
-      .range([2, MAX_RAD])
-      .domain([1, d3.max(items, (d) => d.normalizedValue || 0)]),
+    const rScale = d3.scale.sqrt()
+      .range(props.radiusExtent)
+      .domain([1, props.radiusMaxValue]);
 
-      rScaleDomain = rScale.domain(),
-      rDomainMid = rScaleDomain[0] + Math.sqrt(0.25) * (rScaleDomain[1] - rScaleDomain[0]),
-
-      // color by aggregateNormalizedValue of all categories
-      colorScale = d3.scale.ordinal()
-      .range(['rgb(188, 35, 64)', 'rgb(228, 104, 75)', 'rgb(187, 27, 105)', 'rgb(103, 116, 99)', 'rgb(26, 169, 143)', 'rgb(10, 103, 150)', 'rgb(67, 40, 93)', 'rgb(86, 96, 99)'])
-      .domain([1, d3.max(categories, (d) => d.aggregateNormalizedValue)]);
+    const rScaleDomain = rScale.domain();
+    const rDomainMid = rScaleDomain[0] + Math.sqrt(0.25) * (rScaleDomain[1] - rScaleDomain[0]);
 
     // <div> for each category
     let categoryNodes = d3.select(node)
       .selectAll('div')
-      .data(categories)
+      .data(props.data)
       .enter().append('div')
-      .attr('style', (d) => `color: ${ colorScale(d.aggregateNormalizedValue) };`)
+      .attr('style', (d) => `color: ${ colorScale(props.colorAccessor(d)) };`)
       .attr('class', 'category');
 
     // each with a heading...
@@ -175,10 +138,9 @@ const d3Punchcard = {
     // ...and an <svg>
     categoryNodes = categoryNodes
       .append('svg')
-      // .attr('width', '50%')
       .attr('height', (d) => d.commodities.length * scope.ROW_HEIGHT)
-      .style('stroke', (d) => colorScale(d.aggregateNormalizedValue))
-      .style('fill', (d) => colorScale(d.aggregateNormalizedValue));
+      .style('stroke', (d) => colorScale(props.colorAccessor(d)))
+      .style('fill', (d) => colorScale(props.colorAccessor(d)));
 
     // width of each category svg, minus padding for scrollbar,
     // with cross-browser support.
@@ -189,14 +151,21 @@ const d3Punchcard = {
       .data((d) => d.commodities)
       .enter().append('g');
 
+    itemNodes
+      .classed('selected', (d) => {
+        return (selectAccessor(d) === selected);
+      });
+
     // <circle> displaying scaled amount of each item
     itemNodes.append('circle')
-      .attr('r', (d) => rScale(d.normalizedValue ? d.normalizedValue : rDomainMid))
-
+      .attr('r', (d) => {
+        const v = valueAccessor(d);
+        return v ? rScale(v) : rDomainMid;
+      })
       // render differently if normalizedValue is invalid
-      .style('fill', (d) => d.normalizedValue ? null : 'none')
-      .style('stroke', (d) => d.normalizedValue ? 'none' : null)
-      .style('stroke-width', (d) => d.normalizedValue ? null : 2);
+      .style('fill', (d) => valueAccessor(d) ? null : 'none')
+      .style('stroke', (d) => valueAccessor(d) ? 'none' : null)
+      .style('stroke-width', (d) => valueAccessor(d) ? null : 2);
 
     // <text> displaying name of each item
     itemNodes.append('text')
@@ -237,7 +206,7 @@ const d3Punchcard = {
         scope.onItemMouseOut(this, d, i);
       })
       .on('click', (d, i) => {
-        if (onItemClick) {
+        if (typeof onItemClick === 'function') {
           onItemClick.call(this, d, i);
         }
       });
@@ -245,11 +214,10 @@ const d3Punchcard = {
   },
 
   onItemMouseOver: function (target, d, i) {
-
     let g = d3.select(target.parentNode);
 
     let text = g.select('text')
-      .text((d.prettyValue || d.value) + (d.units ? (' ' + d.units) : ''))
+      .text((d.prettyValue || this._setTextValueFormatter(d.value)) + (d.units ? (' ' + d.units) : ''))
       .style('font-weight', 400);
 
   },
