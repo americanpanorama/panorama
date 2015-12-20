@@ -1,11 +1,5 @@
 'use strict';
 
-// Base classes, exposed for subclassing;
-// not intended for direct use.
-import Axis from './charts/Axis';
-import ChartBase from './charts/ChartBase';
-import PanoramaChart from './charts/PanoramaChart';
-
 // Panorama components.
 import AreaChart from './AreaChart/AreaChart';
 import CartoDBLoader from './CartoDBLoader/CartoDBLoader';
@@ -31,9 +25,6 @@ import Tooltip from './Leaflet/Tooltip/Tooltip';
 import TexturalList from './TexturalList/TexturalList';
 
 export default {
-  Axis,
-  ChartBase,
-  PanoramaChart,
   AreaChart,
   CartoDBLoader,
   CartoDBTileLayer,

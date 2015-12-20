@@ -1,6 +1,5 @@
 import d3 from 'd3';
 import {tooltipDefaultOptions} from './props';
-import Format from 'string-template';
 
 export default class Tooltip {
   constructor(element, options) {
