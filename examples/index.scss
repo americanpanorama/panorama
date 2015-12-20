@@ -34,3 +34,56 @@ h2:first-of-type {
     display: inline-block;
   }
 }
+
+.textural-list-example {
+  width: 45%;
+  max-width: 600px;
+
+  .textural-list-selecteditem {
+    margin-bottom: 0px;
+
+    h3 {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .meta {
+      font-size: 12px;
+      margin-top: 3px;
+    }
+
+    .meta--item:last-child {
+      margin-left: 10px;
+    }
+  }
+
+  .list {
+     border: 1px solid #aaa;
+  }
+
+  .panorama.textural-list {
+    padding: 5px 0;
+  }
+
+  .textural-list--item {
+    padding: 0 10px;
+
+    h3 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: bold;
+      color: #6F6D29;
+      line-height: 1;
+    }
+
+    p {
+      margin: 8px 0;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+  }
+
+  .textural-list--item + .textural-list--item {
+    margin-top: 20px;
+  }
+}

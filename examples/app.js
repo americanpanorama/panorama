@@ -1,21 +1,21 @@
 'use strict';
 
 import React, { Component } from 'react';
-import { PanoramaDispatcher, PanoramaEventTypes } from '../src/PanoramaDispatcher.js';
+import { PanoramaDispatcher, PanoramaEventTypes } from '../src/PanoramaDispatcher';
 
-
-import AreaChartExample from './components/example-areachart.jsx';
+import AreaChartExample from './components/example-areachart';
 import BarChartExample from './components/example-barchart';
 import D3ChoroplethExample from './components/example-d3Choropleth';
-import Donut from './components/example-donut.jsx';
-import IntroManagerExample from './components/example-introManager.jsx';
-import ItemSelectorExample from './components/example-itemSelector.jsx';
-import LeafletChoropleth from './components/example-leafletChoropleth.jsx';
-import LegendExample from './components/example-legend.jsx';
-import LineChartExample from './components/example-linechart.jsx';
-import PunchcardExample from './components/example-punchcard.jsx';
-import NavigationExample from './components/example-navigation.jsx';
+import Donut from './components/example-donut';
+import IntroManagerExample from './components/example-introManager';
+import ItemSelectorExample from './components/example-itemSelector';
+import LeafletChoropleth from './components/example-leafletChoropleth';
+import LegendExample from './components/example-legend';
+import LineChartExample from './components/example-linechart';
+import PunchcardExample from './components/example-punchcard';
+import NavigationExample from './components/example-navigation';
 import ScatterplotExample from './components/example-scatterplot';
+import TexturalListExample from './components/example-texturalList';
 
 class App extends Component {
 
@@ -86,6 +86,8 @@ class App extends Component {
         <NavigationExample />
         <h2>Scatter Plot</h2>
         <ScatterplotExample />
+        <h2>Textural List</h2>
+        <TexturalListExample />
       </div>
     );
 

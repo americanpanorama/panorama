@@ -1,0 +1,18 @@
+.panorama{
+
+  &.textural-list {
+    position: relative;
+    display: block;
+  }
+
+  .textural-list--inner {
+    padding-right: 15px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .textural-list--item {
+    cursor: default;
+  }
+
+}

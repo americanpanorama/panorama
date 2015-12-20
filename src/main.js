@@ -28,6 +28,7 @@ import Punchcard from './Punchcard/Punchcard';
 import TimeBasedMarkers from './TimeBasedMarkers/TimeBasedMarkers';
 import ScatterPlot from './ScatterPlot/ScatterPlot';
 import Tooltip from './Leaflet/Tooltip/Tooltip';
+import TexturalList from './TexturalList/TexturalList';
 
 export default {
   Axis,
@@ -54,5 +55,6 @@ export default {
   Punchcard,
   TimeBasedMarkers,
   Tooltip,
-  ScatterPlot
+  ScatterPlot,
+  TexturalList
 };
