@@ -55,7 +55,7 @@ export default class LineChartImpls extends D3Component {
       .style({
         stroke: strokeColor,
         strokeOpacity: strokeOpacity
-      })
+      });
 
   }
 

@@ -40,7 +40,7 @@ export default class AreaChartImpls extends D3Component {
       d.d = Math.abs(d.x - pt);
     });
 
-    this.points.sort((a,b) => {return d3.ascending(a.d, b.d)});
+    this.points.sort((a,b) => {return d3.ascending(a.d, b.d);});
 
     return this.points[0].i;
   }
@@ -51,7 +51,7 @@ export default class AreaChartImpls extends D3Component {
     const mx = d3.mouse(this.baseLayer.node());
     const inverted = this.props.xScale.invert(mx[0]);
     const itemIdx = this.getClosestDataIndex(mx[0]);
-    this.tooltip.setPosition(d3.event)
+    this.tooltip.setPosition(d3.event);
 
     if (itemIdx !== null) this.tooltip.setContent(this.props.data[0][itemIdx]);
 

@@ -9,12 +9,5 @@ module.exports = merge(config, {
   output: {
     path: path.join(__dirname, '..', 'dist')
   },
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      },
-      sourceMap: true
-    })
-  ]
+  plugins: []
 });

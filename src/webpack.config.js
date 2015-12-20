@@ -11,7 +11,9 @@ module.exports = {
 
   devtool: '#source-map',
 
-  entry: './main.js',
+  entry: {
+    legend: './Legend/Legend'
+  },
 
   eslint: {
     failOnError: true
@@ -22,7 +24,6 @@ module.exports = {
       'cartodb-client': 'cartodb-client',
       'd3': 'd3',
       'intro.js': 'intro.js',
-      'koto': 'koto',
       'leaflet': 'leaflet',
       'lodash': 'lodash',
       'react': {

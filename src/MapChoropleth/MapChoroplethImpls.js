@@ -71,10 +71,9 @@ export default class MapChoroplethImpls extends D3Component {
         })
         .each(function() {
           // clone node then move to top
-          self.bringToTop(this, 'selected-dupe')
+          self.bringToTop(this, 'selected-dupe');
         });
     }
-
   }
 
   postRender() {}
@@ -107,18 +106,18 @@ export default class MapChoroplethImpls extends D3Component {
   }
 
   fitMap (geo) {
-      let {projection} = this.props;
-      const proj = d3.geo[projection]()
-        .scale(1)
-        .translate([0, 0]);
+    let {projection} = this.props;
+    const proj = d3.geo[projection]()
+      .scale(1)
+      .translate([0, 0]);
 
-      const path = d3.geo.path()
-        .projection(proj);
+    const path = d3.geo.path()
+      .projection(proj);
 
-      const b = path.bounds(geo),//[[left,top],[right,bottom]],
-        s = .95 / Math.max((b[1][0] - b[0][0]) / this.width, (b[1][1] - b[0][1]) / this.height),
-        t = [(this.width - s * (b[1][0] + b[0][0])) / 2, (this.height - s * (b[1][1] + b[0][1])) / 2];
+    const b = path.bounds(geo),//[[left,top],[right,bottom]],
+      s = .95 / Math.max((b[1][0] - b[0][0]) / this.width, (b[1][1] - b[0][1]) / this.height),
+      t = [(this.width - s * (b[1][0] + b[0][0])) / 2, (this.height - s * (b[1][1] + b[0][1])) / 2];
 
-      return [s,t];
-    }
+    return [s,t];
+  }
 }
