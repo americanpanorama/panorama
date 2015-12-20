@@ -11,9 +11,7 @@ module.exports = {
 
   devtool: '#source-map',
 
-  entry: {
-    legend: './Legend/Legend'
-  },
+  entry: './main.js',
 
   eslint: {
     failOnError: true
