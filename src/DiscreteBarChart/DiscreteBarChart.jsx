@@ -1,5 +1,5 @@
-import d3 from 'd3';
 import { PropTypes } from 'react';
+import d3 from 'd3';
 import D3ReactBase from '../charts/D3ReactBase';
 import DiscreteBarChartImpls from './DiscreteBarChartImpls';
 

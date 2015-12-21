@@ -1,3 +1,7 @@
+/**
+ * This is a test for packaging the components as separate modules
+ */
+
 'use strict';
 
 var path = require('path');
@@ -8,8 +12,15 @@ module.exports = {
   context: __dirname,
 
   debug: true,
-  devtool: "#source-map",
-  entry: './main.js',
+  devtool: '#source-map',
+
+  // NOTE: when running this via `npm run build:dist-modules`
+  // you will need to edit the resulting index.js file
+  // to only include these two files
+  entry: {
+    Legend: './Legend/Legend',
+    DiscreteBarChart: './DiscreteBarChart/DiscreteBarChart'
+  },
 
   eslint: {
     failOnError: true
@@ -62,9 +73,9 @@ module.exports = {
   },
 
   output: {
-    path: path.join(__dirname, '..', 'build'),
-    filename: 'components.js',
-    library: '@panorama/toolkit',
+    path: path.join(__dirname, '..', 'dist-modules'),
+    filename: '[name]/[name].js',
+    library: ['@panorama/toolkit', '[name]'],
     libraryTarget: 'umd'
   },
 
