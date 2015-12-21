@@ -71,20 +71,25 @@ The Panorama toolkit comprises a number of components that can be used individua
 
 ### [Legend](./src/Legend)
 
+### [LineChart](./src/LineChart)
+
 ### [MapChoropleth](./src/MapChoropleth)
 
 ### [Navigation](./src/Navigation)
 
 ### [OffsetAreaChart](./src/OffsetAreaChart)
 
+### [PanoramaDispatcher](./src/PanoramaDispatcher.js)
+
 ### [Punchcard](./src/Punchcard)
+
+### [ScatterPlot](./src/ScatterPlot)
+
+### [TexturalList](./src/TexturalList)
 
 ### [TimeBasedMarkers](./src/TimeBasedMarkers)
 
 ### [Tooltip](./src/Leaflet/Tooltip)
-
-### [PanoramaDispatcher](./src/PanoramaDispatcher.js)
-
 ---
 
 
@@ -190,4 +195,4 @@ This script updates the [examples page](http://americanpanorama.github.io/panora
 
 
 ## Acknowledgements
-American Panorama is created by the [Digital Scholarship Lab at the University of Richmond](http://dsl.richmond.edu/). [Stamen Design](http://stamen.com/) designed and developed the initial maps and this toolkit. The [Andrew W. Mellon Foundation](https://mellon.org/) and the [University of Richmond](http://www.richmond.edu/) have generously provided funding for American Panorama. 
+American Panorama is created by the [Digital Scholarship Lab at the University of Richmond](http://dsl.richmond.edu/). [Stamen Design](http://stamen.com/) designed and developed the initial maps and this toolkit. The [Andrew W. Mellon Foundation](https://mellon.org/) and the [University of Richmond](http://www.richmond.edu/) have generously provided funding for American Panorama.
