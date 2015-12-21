@@ -30,3 +30,11 @@ build/Release
 examples
 
 .bin
+.babelrc
+USEFUL_QUERIES.md
+ARCHITECTURE.md
+src
+
+# Distribution Modules
+dist-modules
+
