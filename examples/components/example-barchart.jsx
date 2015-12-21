@@ -34,7 +34,6 @@ export default class BarchartExample extends React.Component {
           }
         }
       },
-      selected: this.state.verticalSelected,
       tooltip: true,
       tooltipOptions: {
         onSetTooltipContent: this.setToolTipContent.bind(this),
@@ -59,8 +58,7 @@ export default class BarchartExample extends React.Component {
       // Optionally specify accessors to match your data format
       xAccessor: d => d.amount,
       yAccessor: d => d.colorName,
-      selectionAccessor: d => d.colorName,
-      selected: this.state.horizontalSelected
+      selectionAccessor: d => d.colorName
     };
   }
 
@@ -88,9 +86,9 @@ export default class BarchartExample extends React.Component {
     return (
       <div>
         <h4>Vertical</h4>
-        <DiscreteBarChart key='1' onClickHandler={this.onClickHandler.bind(this)} {...this.verticalBarOptions}/>
+        <DiscreteBarChart selected={this.state.verticalSelected} onClickHandler={this.onClickHandler.bind(this)} {...this.verticalBarOptions}/>
         <h4>Horizontal</h4>
-        <HorizontalDiscreteBarChart key='2' onClickHandler={this.onClickHorizontalHandler.bind(this)} {...this.horizontalBarOptions}/>
+        <HorizontalDiscreteBarChart selected={this.state.horizontalSelected} onClickHandler={this.onClickHorizontalHandler.bind(this)} {...this.horizontalBarOptions}/>
       </div>
     );
   }

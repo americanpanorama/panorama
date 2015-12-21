@@ -2,7 +2,7 @@
   "name": "@panorama/toolkit",
   "version": "0.1.1",
   "description": "Panorama visualization toolkit",
-  "main": "dist/components.js",
+  "main": "dist/components.min.js",
   "scripts": {
     "start": "npm run clean:examples && webpack-dev-server --config ./examples/webpack.config.js --hot --inline --content-base examples/public",
     "test": "jest",
@@ -10,8 +10,10 @@
     "build:examples": "npm run clean:examples && webpack --config ./examples/webpack.config.ghpage.js",
     "clean:examples": "rm -rf ./examples/public/examples.*",
     "publish:examples": "./.bin/publish-examples.sh",
-    "build:dist": "npm run clean:dist && webpack --config ./src/webpack.config.dist.js",
+    "build:dist": "npm run clean:dist && webpack --config ./src/webpack.config.dist.js && webpack --config ./src/webpack.config.dist.min.js",
     "clean:dist": "rm -rf ./dist/**",
+    "clean:dist-modules": "rm -rf ./dist-modules/**",
+    "build:dist-modules": "npm run clean:dist-modules && webpack --config ./src/webpack.config.modules.js && babel ./src/main.js --out-file ./dist-modules/index.js",
     "publish:dist": "./.bin/publish-dist.sh"
   },
   "repository": {
@@ -57,7 +59,7 @@
     "webpack-dev-server": "^1.12.1",
     "webpack-merge": "^0.2.0"
   },
-  "dependencies": {
+  "peerDependencies": {
     "cartodb-client": "stamen/cartodb-client",
     "d3": "^3.5.6",
     "intro.js": "^1.1.1",
