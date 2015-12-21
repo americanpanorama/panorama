@@ -33,6 +33,8 @@ node_modules
 # OSX, pleeze.
 .DS_Store
 
+# build
+build
 
 # Examples
 examples/public/examples.*

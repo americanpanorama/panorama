@@ -14,7 +14,8 @@
     "clean:dist": "rm -rf ./dist/**",
     "clean:dist-modules": "rm -rf ./dist-modules/**",
     "build:dist-modules": "npm run clean:dist-modules && webpack --config ./src/webpack.config.modules.js && babel ./src/main.js --out-file ./dist-modules/index.js",
-    "publish:dist": "./.bin/publish-dist.sh"
+    "publish:dist": "./.bin/publish-dist.sh",
+    "analyze": "webpack --json --config ./src/webpack.config.js | analyze-bundle-size"
   },
   "repository": {
     "type": "git",
@@ -56,6 +57,7 @@
     "topojson": "^1.6.19",
     "url-loader": "^0.5.6",
     "webpack": "^1.12.2",
+    "webpack-bundle-size-analyzer": "^1.2.0",
     "webpack-dev-server": "^1.12.1",
     "webpack-merge": "^0.2.0"
   },
