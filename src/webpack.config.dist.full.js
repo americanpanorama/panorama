@@ -6,7 +6,7 @@ var merge = require('webpack-merge');
 var config = require('./webpack.config.js');
 
 module.exports = merge(config, {
-  externals: [],
+  externals: null,
   output: {
     path: path.join(__dirname, '..', 'dist'),
     filename: 'components.full.js',
