@@ -4,17 +4,6 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-/*
-  TODO: Keep `lodash` out of bundle
-  Tried adding the below to externals but didn't work.
-    'lodash': {
-      commonjs: 'lodash',
-      commonjs2: 'lodash',
-      amd: '_',
-      root: '_'
-    }
-*/
-
 module.exports = {
   context: __dirname,
 
@@ -32,6 +21,10 @@ module.exports = {
       'd3': 'd3',
       'intro.js': 'intro.js',
       'leaflet': 'leaflet',
+      'lodash.assign': true,
+      'lodash.isarray': true,
+      'lodash.isobject': true,
+      'lodash.pick': true,
       'react': {
         root: 'React',
         commonjs: 'react',

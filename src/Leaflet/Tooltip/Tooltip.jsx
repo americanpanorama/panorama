@@ -1,7 +1,7 @@
 import { PropTypes } from 'react';
 import {Popup, PropTypes as LeafletPropTypes } from 'react-leaflet';
 import { Map, popup } from 'leaflet';
-import assign from 'lodash/object/assign';
+import assign from 'lodash.assign';
 
 export default class Tooltip extends Popup {
   static propTypes = {
