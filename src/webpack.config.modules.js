@@ -5,6 +5,8 @@
 'use strict';
 
 var path = require('path');
+
+var Clean = require('clean-webpack-plugin');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -80,6 +82,7 @@ module.exports = {
   },
 
   plugins: [
+    new Clean(['dist-modules']),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(true),
     new webpack.optimize.AggressiveMergingPlugin(),

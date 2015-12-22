@@ -1,6 +1,8 @@
 'use strict';
 
 var path = require('path');
+
+var Clean = require('clean-webpack-plugin');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -80,6 +82,7 @@ module.exports = {
   },
 
   plugins: [
+    new Clean(['dist']),
     new webpack.DefinePlugin({
       'process.env': {
         // This has effect on the react lib size
