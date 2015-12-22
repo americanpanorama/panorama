@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react"), require("d3"), require("leaflet"), require("react-leaflet"), require("react-dom"), require("cartodb-client"), require("intro.js"));
+		module.exports = factory(require("react"), require("d3"), require("leaflet"), require("react-leaflet"), require("react-dom"), require("cartodb-client"), require("intro.js"), require("queue-async"));
 	else if(typeof define === 'function' && define.amd)
-		define(["react", "d3", "leaflet", "react-leaflet", "react-dom", "cartodb-client", "intro.js"], factory);
+		define(["react", "d3", "leaflet", "react-leaflet", "react-dom", "cartodb-client", "intro.js", "queue-async"], factory);
 	else if(typeof exports === 'object')
-		exports["@panorama/toolkit"] = factory(require("react"), require("d3"), require("leaflet"), require("react-leaflet"), require("react-dom"), require("cartodb-client"), require("intro.js"));
+		exports["@panorama/toolkit"] = factory(require("react"), require("d3"), require("leaflet"), require("react-leaflet"), require("react-dom"), require("cartodb-client"), require("intro.js"), require("queue-async"));
 	else
-		root["@panorama/toolkit"] = factory(root["React"], root["d3"], root["leaflet"], root["react-leaflet"], root["react-dom"], root["cartodb-client"], root["intro.js"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_6__, __WEBPACK_EXTERNAL_MODULE_7__, __WEBPACK_EXTERNAL_MODULE_21__, __WEBPACK_EXTERNAL_MODULE_22__, __WEBPACK_EXTERNAL_MODULE_30__, __WEBPACK_EXTERNAL_MODULE_203__, __WEBPACK_EXTERNAL_MODULE_204__) {
+		root["@panorama/toolkit"] = factory(root["React"], root["d3"], root["leaflet"], root["react-leaflet"], root["react-dom"], root["cartodb-client"], root["intro.js"], root["queue-async"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_6__, __WEBPACK_EXTERNAL_MODULE_7__, __WEBPACK_EXTERNAL_MODULE_21__, __WEBPACK_EXTERNAL_MODULE_22__, __WEBPACK_EXTERNAL_MODULE_30__, __WEBPACK_EXTERNAL_MODULE_201__, __WEBPACK_EXTERNAL_MODULE_202__, __WEBPACK_EXTERNAL_MODULE_203__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -3233,11 +3233,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports['default'] = CartoDBLoader;
 	
-	var _queueAsync = __webpack_require__(196);
+	var _queueAsync = __webpack_require__(203);
 	
 	var _queueAsync2 = _interopRequireDefault(_queueAsync);
 	
-	var _cartodbClient = __webpack_require__(203);
+	var _cartodbClient = __webpack_require__(201);
 	
 	var _cartodbClient2 = _interopRequireDefault(_cartodbClient);
 	
@@ -4054,7 +4054,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 	
-	var _introJs = __webpack_require__(204);
+	var _introJs = __webpack_require__(202);
 	
 	var _react = __webpack_require__(6);
 	
@@ -5674,7 +5674,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactModal = __webpack_require__(202);
+	var _reactModal = __webpack_require__(200);
 	
 	var _reactModal2 = _interopRequireDefault(_reactModal);
 	
@@ -10270,196 +10270,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 195 */
-/***/ function(module, exports) {
-
-	// shim for using process in browser
-	
-	var process = module.exports = {};
-	var queue = [];
-	var draining = false;
-	var currentQueue;
-	var queueIndex = -1;
-	
-	function cleanUpNextTick() {
-	    draining = false;
-	    if (currentQueue.length) {
-	        queue = currentQueue.concat(queue);
-	    } else {
-	        queueIndex = -1;
-	    }
-	    if (queue.length) {
-	        drainQueue();
-	    }
-	}
-	
-	function drainQueue() {
-	    if (draining) {
-	        return;
-	    }
-	    var timeout = setTimeout(cleanUpNextTick);
-	    draining = true;
-	
-	    var len = queue.length;
-	    while(len) {
-	        currentQueue = queue;
-	        queue = [];
-	        while (++queueIndex < len) {
-	            if (currentQueue) {
-	                currentQueue[queueIndex].run();
-	            }
-	        }
-	        queueIndex = -1;
-	        len = queue.length;
-	    }
-	    currentQueue = null;
-	    draining = false;
-	    clearTimeout(timeout);
-	}
-	
-	process.nextTick = function (fun) {
-	    var args = new Array(arguments.length - 1);
-	    if (arguments.length > 1) {
-	        for (var i = 1; i < arguments.length; i++) {
-	            args[i - 1] = arguments[i];
-	        }
-	    }
-	    queue.push(new Item(fun, args));
-	    if (queue.length === 1 && !draining) {
-	        setTimeout(drainQueue, 0);
-	    }
-	};
-	
-	// v8 likes predictible objects
-	function Item(fun, array) {
-	    this.fun = fun;
-	    this.array = array;
-	}
-	Item.prototype.run = function () {
-	    this.fun.apply(null, this.array);
-	};
-	process.title = 'browser';
-	process.browser = true;
-	process.env = {};
-	process.argv = [];
-	process.version = ''; // empty string to avoid regexp issues
-	process.versions = {};
-	
-	function noop() {}
-	
-	process.on = noop;
-	process.addListener = noop;
-	process.once = noop;
-	process.off = noop;
-	process.removeListener = noop;
-	process.removeAllListeners = noop;
-	process.emit = noop;
-	
-	process.binding = function (name) {
-	    throw new Error('process.binding is not supported');
-	};
-	
-	process.cwd = function () { return '/' };
-	process.chdir = function (dir) {
-	    throw new Error('process.chdir is not supported');
-	};
-	process.umask = function() { return 0; };
-
-
-/***/ },
-/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_RESULT__;(function() {
-	  var slice = [].slice;
-	
-	  function queue(parallelism) {
-	    var q,
-	        tasks = [],
-	        started = 0, // number of tasks that have been started (and perhaps finished)
-	        active = 0, // number of tasks currently being executed (started but not finished)
-	        remaining = 0, // number of tasks not yet finished
-	        popping, // inside a synchronous task callback?
-	        error = null,
-	        await = noop,
-	        all;
-	
-	    if (!parallelism) parallelism = Infinity;
-	
-	    function pop() {
-	      while (popping = started < tasks.length && active < parallelism) {
-	        var i = started++,
-	            t = tasks[i],
-	            a = slice.call(t, 1);
-	        a.push(callback(i));
-	        ++active;
-	        t[0].apply(null, a);
-	      }
-	    }
-	
-	    function callback(i) {
-	      return function(e, r) {
-	        --active;
-	        if (error != null) return;
-	        if (e != null) {
-	          error = e; // ignore new tasks and squelch active callbacks
-	          started = remaining = NaN; // stop queued tasks from starting
-	          notify();
-	        } else {
-	          tasks[i] = r;
-	          if (--remaining) popping || pop();
-	          else notify();
-	        }
-	      };
-	    }
-	
-	    function notify() {
-	      if (error != null) await(error);
-	      else if (all) await(error, tasks);
-	      else await.apply(null, [error].concat(tasks));
-	    }
-	
-	    return q = {
-	      defer: function() {
-	        if (!error) {
-	          tasks.push(arguments);
-	          ++remaining;
-	          pop();
-	        }
-	        return q;
-	      },
-	      await: function(f) {
-	        await = f;
-	        all = false;
-	        if (!remaining) notify();
-	        return q;
-	      },
-	      awaitAll: function(f) {
-	        await = f;
-	        all = true;
-	        if (!remaining) notify();
-	        return q;
-	      }
-	    };
-	  }
-	
-	  function noop() {}
-	
-	  queue.version = "1.0.7";
-	  if (true) !(__WEBPACK_AMD_DEFINE_RESULT__ = function() { return queue; }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	  else if (typeof module === "object" && module.exports) module.exports = queue;
-	  else this.queue = queue;
-	})();
-
-
-/***/ },
-/* 197 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {var React = __webpack_require__(6);
+	var React = __webpack_require__(6);
 	var ReactDOM = __webpack_require__(30);
 	var ExecutionEnvironment = __webpack_require__(149);
-	var ModalPortal = React.createFactory(__webpack_require__(198));
-	var ariaAppHider = __webpack_require__(199);
+	var ModalPortal = React.createFactory(__webpack_require__(196));
+	var ariaAppHider = __webpack_require__(197);
 	var elementClass = __webpack_require__(148);
 	var renderSubtreeIntoContainer = __webpack_require__(30).unstable_renderSubtreeIntoContainer;
 	
@@ -10471,7 +10288,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  statics: {
 	    setAppElement: ariaAppHider.setElement,
 	    injectCSS: function() {
-	      "production" !== process.env.NODE_ENV
+	      "production" !== ("production")
 	        && console.warn('React-Modal: injectCSS has been deprecated ' +
 	                        'and no longer has any effect. It will be removed in a later version');
 	    }
@@ -10535,17 +10352,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	function sanitizeProps(props) {
 	  delete props.ref;
 	}
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(195)))
+
 
 /***/ },
-/* 198 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(6);
 	var div = React.DOM.div;
-	var focusManager = __webpack_require__(200);
-	var scopeTab = __webpack_require__(201);
+	var focusManager = __webpack_require__(198);
+	var scopeTab = __webpack_require__(199);
 	var Assign = __webpack_require__(172);
 	
 	
@@ -10743,7 +10559,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 199 */
+/* 197 */
 /***/ function(module, exports) {
 
 	var _element = typeof document !== 'undefined' ? document.body : null;
@@ -10790,7 +10606,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 200 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var findTabbable = __webpack_require__(70);
@@ -10864,7 +10680,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 201 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var findTabbable = __webpack_require__(70);
@@ -10885,24 +10701,30 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 202 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(197);
+	module.exports = __webpack_require__(195);
 	
 
+
+/***/ },
+/* 201 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_201__;
+
+/***/ },
+/* 202 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_202__;
 
 /***/ },
 /* 203 */
 /***/ function(module, exports) {
 
 	module.exports = __WEBPACK_EXTERNAL_MODULE_203__;
-
-/***/ },
-/* 204 */
-/***/ function(module, exports) {
-
-	module.exports = __WEBPACK_EXTERNAL_MODULE_204__;
 
 /***/ }
 /******/ ])))
