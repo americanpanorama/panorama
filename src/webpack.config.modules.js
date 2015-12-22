@@ -14,12 +14,13 @@ module.exports = {
   debug: true,
   devtool: '#source-map',
 
-  // NOTE: when running this via `npm run build:dist-modules`
-  // you will need to edit the resulting index.js file
-  // to only include these two files
   entry: {
-    Legend: './Legend/Legend',
-    DiscreteBarChart: './DiscreteBarChart/DiscreteBarChart'
+    // main entrypoint (to load all components)
+    index: './main',
+
+    // individual components
+    Legend: ['./Legend/Legend'],
+    DiscreteBarChart: ['./DiscreteBarChart/DiscreteBarChart'],
   },
 
   eslint: {
@@ -74,7 +75,7 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, '..', 'dist-modules'),
-    filename: '[name]/[name].js',
+    filename: '[name].js',
     library: ['@panorama/toolkit', '[name]'],
     libraryTarget: 'umd'
   },
