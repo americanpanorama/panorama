@@ -10,7 +10,7 @@
     "build:examples": "npm run clean:examples && webpack --config ./examples/webpack.config.ghpage.js",
     "clean:examples": "rm -rf ./examples/public/examples.*",
     "publish:examples": "./.bin/publish-examples.sh",
-    "build:dist": "npm run clean:dist && webpack --config ./src/webpack.config.dist.js && webpack --config ./src/webpack.config.dist.min.js",
+    "build:dist": "npm run clean:dist && webpack --config ./src/webpack.config.dist.js && webpack --config ./src/webpack.config.dist.min.js && webpack --config ./src/webpack.config.dist.full.js",
     "clean:dist": "rm -rf ./dist/**",
     "clean:dist-modules": "rm -rf ./dist-modules/**",
     "build:dist-modules": "npm run clean:dist-modules && webpack --config ./src/webpack.config.modules.js && babel ./src/main.js --out-file ./dist-modules/index.js",
