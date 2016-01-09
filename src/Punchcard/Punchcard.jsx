@@ -12,7 +12,8 @@ export default class Punchcard extends React.Component {
     noDataAvailableMsg: PropTypes.string,
     punchcardOptions: PropTypes.object,
     selectAccessor: PropTypes.func,
-    textValueFormatter: PropTypes.func
+    textValueFormatter: PropTypes.func,
+    headerMargin: PropTypes.number
   };
 
   static defaultProps = {
@@ -22,6 +23,7 @@ export default class Punchcard extends React.Component {
     noDataAvailableMsg: 'No commodities data available for this canal in the selected year.',
     radiusExtent: [2, 10],
     textValueFormatter: d => d,
+    headerMargin: 0
   };
 
   constructor(props) {
@@ -50,7 +52,7 @@ export default class Punchcard extends React.Component {
     return (
       <div className='panorama punchcard'>
         { this.renderPlaceholder() }
-        <div className='content' ref='content'></div>
+        <div className='content' ref='content' style={ { marginTop: this.props.headerMargin + 'px' } }></div>
       </div>
     );
   }
