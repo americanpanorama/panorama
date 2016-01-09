@@ -6156,7 +6156,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      noDataAvailableMsg: _react.PropTypes.string,
 	      punchcardOptions: _react.PropTypes.object,
 	      selectAccessor: _react.PropTypes.func,
-	      textValueFormatter: _react.PropTypes.func
+	      textValueFormatter: _react.PropTypes.func,
+	      headerMargin: _react.PropTypes.number
 	    },
 	    enumerable: true
 	  }, {
@@ -6169,7 +6170,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      radiusExtent: [2, 10],
 	      textValueFormatter: function textValueFormatter(d) {
 	        return d;
-	      }
+	      },
+	      headerMargin: 0
 	    },
 	    enumerable: true
 	  }]);
@@ -6209,7 +6211,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        'div',
 	        { className: 'panorama punchcard' },
 	        this.renderPlaceholder(),
-	        _react2['default'].createElement('div', { className: 'content', ref: 'content' })
+	        _react2['default'].createElement('div', { className: 'content', ref: 'content', style: { marginTop: this.props.headerMargin + 'px' } })
 	      );
 	    }
 	  }, {
