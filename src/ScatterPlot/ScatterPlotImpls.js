@@ -34,7 +34,7 @@ export default class ScatterPlotImpls extends D3Component {
   }
 
   render() {
-    let {data, xAccessor, yAccessor, xScale, yScale, dotRadius, dotRadiusScale, dotRadiusAccessor} = this.props;
+    let {data, xAccessor, yAccessor, xScale, yScale, dotRadius, dotRadiusScale, dotRadiusAccessor, dotColorScale, dotColorAccessor} = this.props;
     const dots = this.base.selectAll('.dot').data(data);
 
     dots.exit().remove();
@@ -49,7 +49,11 @@ export default class ScatterPlotImpls extends D3Component {
         return dotRadiusScale(dotRadiusAccessor(d));
       })
       .attr('cx', d => xScale(xAccessor(d)))
-      .attr('cy', d => yScale(yAccessor(d)));
+      .attr('cy', d => yScale(yAccessor(d)))
+      .style('fill', (d) => {
+        if (!dotColorScale || !dotColorAccessor) return 'lime';
+        return dotColorScale(dotColorAccessor(d));
+      });
   }
 
   postRender() {

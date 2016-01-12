@@ -14,7 +14,9 @@ export default class ScatterPlot extends D3ReactBase {
   static propTypes = {...D3ReactBase.propTypes,
     dotRadiusScale: PropTypes.func,
     dotRadius: PropTypes.number,
-    dotRadiusAccessor: PropTypes.func
+    dotRadiusAccessor: PropTypes.func,
+    dotColorScale: PropTypes.func,
+    dotColorAccessor: PropTypes.func
   };
 
   static defaultProps = {...D3ReactBase.defaultProps,
