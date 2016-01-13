@@ -5689,12 +5689,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	      nav_data: _react.PropTypes.array.isRequired,
 	      show_menu: _react.PropTypes.bool,
 	      on_hamburger_click: _react.PropTypes.func,
-	      style: _react.PropTypes.object
+	      style: _react.PropTypes.object,
+	      title: _react.PropTypes.string,
+	      home_url: _react.PropTypes.string,
+	      links: _react.PropTypes.array,
+	      link_separator: _react.PropTypes.string
 	    },
 	    enumerable: true
 	  }, {
 	    key: 'defaultProps',
 	    value: {
+	      title: 'American Panorama',
+	      home_url: 'http://dsl.richmond.edu/panorama',
+	      links: [],
+	      link_separator: ' ',
 	      nav_data: {},
 	      show_menu: false,
 	      on_hamburger_click: null,
@@ -5774,36 +5782,51 @@ return /******/ (function(modules) { // webpackBootstrap
 	              { id: 'navburger' },
 	              _react2['default'].createElement('img', { src: 'http://dsl.richmond.edu/panorama/static/images/hamburger.png', onClick: this.props.on_hamburger_click })
 	            ),
-	            _react2['default'].createElement(
+	            this.props.title && this.props.home_url ? _react2['default'].createElement(
 	              'h1',
 	              null,
 	              _react2['default'].createElement(
 	                'a',
-	                { href: 'http://dsl.richmond.edu/panorama/' },
-	                'American Panorama'
+	                { href: this.props.home_url },
+	                this.props.title
 	              )
-	            ),
-	            this.props.nav_data.map(function (item, i) {
-	              return _react2['default'].createElement(
-	                'div',
-	                { className: 'pan_nav_item', key: 'pan_nav_item_' + i, style: { width: _this.computeDimensions() + 'px' } },
-	                _react2['default'].createElement(
+	            ) : '',
+	            _react2['default'].createElement(
+	              'h2',
+	              null,
+	              this.props.links.map(function (item, i) {
+	                return _react2['default'].createElement(
 	                  'a',
-	                  { href: item.url },
-	                  _react2['default'].createElement('img', { src: item.screenshot, style: { width: _this.computeDimensions() + 'px' } })
-	                ),
-	                _react2['default'].createElement('br', null),
-	                _react2['default'].createElement(
-	                  'h4',
-	                  null,
+	                  { href: item.url, key: 'pan_nav_links_' + i },
+	                  i < _this.props.links.length - 1 ? item.name + _this.props.link_separator : item.name
+	                );
+	              })
+	            ),
+	            _react2['default'].createElement(
+	              'div',
+	              { id: 'maps' },
+	              this.props.nav_data.map(function (item, i) {
+	                return _react2['default'].createElement(
+	                  'div',
+	                  { className: 'pan_nav_item', key: 'pan_nav_item_' + i, style: { width: _this.computeDimensions() + 'px' } },
 	                  _react2['default'].createElement(
 	                    'a',
 	                    { href: item.url },
-	                    item.title
+	                    _react2['default'].createElement('img', { src: item.screenshot, style: { width: _this.computeDimensions() + 'px' } })
+	                  ),
+	                  _react2['default'].createElement('br', null),
+	                  _react2['default'].createElement(
+	                    'h4',
+	                    null,
+	                    _react2['default'].createElement(
+	                      'a',
+	                      { href: item.url },
+	                      item.title
+	                    )
 	                  )
-	                )
-	              );
-	            })
+	                );
+	              })
+	            )
 	          )
 	        )
 	      );
