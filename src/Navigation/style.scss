@@ -26,7 +26,6 @@
   background-color: white;
   overflow: visible;
   z-index: 100000000;
-  text-transform: none;
   /* bottom padding matches offset of #maps set with top below */
   padding-bottom: 75px;
 
@@ -34,6 +33,7 @@
     text-decoration: none;
     color: #888;
     font-weight: normal;
+    text-transform: none;
   }
 
   h1 {
