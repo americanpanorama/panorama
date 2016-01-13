@@ -22,57 +22,60 @@
   position: fixed;
   left: 0;
   top: 0;
-  height: 200;
   width: 100%;
   background-color: white;
   overflow: visible;
   z-index: 100000000;
+  text-transform: none;
+  /* bottom padding matches offset of #maps set with top below */
+  padding-bottom: 75px;
 
-  h1 a {
+  a {
     text-decoration: none;
-    color: #28668a;
+    color: #888;
+    font-weight: normal;
   }
 
   h1 {
-    margin-left: 120px;
+    position: absolute;
+    left: 80px;
+    top: 10px;
+    margin: 0;
     font-family: 'Oswald';
     color: #28668a;
-    opacity: 0.5;
-    clear: left;
-    text-transform: none;
+    font-size: 30px;
+    
+
+    a {
+      color: #28668a;
+    }
   }
 
-  h4 {
-
-    text-align: center;
-    text-transform: none;
-  }
-
-  h4 a {
-    text-decoration: none;
-    color: #888;
-    font-family: 'Abel', sans-serif;
-    font-size: 18px;
-  }
-
-  ul {
-    list-style-type: none;
+  h2 {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-family: 'Oswald';
+    width: auto;
+    border: none;
+    font-size: 20px;
     margin: 0;
-    padding: 0;
-    display: inline;
   }
 
-  li {
-    display: inline;
+  #maps {
+    position: relative;
+    top: 75px;
   }
 
   .pan_nav_item {
     float: left;
     margin-right: 20px;
     margin-left: 20px;
+
+    h4 {
+      text-align: center;
+      font-family: 'Abel', sans-serif;
+      font-size: 18px;
+    }
   }
-
-
-
-
 }
