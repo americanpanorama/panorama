@@ -1,4 +1,21 @@
-@import url(https://fonts.googleapis.com/css?family=Abel|Oswald);.panorama.area-chart path {
+@import url(https://fonts.googleapis.com/css?family=Abel|Oswald);.panorama--tooltip {
+  position: absolute;
+  display: none;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+  font-size: 12px;
+  border-radius: 4px;
+  border: 1px solid #aaa;
+  box-sizing: border-box;
+  pointer-events: none; }
+  .panorama--tooltip.active {
+    display: block; }
+
+.panorama--chart-container {
+  position: relative; }
+.panorama.area-chart path {
+  stroke: none;
   fill: steelblue; }
 
 .panorama.area-chart .axis {
@@ -6,8 +23,8 @@
 
 .panorama.area-chart .axis path,
 .panorama.area-chart .axis line {
-  fill: none;
   stroke: #000;
+  fill: none;
   shape-rendering: crispEdges; }
 .panorama.chart-slider {
   position: relative;
@@ -43,9 +60,16 @@
     display: none; }
 .panorama.bar-chart {
   position: relative; }
+  .panorama.bar-chart svg {
+    pointer-events: none; }
+  .panorama.bar-chart svg.interactive {
+    pointer-events: auto; }
   .panorama.bar-chart .bar {
     fill: steelblue; }
-  .panorama.bar-chart .bar:hover {
+  .panorama.bar-chart svg.interactive .bar {
+    cursor: pointer; }
+  .panorama.bar-chart .bar:hover,
+  .panorama.bar-chart .bar.selected {
     fill: brown; }
   .panorama.bar-chart .axis {
     font: 10px sans-serif; }
@@ -150,6 +174,28 @@
       .panorama.legend ul li:nth-child(3) span:before {
         border-color: #768a66;
         background-color: rgba(118, 138, 102, 0.7); }
+.panorama.line-chart path {
+  stroke: steelblue;
+  stroke-width: 1;
+  fill: none; }
+
+.panorama.line-chart .axis {
+  font: 10px sans-serif; }
+
+.panorama.line-chart .axis path,
+.panorama.line-chart .axis line {
+  stroke: #000;
+  fill: none;
+  shape-rendering: crispEdges; }
+.panorama.map.choropleth path {
+  fill: red;
+  stroke: white; }
+
+.panorama.map.choropleth .interactive path {
+  cursor: pointer; }
+
+.panorama.map.choropleth .hover-dupe {
+  pointer-events: none; }
 #hamburger, #navburger {
   left: 20px;
   top: 7px; }
@@ -164,68 +210,65 @@
   position: fixed;
   left: 0;
   top: 0;
-  height: 200;
   width: 100%;
   background-color: white;
   overflow: visible;
-  z-index: 100000000; }
-  #nav_header h1 a {
-    text-decoration: none;
-    color: #28668a; }
-  #nav_header h1 {
-    margin-left: 120px;
-    font-family: 'Oswald';
-    color: #28668a;
-    opacity: 0.5;
-    clear: left;
-    text-transform: none; }
-  #nav_header h4 {
-    text-align: center;
-    text-transform: none; }
-  #nav_header h4 a {
+  z-index: 100000000;
+  /* bottom padding matches offset of #maps set with top below */
+  padding-bottom: 75px; }
+  #nav_header a {
     text-decoration: none;
     color: #888;
-    font-family: 'Abel', sans-serif;
-    font-size: 18px; }
-  #nav_header ul {
-    list-style-type: none;
+    font-weight: normal;
+    text-transform: none; }
+  #nav_header h1 {
+    position: absolute;
+    left: 80px;
+    top: 10px;
     margin: 0;
-    padding: 0;
-    display: inline; }
-  #nav_header li {
-    display: inline; }
+    font-family: 'Oswald';
+    color: #28668a;
+    font-size: 30px; }
+    #nav_header h1 a {
+      color: #28668a; }
+  #nav_header h2 {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-family: 'Oswald';
+    width: auto;
+    border: none;
+    font-size: 20px;
+    margin: 0; }
+  #nav_header #maps {
+    position: relative;
+    top: 75px; }
   #nav_header .pan_nav_item {
     float: left;
     margin-right: 20px;
     margin-left: 20px; }
+    #nav_header .pan_nav_item h4 {
+      text-align: center;
+      font-family: 'Abel', sans-serif;
+      font-size: 18px; }
 .panorama.offset-area-chart {
   position: relative; }
-  .panorama.offset-area-chart .area-chart {
-    position: absolute; }
-    .panorama.offset-area-chart .area-chart path.area {
-      opacity: 0.7; }
-  .panorama.offset-area-chart .axis {
-    font: 10px sans-serif; }
-  .panorama.offset-area-chart .axis path,
-  .panorama.offset-area-chart .axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges; }
-  .panorama.offset-area-chart .metadata circle {
+  .panorama.offset-area-chart .area {
+    fill-opacity: 0.25; }
+  .panorama.offset-area-chart .lifespan, .panorama.offset-area-chart circle {
+    opacity: 0.25; }
+  .panorama.offset-area-chart circle {
     stroke: none; }
+  .panorama.offset-area-chart .selected .area {
+    fill-opacity: 0.9; }
+  .panorama.offset-area-chart .selected .lifespan, .panorama.offset-area-chart .selected circle {
+    opacity: 0.9; }
 .panorama.punchcard {
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto; }
   .panorama.punchcard h2, .panorama.punchcard h3 {
     margin-bottom: 0; }
-  .panorama.punchcard .header {
-    margin-bottom: 20px; }
-  .panorama.punchcard .subtitle {
-    display: inline-block; }
-  .panorama.punchcard .caption {
-    display: inline-block;
-    float: right; }
   .panorama.punchcard .content rect {
     cursor: pointer;
     stroke: none;
@@ -245,6 +288,9 @@
       width: 50%;
       display: inline-block;
       shape-rendering: 'crispEdges'; }
+    .panorama.punchcard .category .selected circle {
+      stroke: #4d4d4e !important;
+      stroke-width: 2px; }
   .panorama.punchcard .placeholder {
     position: absolute;
     top: 50%;
@@ -253,32 +299,120 @@
     transform: translate(-50%, -50%);
     text-align: center;
     white-space: normal; }
-.time-based-markers-layer {
+.panorama.time-based-markers-layer {
   z-index: 1000;
   pointer-events: none; }
+  .panorama.time-based-markers-layer.leaflet-d3-overlay {
+    position: absolute;
+    z-index: 1; }
+    .panorama.time-based-markers-layer.leaflet-d3-overlay svg {
+      overflow: visible; }
+  .panorama.time-based-markers-layer .time-based-label {
+    font-weight: bold; }
+  .panorama.time-based-markers-layer .time-based-label.with-outlines {
+    stroke: #f9f9f9; }
+    @supports (paint-order: stroke) {
+      .panorama.time-based-markers-layer .time-based-label.with-outlines {
+        paint-order: stroke;
+        stroke-width: 1.5px; } }
+    @supports not (paint-order: stroke) {
+      .panorama.time-based-markers-layer .time-based-label.with-outlines {
+        stroke-width: 0.25px; } }
+  .panorama.time-based-markers-layer .time-based-line {
+    stroke-width: 1;
+    stroke: black !important;
+    fill: none !important; }
+  .panorama.time-based-markers-layer .place {
+    fill: #666;
+    font-size: 1.0em; }
+    .panorama.time-based-markers-layer .place.secondary {
+      font-size: 0.8em; }
+.panorama.scatterplot {
+  position: relative; }
+  .panorama.scatterplot svg {
+    pointer-events: none; }
+  .panorama.scatterplot svg.interactive {
+    pointer-events: auto; }
+  .panorama.scatterplot .dot {
+    fill: #ff0099;
+    opacity: 0.5; }
+  .panorama.scatterplot svg.interactive .dot {
+    cursor: pointer; }
+  .panorama.scatterplot .axis {
+    font: 10px sans-serif; }
+  .panorama.scatterplot .axis path,
+  .panorama.scatterplot .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges; }
+.panorama.textural-list {
+  position: relative;
+  display: block; }
 
-.time-based-label {
-  font-weight: bold; }
+.panorama .textural-list--inner {
+  padding-right: 15px;
+  overflow-x: hidden;
+  overflow-y: auto; }
 
-.time-based-label.with-outlines {
-  stroke: #f9f9f9; }
-  @supports (paint-order: stroke) {
-    .time-based-label.with-outlines {
-      paint-order: stroke;
-      stroke-width: 1.5px; } }
-  @supports not (paint-order: stroke) {
-    .time-based-label.with-outlines {
-      stroke-width: 0.25px; } }
+.panorama .textural-list--item {
+  cursor: default; }
+/* styles used only for laying out examples page */
+html,
+body {
+  font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
-.time-based-line {
-  stroke-width: 1;
-  stroke: black !important;
-  fill: none !important; }
+h2 {
+  width: 100%;
+  margin-top: 100px;
+  border-bottom: 1px solid #d7d7d7; }
 
-.place {
-  fill: #666;
-  font-size: 1.0em; }
-  .place.secondary {
-    font-size: 0.8em; }
+h2:first-of-type {
+  margin-top: 20px; }
+
+.panorama.punchcard {
+  width: 600px; }
+
+.punchcard-header {
+  margin-bottom: 20px;
+  width: 600px; }
+  .punchcard-header h2 {
+    margin-top: 0; }
+  .punchcard-header .subtitle {
+    display: inline-block;
+    width: 50%; }
+  .punchcard-header .caption {
+    display: inline-block; }
+
+.textural-list-example {
+  width: 45%;
+  max-width: 600px; }
+  .textural-list-example .textural-list-selecteditem {
+    margin-bottom: 0px; }
+    .textural-list-example .textural-list-selecteditem h3 {
+      font-size: 18px;
+      margin: 0; }
+    .textural-list-example .textural-list-selecteditem .meta {
+      font-size: 12px;
+      margin-top: 3px; }
+    .textural-list-example .textural-list-selecteditem .meta--item:last-child {
+      margin-left: 10px; }
+  .textural-list-example .list {
+    border: 1px solid #aaa; }
+  .textural-list-example .panorama.textural-list {
+    padding: 5px 0; }
+  .textural-list-example .textural-list--item {
+    padding: 0 10px; }
+    .textural-list-example .textural-list--item h3 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: bold;
+      color: #6F6D29;
+      line-height: 1; }
+    .textural-list-example .textural-list--item p {
+      margin: 8px 0;
+      font-size: 13px;
+      line-height: 1.4; }
+  .textural-list-example .textural-list--item + .textural-list--item {
+    margin-top: 20px; }
 
 /*# sourceMappingURL=examples.css.map*/
