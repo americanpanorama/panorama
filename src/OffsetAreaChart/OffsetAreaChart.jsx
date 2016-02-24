@@ -37,7 +37,7 @@ export default class OffsetAreaChart extends D3ReactBase {
     super(props);
     this.chartConstructor = OffsetAreaChartImpls;
 
-    // This accessor is implemented by the React component as well as the Koto chart.
+    // This accessor is implemented by the React component as well as the d3 chart.
     this.chartIdAccessor = props.chartIdAccessor;
   }
 }

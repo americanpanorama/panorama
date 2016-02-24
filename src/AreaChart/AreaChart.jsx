@@ -6,10 +6,6 @@ import AreaChartImpls from './AreaChartImpls';
 import './style.scss';
 
 export default class AreaChart extends D3ReactBase {
-  constructor (props) {
-    super(props);
-    this.chartConstructor = AreaChartImpls;
-  }
 
   static propTypes = {...D3ReactBase.propTypes,
     fillColor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -38,4 +34,10 @@ export default class AreaChart extends D3ReactBase {
       orient: 'left',
     }
   };
+
+  constructor (props) {
+    super(props);
+    this.chartConstructor = AreaChartImpls;
+  }
+
 }

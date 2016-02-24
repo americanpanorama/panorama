@@ -42,11 +42,9 @@ export default class D3ReactBase extends Component {
 
   render() {
     return (
-      <div className={'panorama' + this.getClassName()}>
+      <div className={ 'panorama' + this.getClassName() }>
         <div ref='chart' className='panorama--chart-container'>
-          {this.props.tooltip &&
-          <div ref='tooltip' className='panorama--tooltip'></div>
-          }
+          { this.props.tooltip && <div ref='tooltip' className='panorama--tooltip'></div> }
         </div>
       </div>
     );

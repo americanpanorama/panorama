@@ -33,7 +33,6 @@ export default class OffsetAreaChartImpls extends D3Component {
       .x(d => xScale(areaChartConfig.xAccessor(d)))
       .y0(d => yScale(0))
       .y1(d => yScale(areaChartConfig.yAccessor(d)));
-
   }
 
   areaOffsetTranslation(idx) {
@@ -59,25 +58,36 @@ export default class OffsetAreaChartImpls extends D3Component {
       chartIdAccessor, selectedChartId,
       circleRadius, interactive} = this.props;
 
+
+    //
+    // AreaCharts
+    // 
     const area = this.base.selectAll('g.area-container').data(areaChartData);
+
+    // exit
     area.exit().remove();
 
+    // enter
     area.enter()
       .append('g')
       .attr('class', 'area-container')
+    .append('path')
+      .attr('class', 'area');
+
+    // update
+    area
       .attr('transform', (d,i) => this.areaOffsetTranslation(i))
       .classed('selected',  d => chartIdAccessor(d) === selectedChartId ? true : false)
-      .append('path')
+    .selectAll('path')
       .attr('d', d => this.areaGenerator(d))
-      .attr('class', 'area')
-      .attr('fill', (d,i) => {
-        return colorPalette[i % colorPalette.length];
+      .attr('fill', (d,i,j) => {
+        return colorPalette[j % colorPalette.length];
       });
 
-    area
-      .attr('d', d => this.areaGenerator(d));
 
-    // do lines
+    //
+    // lines
+    //
     const baseY = yScale(0) + this.props.areaChartData.length * this.props.chartSpacing;
     const domain = xScale.domain();
 
@@ -86,35 +96,48 @@ export default class OffsetAreaChartImpls extends D3Component {
 
     const lines = this.lineLayer.selectAll('g.line-group').data(data);
 
+    // exit
     lines.exit().remove();
 
-    const lineGroup = lines.enter()
+    // enter
+    lines.enter()
       .append('g')
         .attr('class', 'line-group')
-        .attr('transform', (d,i) => this.lineOffsetTranslation(i))
-        .classed('selected',  d => chartIdAccessor(d) == selectedChartId ? true : false);
-
-    lineGroup
       .append('line')
-      .attr('class', 'lifespan')
+        .attr('class', 'lifespan');
+
+    // update
+    lines
+      .attr('transform', (d,i) => this.lineOffsetTranslation(i))
+      .classed('selected',  d => chartIdAccessor(d) == selectedChartId ? true : false)
+    .selectAll('line')
       .attr('x1', d => xScale(
         Math.max(xAccessor(d, 0), domain[0])
       ))
       .attr('x2', d => xScale(
-        Math.min(xAccessor(d, 1), domain[1])
+          Math.min(xAccessor(d, 1), domain[1])
       ))
       .attr('y1', 0)
       .attr('y2', 0)
       .style('stroke', (d, i) => colorPalette[i % colorPalette.length]);
 
-    const circles = lineGroup.selectAll('circle')
+
+    //
+    // circles
+    // 
+    const circles = lines.selectAll('circle')
       .data(d => metadataAccessor(d));
 
+    // exit
     circles.exit().remove();
 
+    // enter
     circles
       .enter()
-      .append('circle')
+      .append('circle');
+
+    // update
+    circles
       .attr('cx', d => xScale(
         Math.max(d, domain[0])
       ))
