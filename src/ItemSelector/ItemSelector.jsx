@@ -187,7 +187,7 @@ export default class ItemSelector extends React.Component {
                 key = { i }
                 onClick = { this.onItemClick }
               >
-                <span>{ item.name.toUpperCase() }</span>
+                <span>{ item.name }</span>
               </li>
             );
 
