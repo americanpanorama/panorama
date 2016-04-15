@@ -182,7 +182,7 @@ export default class ItemSelector extends React.Component {
 
             return (
               <li
-                className = { 'item' + (isSelected ? ' selected' : '') }
+                className = { 'item' + (isSelected ? ' selected' : '') + (item.className ? ' ' + item.className : '') }
                 data-index = { i }
                 key = { i }
                 onClick = { this.onItemClick }

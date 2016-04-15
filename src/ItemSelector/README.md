@@ -21,7 +21,8 @@ let items = [
   },
   {
     "id": 3,
-    "name": "Bald Eagle and Spring Creek Navigation"
+    "name": "Bald Eagle and Spring Creek Navigation",
+    "className": "deemphasize"
   }
 ];
 

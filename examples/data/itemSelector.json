@@ -45,7 +45,8 @@
   },
   {
     "id": 12,
-    "name": "Chesapeake and Delaware"
+    "name": "Chesapeake and Delaware",
+    "className": "deemphasize"
   },
   {
     "id": 13,

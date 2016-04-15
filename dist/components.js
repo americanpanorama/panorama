@@ -4442,7 +4442,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return _react2['default'].createElement(
 	              'li',
 	              {
-	                className: 'item' + (isSelected ? ' selected' : ''),
+	                className: 'item' + (isSelected ? ' selected' : '') + (item.className ? ' ' + item.className : ''),
 	                'data-index': i,
 	                key: i,
 	                onClick: _this.onItemClick
