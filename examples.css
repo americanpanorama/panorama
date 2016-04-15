@@ -415,4 +415,7 @@ h2:first-of-type {
   .textural-list-example .textural-list--item + .textural-list--item {
     margin-top: 20px; }
 
+.deemphasize {
+  color: #999; }
+
 /*# sourceMappingURL=examples.css.map*/
