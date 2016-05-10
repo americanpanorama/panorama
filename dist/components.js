@@ -5764,7 +5764,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _react2['default'].createElement(
 	          'div',
 	          { id: 'hamburger' },
-	          _react2['default'].createElement('img', { src: 'http://dsl.richmond.edu/panorama/static/images/hamburger.png', onClick: this.props.on_hamburger_click })
+	          _react2['default'].createElement('img', { src: 'http://dsl.richmond.edu/panorama/static/images/menu.svg', onClick: this.props.on_hamburger_click })
 	        ),
 	        _react2['default'].createElement(
 	          _reactModal2['default'],
@@ -5780,7 +5780,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _react2['default'].createElement(
 	              'div',
 	              { id: 'navburger' },
-	              _react2['default'].createElement('img', { src: 'http://dsl.richmond.edu/panorama/static/images/hamburger.png', onClick: this.props.on_hamburger_click })
+	              _react2['default'].createElement('img', { src: 'http://dsl.richmond.edu/panorama/static/images/menu-close.svg', onClick: this.props.on_hamburger_click })
 	            ),
 	            this.props.title && this.props.home_url ? _react2['default'].createElement(
 	              'h1',
