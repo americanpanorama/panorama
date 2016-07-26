@@ -5125,17 +5125,29 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'onItemEnter',
 	    value: function onItemEnter(event) {
 	
-	      // Any desired mouse enter functionality goes here.
-	      // console.log("entering:", event.currentTarget.dataset.item);
+	      // Defense.
+	      if (!event.currentTarget || !event.currentTarget.dataset) {
+	        return;
+	      }
 	
+	      // Direct communication: call callback if it was passed in.
+	      if (this.props.onItemEnter) {
+	        this.props.onItemEnter(event.currentTarget.dataset.item, this.props.items.indexOf(event.currentTarget.dataset.item));
+	      }
 	    }
 	  }, {
 	    key: 'onItemLeave',
 	    value: function onItemLeave(event) {
 	
-	      // Any desired mouse leave functionality goes here.
-	      // console.log("leaving:", event.currentTarget.dataset.item);
+	      // Defense.
+	      if (!event.currentTarget || !event.currentTarget.dataset) {
+	        return;
+	      }
 	
+	      // Direct communication: call callback if it was passed in.
+	      if (this.props.onItemLeave) {
+	        this.props.onItemLeave(event.currentTarget.dataset.item, this.props.items.indexOf(event.currentTarget.dataset.item));
+	      }
 	    }
 	  }, {
 	    key: 'render',
