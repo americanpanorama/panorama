@@ -91,7 +91,7 @@ export default class Legend extends React.Component {
   render () {
 
     return (
-      <div className='panorama legend'>
+      <div className={ 'panorama legend ' + this.props.className }>
         <ul>
         { this.props.items.map((item, i) => {
           let selected = this.props.selectedItem === item || this.props.selectedItem == i;
