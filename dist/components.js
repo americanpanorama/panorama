@@ -5144,7 +5144,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      return _react2['default'].createElement(
 	        'div',
-	        { className: 'panorama legend' },
+	        { className: 'panorama legend ' + this.props.className },
 	        _react2['default'].createElement(
 	          'ul',
 	          null,
