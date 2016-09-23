@@ -3375,9 +3375,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	          // TODO: handle error
 	          console.error(error);
 	        } else {
-	          this.leafletElement.setUrl(response.tiles[0]);
+	          var url = this._isRetina() ? response.tiles[0].replace('0/{z}', '{z}').replace('.png', '@2x.png') : response.tiles[0];
+	          this.leafletElement.setUrl(url);
 	        }
 	      }).bind(this));
+	    }
+	  }, {
+	    key: '_isRetina',
+	    value: function _isRetina() {
+	      return window.matchMedia && (window.matchMedia('only screen and (min-resolution: 124dpi), only screen and (min-resolution: 1.3dppx), only screen and (min-resolution: 48.8dpcm)').matches || window.matchMedia('only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 2.6/2), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (min-device-pixel-ratio: 1.3)').matches) || window.devicePixelRatio && window.devicePixelRatio > 1.3;
 	    }
 	  }, {
 	    key: '_getCartoDBTilesTemplates',
