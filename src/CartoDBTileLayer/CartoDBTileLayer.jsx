@@ -32,14 +32,14 @@ export default class CartoDBTileLayer extends BaseTileLayer {
         // TODO: handle error
         console.error(error);
       } else {
-        let url = (this._isRetina()) ? response.tiles[0].replace(".png", "@2x.png") : response.tiles[0];
+        let url = (this._isRetina()) ? response.tiles[0].replace('0/{z}', '{z}').replace('.png', '@2x.png') : response.tiles[0];
         this.leafletElement.setUrl(url);
       }
     }.bind(this));
   }
   
   _isRetina(){
-    return ((window.matchMedia && (window.matchMedia('only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx), only screen and (min-resolution: 75.6dpcm)').matches || window.matchMedia('only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min--moz-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)').matches)) || (window.devicePixelRatio && window.devicePixelRatio >= 2)) && /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
+    return ((window.matchMedia && (window.matchMedia('only screen and (min-resolution: 124dpi), only screen and (min-resolution: 1.3dppx), only screen and (min-resolution: 48.8dpcm)').matches || window.matchMedia('only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 2.6/2), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (min-device-pixel-ratio: 1.3)').matches)) || (window.devicePixelRatio && window.devicePixelRatio > 1.3));
   }
 
   _getCartoDBTilesTemplates (callback) {
