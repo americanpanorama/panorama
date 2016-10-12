@@ -70,7 +70,7 @@ export default class Navigation extends React.Component {
     return (
       <div>
 
-        <div id='hamburger'><img src='http://dsl.richmond.edu/panorama/static/images/menu.svg' onClick={ this.props.on_hamburger_click } /></div>
+        <div id='hamburger'><img src='//dsl.richmond.edu/panorama/static/images/menu.svg' onClick={ this.props.on_hamburger_click } /></div>
   
         <Modal
           isOpen={ this.props.show_menu }
@@ -80,7 +80,7 @@ export default class Navigation extends React.Component {
         >
           
           <div id='nav_header'>
-            <div id='navburger'><img src='http://dsl.richmond.edu/panorama/static/images/menu-close.svg' onClick={ this.props.on_hamburger_click } /></div>
+            <div id='navburger'><img src='//dsl.richmond.edu/panorama/static/images/menu-close.svg' onClick={ this.props.on_hamburger_click } /></div>
   
             { (this.props.title && this.props.home_url) ? <h1><a href={ this.props.home_url }>{ this.props.title }</a></h1> : '' }
             <h2>
