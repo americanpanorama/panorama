@@ -49,7 +49,8 @@ export default class CartoDBTileLayer extends BaseTileLayer {
       sublayers: [{
         sql: this.props.sql,
         cartocss: this.props.cartocss
-      }]
+      }],
+      maps_api_template: 'https://' + this.props.userId + '.carto.com'
     },
 
     function (tiles, error) {
