@@ -15,7 +15,9 @@ import CartoDBClient from 'cartodb-client';
  *                  Anyone with a web inspector can then see the API key,
  *                  so this should never be used in production!
  */
-export default function CartoDBLoader (userId, apiKey) {
+export default function CartoDBLoader (userId, apiKey, options) {
+
+  options = (options) ? options : {};
 
   const cartoDBClient = new CartoDBClient(userId);
   
