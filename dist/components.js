@@ -3256,7 +3256,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *                  so this should never be used in production!
 	 */
 	
-	function CartoDBLoader(userId, apiKey) {
+	function CartoDBLoader(userId, apiKey, options) {
+	
+	  options = options ? options : {};
 	
 	  var cartoDBClient = new _cartodbClient2['default'](userId);
 	
