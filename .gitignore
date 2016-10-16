@@ -42,3 +42,4 @@ examples/public/examples.*
 # Distribution Modules
 dist-modules
 
+es5/

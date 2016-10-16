@@ -1,5 +1,7 @@
 'use strict';
 
+import 'source-map-support/register';
+
 // Panorama components.
 import AreaChart from './AreaChart/AreaChart';
 import CartoDBLoader from './CartoDBLoader/CartoDBLoader';

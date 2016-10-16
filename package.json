@@ -2,8 +2,9 @@
   "name": "@panorama/toolkit",
   "version": "0.1.16",
   "description": "Panorama visualization toolkit",
-  "main": "dist/components.min.js",
+  "main": "es5/main.js",
   "scripts": {
+    "prepublish": "babel -s inline src/ -d es5/",
     "start": "npm run clean:examples && webpack-dev-server --config ./examples/webpack.config.js --hot --inline --content-base examples/public",
     "test": "jest",
     "lint": "eslint ./src",
@@ -62,7 +63,8 @@
     "webpack-merge": "^0.2.0"
   },
   "dependencies": {
-    "lodash": "^3.10.1"
+    "lodash": "^3.10.1",
+    "source-map-support": "^0.4.0"
   },
   "peerDependencies": {
     "cartodb-client": "stamen/cartodb-client",
