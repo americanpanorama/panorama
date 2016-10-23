@@ -1,10 +1,10 @@
 import React, {PropTypes, Children} from 'react';
 import { MapLayer } from 'react-leaflet';
 import { geoJson, DomEvent } from 'leaflet';
-import pick from 'lodash/object/pick';
-import isObject from 'lodash/lang/isObject';
-import isArray from 'lodash/lang/isArray';
-import assign from 'lodash/object/assign';
+import pick from 'lodash.pick';
+import isObject from 'lodash.isobject';
+import isArray from 'lodash.isarray';
+import assign from 'lodash.assign';
 
 const OPTIONS = [
   'stroke',

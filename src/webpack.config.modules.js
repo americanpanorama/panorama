@@ -32,7 +32,10 @@ module.exports = {
       'd3': 'd3',
       'intro.js': 'intro.js',
       'leaflet': 'leaflet',
-      'lodash': 'lodash',
+      'lodash.assign': true,
+      'lodash.isarray': true,
+      'lodash.isobject': true,
+      'lodash.pick': true,
       'react': {
         root: 'React',
         commonjs: 'react',
