@@ -13,7 +13,7 @@
     "build:dist": "npm run clean:dist && webpack --config ./src/webpack.config.dist.js && webpack --config ./src/webpack.config.dist.min.js",
     "clean:dist": "rm -rf ./dist/**",
     "clean:dist-modules": "rm -rf ./dist-modules/**",
-    "build:dist-modules": "npm run clean:dist-modules && webpack --config ./src/webpack.config.modules.js && babel ./src/main.js --out-file ./dist-modules/index.js",
+    "build:dist-modules": "npm run clean:dist-modules && webpack --config ./src/webpack.config.modules.js",
     "publish:dist": "./.bin/publish-dist.sh",
     "analyze": "webpack --json --config ./src/webpack.config.js | analyze-bundle-size"
   },
